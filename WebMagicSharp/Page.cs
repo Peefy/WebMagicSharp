@@ -7,6 +7,9 @@ using WebMagicSharp.Utils;
 
 namespace WebMagicSharp
 {
+    /// <summary>
+    /// Page.
+    /// </summary>
     public class Page
     {
 

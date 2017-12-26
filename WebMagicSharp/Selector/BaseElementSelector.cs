@@ -8,6 +8,9 @@ using WebMagicSharp;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Base element selector.
+    /// </summary>
     public abstract class BaseElementSelector : ISelector, IElementSelector
     {
 
@@ -41,7 +44,7 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        public HtmlAgilityPack.HtmlNode selectElement(String text)
+        public virtual HtmlAgilityPack.HtmlNode selectElement(String text)
         {
             if (text != null)
             {
@@ -51,7 +54,7 @@ namespace WebMagicSharp.Selector
             return null;
         }
 
-        public List<HtmlAgilityPack.HtmlNode> selectElements(String text)
+        public virtual List<HtmlAgilityPack.HtmlNode> selectElements(String text)
         {
             if (text != null)
             {

@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
+using Newtonsoft.Json;
+
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Json.
+    /// </summary>
     public class Json : PlainText
     {
         public Json(List<String> strings) : base(strings)
@@ -23,38 +28,25 @@ namespace WebMagicSharp.Selector
          */
         public Json removePadding(String padding)
         {
-            String text = getFirstSourceText();
-            XTokenQueue tokenQueue = new XTokenQueue(text);
-            tokenQueue.consumeWhitespace();
-            tokenQueue.consume(padding);
-            tokenQueue.consumeWhitespace();
-            String chompBalanced = tokenQueue.chompBalancedNotInQuotes('(', ')');
-            return new Json(chompBalanced);
+            String text = GetFirstSourceText();
+            text.Replace(" ","");
+            return new Json(text);
         }
 
-        public <T> T toObject(Class<T> clazz)
+        public T toObject<T>() where T : class
         {
-            if (getFirstSourceText() == null)
+            var str = GetFirstSourceText();
+            if (str == null)
             {
                 return null;
             }
-            return JSON.parseObject(getFirstSourceText(), clazz);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str);
         }
 
-        public <T> List<T> toList(Class<T> clazz)
+        public override ISelectable JsonPath(String jsonPath)
         {
-            if (getFirstSourceText() == null)
-            {
-                return null;
-            }
-            return JSON.parseArray(getFirstSourceText(), clazz);
-        }
-
-        @Override
-    public Selectable jsonPath(String jsonPath)
-        {
-            JsonPathSelector jsonPathSelector = new JsonPathSelector(jsonPath);
-            return selectList(jsonPathSelector, GetSourceTexts());
+            var jsonPathSelector = new JsonPathSelector(jsonPath);
+            return SelectList(jsonPathSelector, GetSourceTexts());
         }
     }
 }

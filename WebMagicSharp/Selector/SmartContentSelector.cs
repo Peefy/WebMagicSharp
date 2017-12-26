@@ -6,6 +6,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Smart content selector.
+    /// </summary>
     public class SmartContentSelector : ISelector
     {
         public string Select(string text)

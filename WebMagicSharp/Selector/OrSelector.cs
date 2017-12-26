@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Or selector.
+    /// </summary>
     public class OrSelector : ISelector
     {
         private List<ISelector> selectors = new List<ISelector>();

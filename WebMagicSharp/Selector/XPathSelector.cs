@@ -7,6 +7,9 @@ using HtmlAgilityPack;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// XPath selector.
+    /// </summary>
     public class XPathSelector : BaseElementSelector
     {
         public XPathExpression XPathString {get;set;}
@@ -14,13 +17,10 @@ namespace WebMagicSharp.Selector
         public XPathSelector(string xPathStr)
         {
             XPathString = XPathExpression.Compile(xPathStr);
+
         }
 
-        [Obsolete("Not Finish")]
-        public override bool hasAttribute()
-        {
-            return true;
-        }
+        public override bool hasAttribute() => XPathString.Expression.Contains("@");
 
         public override string select(HtmlDocument element)
         {

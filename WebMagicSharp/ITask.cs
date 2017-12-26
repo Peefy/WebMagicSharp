@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp
 {
+    /// <summary>
+    /// Task.
+    /// </summary>
     public interface ITask
     {
         Site GetSite();

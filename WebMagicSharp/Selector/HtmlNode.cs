@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Html node.
+    /// </summary>
     public class HtmlNode : AbstractSelectable
     {
 
@@ -24,7 +27,6 @@ namespace WebMagicSharp.Selector
             return elements;
         }
 
-        [Obsolete("Unrealized")]
         public override ISelectable JsonPath(string jsonPath)
         {
             throw new NotImplementedException();
@@ -123,5 +125,14 @@ namespace WebMagicSharp.Selector
             return document;
         }
 
+        public override ISelectable Jquery(string selector)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ISelectable Jquery(string selector, string attrName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

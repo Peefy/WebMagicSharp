@@ -6,6 +6,9 @@ using WebMagicSharp;
 
 namespace WebMagicSharp
 {
+    /// <summary>
+    /// Site.
+    /// </summary>
     public class Site
     {
         private string domain;

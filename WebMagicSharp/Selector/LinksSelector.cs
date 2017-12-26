@@ -5,6 +5,9 @@ using HtmlAgilityPack;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Links selector.
+    /// </summary>
     public class LinksSelector : BaseElementSelector
     {
         public override bool hasAttribute()
@@ -12,13 +15,11 @@ namespace WebMagicSharp.Selector
             return true;
         }
 
-        [Obsolete("NotImplemented")]
         public override string select(HtmlDocument element)
         {
             throw new NotImplementedException();
         }
 
-        [Obsolete("NotImplemented")]
         public override HtmlAgilityPack.HtmlNode selectElement(HtmlDocument element)
         {
             throw new NotImplementedException();

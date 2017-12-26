@@ -2,6 +2,9 @@
 
 namespace WebMagicSharp.DownLoaders
 {
+    /// <summary>
+    /// Downloader.
+    /// </summary>
     public interface IDownloader : IDisposable
     {
         /**

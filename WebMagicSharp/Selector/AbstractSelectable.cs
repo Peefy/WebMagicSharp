@@ -4,18 +4,21 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Abstract selectable.
+    /// </summary>
     public abstract class AbstractSelectable : ISelectable
     {
         protected abstract List<String> GetSourceTexts();
 
         public virtual ISelectable Css(String selector)
         {
-            return this;
+            return Jquery(selector);
         }
 
         public virtual ISelectable Css(String selector, String attrName)
         {
-            return this;
+            return Jquery(selector,attrName);
         }
 
         protected virtual ISelectable Select(ISelector selector, List<String> strings)
@@ -110,7 +113,6 @@ namespace WebMagicSharp.Selector
 
         public abstract List<ISelectable> Nodes();
 
-        [Obsolete("Unrealized")]
         public abstract ISelectable JsonPath(String jsonPath);
 
         #region IDisposable Support
@@ -146,6 +148,9 @@ namespace WebMagicSharp.Selector
             // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
             // GC.SuppressFinalize(this);
         }
+
+        public abstract ISelectable Jquery(string selector);
+        public abstract ISelectable Jquery(string selector, string attrName);
         #endregion
     }
 }

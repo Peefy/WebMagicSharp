@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Regex result.
+    /// </summary>
     public class RegexResult
     {
 

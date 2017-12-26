@@ -5,6 +5,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// And selector.
+    /// </summary>
     public class AndSelector : ISelector
     {
 

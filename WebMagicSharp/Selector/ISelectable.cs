@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Selectable.
+    /// </summary>
     public interface ISelectable : IDisposable
     {
 
@@ -14,6 +17,17 @@ namespace WebMagicSharp.Selector
          * @return new Selectable after extract
          */
         ISelectable Xpath(String xpath);
+
+        ISelectable Jquery(String selector);
+
+    /**
+     * select list with css selector
+     *
+     * @param selector css selector expression
+     * @param attrName attribute name of css selector
+     * @return new Selectable after extract
+     */
+        ISelectable Jquery(String selector, String attrName);
 
         ISelectable Css(String selector);
 

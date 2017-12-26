@@ -6,6 +6,9 @@ using HtmlAgilityPack;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Element selector.
+    /// </summary>
     public interface IElementSelector
     {
         String select(HtmlDocument element);

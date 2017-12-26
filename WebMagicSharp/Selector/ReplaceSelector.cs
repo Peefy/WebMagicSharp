@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Replace selector.
+    /// </summary>
     public class ReplaceSelector : ISelector
     {
 

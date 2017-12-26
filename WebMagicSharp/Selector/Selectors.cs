@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp.Selector
 {
+    /// <summary>
+    /// Selectors.
+    /// </summary>
     public static class Selectors
     {
         public static RegexSelector Regex(String expr)
@@ -26,6 +29,15 @@ namespace WebMagicSharp.Selector
             return new XPathSelector(expr);
         }
 
+        public static CssSelector Css(String expr) 
+        {
+            return new CssSelector(expr);
+        }
+
+        public static CssSelector Css(String expr, String attrName) 
+        {
+            return new CssSelector(expr, attrName);
+        }
 
         public static AndSelector And(ISelector[] selectors)
         {

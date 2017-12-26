@@ -7,7 +7,10 @@ using HtmlAgilityPack;
 
 namespace WebMagicSharp.Selector
 {
-    public class Html
+    /// <summary>
+    /// Html.
+    /// </summary>
+    public class Html : HtmlNode
     {
         private HtmlDocument document;
 

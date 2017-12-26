@@ -4,6 +4,9 @@ using System.Text;
 
 namespace WebMagicSharp
 {
+    /// <summary>
+    /// Result items.
+    /// </summary>
     public class ResultItems
     {
 

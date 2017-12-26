@@ -6,6 +6,9 @@ using WebMagicSharp.Model;
 
 namespace WebMagicSharp
 {
+    /// <summary>
+    /// Request.
+    /// </summary>
     public class Request : IComparable
     {
         private const long serialVersionUID = 2062192774891352043L;
