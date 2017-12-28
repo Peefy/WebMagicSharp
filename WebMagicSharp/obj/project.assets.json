@@ -4786,11 +4786,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj",
+      "projectUniqueName": "/Developer/vs_pro/NetStadard/DuGu.WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj",
       "projectName": "WebMagicSharp",
-      "projectPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj",
+      "projectPath": "/Developer/vs_pro/NetStadard/DuGu.WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj",
       "packagesPath": "/Users/dugu/.nuget/packages/",
-      "outputPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/obj",
+      "outputPath": "/Developer/vs_pro/NetStadard/DuGu.WebMagicSharp/WebMagicSharp/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
