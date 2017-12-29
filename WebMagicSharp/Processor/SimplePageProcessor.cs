@@ -6,37 +6,41 @@ using System.Xml.XPath;
 
 namespace WebMagicSharp.Processor
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SimplePageProcessor : IPageProcessor, IDisposable
     {
-        private String urlPattern;
+        private String _urlPattern;
 
-        private Site site;
+        private Site _site;
 
         public SimplePageProcessor(String urlPattern)
         {
-            this.site = Site.Me();
+            this._site = Site.Me();
             //compile "*" expression to regex
-            this.urlPattern = "(" + urlPattern.replace(".", "\\.").replace("*", "[^\"'#]*") + ")";
+            this._urlPattern = "(" + urlPattern.Replace(".", "\\.").
+                Replace("*", "[^\"'#]*") + ")";
 
         }
 
 
         public void Process(Page page)
         {
-            List<String> requests = page.getHtml().getDocument().links().regex(urlPattern).all();
+            var requests = page.getHtml().Links().Regex(_urlPattern).All();
             //add urls to fetch
             page.addTargetRequests(requests);
             //extract by XPath
-            page.putField("title", page.getHtml().xpath("//title"));
-            page.putField("html", page.getHtml().toString());
+            page.putField("title", page.getHtml().Xpath("//title"));
+            page.putField("html", page.getHtml().ToString());
             //extract by Readability
-            page.putField("content", page.getHtml().smartContent());
+            page.putField("content", page.getHtml().SmartContent());
         }
 
         public Site GetSite()
         {
             //settings
-            return site;
+            return _site;
         }
 
         #region IDisposable Support

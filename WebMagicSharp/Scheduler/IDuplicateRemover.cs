@@ -3,7 +3,7 @@ namespace WebMagicSharp.Scheduler
 {
     public interface IDuplicateRemover
     {
-        bool isDuplicate(Request request, ITask task);
+        bool IsDuplicate(Request request, ITask task);
 
         /**
          * Reset duplicate check.

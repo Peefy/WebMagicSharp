@@ -10,27 +10,27 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public class LinksSelector : BaseElementSelector
     {
-        public override bool hasAttribute()
+        public override bool HasAttribute()
         {
             return true;
         }
 
-        public override string select(HtmlDocument element)
+        public override string Select(HtmlDocument element)
         {
             throw new NotImplementedException();
         }
 
-        public override HtmlAgilityPack.HtmlNode selectElement(HtmlDocument element)
+        public override HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element)
         {
             throw new NotImplementedException();
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> selectElements(HtmlDocument element)
+        public override List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element)
         {
             throw new NotImplementedException();
         }
 
-        public override List<string> selectList(HtmlDocument element)
+        public override List<string> SelectList(HtmlDocument element)
         {
             var elements = element.DocumentNode.SelectNodes("a");
             var links = new List<String>();

@@ -10,21 +10,21 @@ namespace WebMagicSharp.Selector
     public class HtmlNode : AbstractSelectable
     {
 
-        List<HtmlAgilityPack.HtmlNode> elements;
+        List<HtmlAgilityPack.HtmlNode> _elements;
 
         public HtmlNode(List<HtmlAgilityPack.HtmlNode> elements)
         {
-            this.elements = elements;
+            _elements = elements;
         }
 
         public HtmlNode()
         {
-            elements = null;
+            _elements = null;
         }
 
-        public virtual List<HtmlAgilityPack.HtmlNode> getElements()
+        public virtual List<HtmlAgilityPack.HtmlNode> GetElements()
         {
-            return elements;
+            return _elements;
         }
 
         public override ISelectable JsonPath(string jsonPath)
@@ -34,13 +34,13 @@ namespace WebMagicSharp.Selector
 
         public override ISelectable Links()
         {
-            return selectElements(new LinksSelector());
+            return SelectElements(new LinksSelector());
         }
 
         public override List<ISelectable> Nodes()
         {
             var selectables = new List<ISelectable>();
-            foreach(var element in getElements())
+            foreach(var element in GetElements())
             {
                 var childElements = new List<HtmlAgilityPack.HtmlNode>(1);
                 childElements.Add(element);
@@ -52,23 +52,26 @@ namespace WebMagicSharp.Selector
         public override ISelectable SmartContent()
         {
             var smartContentSelector = Selectors.SmartContent();
-            return Select(smartContentSelector, GetSourceTexts());
+            return Select(smartContentSelector, SourceTexts);
         }
 
         public override ISelectable Xpath(string xpath)
         {
             var xpathSelector = Selectors.XPath(xpath);
-            return selectElements(xpathSelector);
+            return SelectElements(xpathSelector);
         }
 
-        protected override List<string> GetSourceTexts()
+        protected override List<string> SourceTexts
         {
-            var sourceTexts = new List<String>();
-            foreach(var element in getElements())
+            get
             {
-                sourceTexts.Add(element.WriteContentTo());
+                var sourceTexts = new List<string>();
+                foreach (var element in GetElements())
+                {
+                    sourceTexts.Add(element.WriteContentTo());
+                }
+                return sourceTexts;
             }
-            return sourceTexts;
         }
 
         public override ISelectable Select(ISelector selector)
@@ -79,15 +82,15 @@ namespace WebMagicSharp.Selector
         public override ISelectable SelectList(ISelector selector)
         {
             if (selector is BaseElementSelector) {
-                return selectElements((BaseElementSelector)selector);
+                return SelectElements((BaseElementSelector)selector);
             }
-            return SelectList(selector, GetSourceTexts());
+            return SelectList(selector, SourceTexts);
         }
 
-        protected ISelectable selectElements(BaseElementSelector elementSelector)
+        protected ISelectable SelectElements(BaseElementSelector elementSelector)
         {
-            var elementsTemp = getElements();
-            if (!elementSelector.hasAttribute())
+            var elementsTemp = GetElements();
+            if (!elementSelector.HasAttribute())
             {
                 List<HtmlAgilityPack.HtmlNode> resultElements 
                     = new List<HtmlAgilityPack.HtmlNode>();
@@ -95,7 +98,7 @@ namespace WebMagicSharp.Selector
                 {
                     //var nodes = checkElementAndConvert(element);
                     var selectElementsTemp = 
-                        elementSelector.selectElements(element.WriteContentTo());
+                        elementSelector.SelectElements(element.WriteContentTo());
                     resultElements.AddRange(selectElementsTemp);
                 }
                 return new HtmlNode(resultElements);
@@ -104,10 +107,10 @@ namespace WebMagicSharp.Selector
             {
                 // has attribute, consider as plaintext
                 var resultStrings = new List<String>();
-                var document = checkElementAndConvert(elementsTemp);
+                var document = CheckElementAndConvert(elementsTemp);
                 foreach (var element in elementsTemp)
                 {                  
-                    var selectList = elementSelector.selectList(document);
+                    var selectList = elementSelector.SelectList(document);
                     resultStrings.AddRange(selectList);
                 }
                 return new PlainText(resultStrings);
@@ -115,7 +118,7 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        private HtmlAgilityPack.HtmlDocument checkElementAndConvert(List<HtmlAgilityPack.HtmlNode> nodes)
+        private HtmlAgilityPack.HtmlDocument CheckElementAndConvert(List<HtmlAgilityPack.HtmlNode> nodes)
         {
             HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
             foreach(var node in nodes)

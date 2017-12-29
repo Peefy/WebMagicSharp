@@ -9,101 +9,76 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public abstract class AbstractSelectable : ISelectable
     {
-        protected abstract List<String> GetSourceTexts();
+        protected abstract List<String> SourceTexts { get; }
 
-        public virtual ISelectable Css(String selector)
-        {
-            return Jquery(selector);
-        }
+        public virtual ISelectable Css(String selector) => Jquery(selector);
 
-        public virtual ISelectable Css(String selector, String attrName)
-        {
-            return Jquery(selector,attrName);
-        }
+        public virtual ISelectable Css(String selector, String attrName) => Jquery(selector, attrName);
 
         protected virtual ISelectable Select(ISelector selector, List<String> strings)
         {
-            List<String> results = new List<String>();
-            foreach(var str in strings)
+            foreach (var str in strings)
             {
-                var result = selector.Select(str);
-                if (result != null)
+                if (selector.Select(text: str) != null)
                 {
-                    results.Add(result);
+                    new List<string>().Add(selector.Select(str));
                 }
             }
-            return new PlainText(results);
+            return new PlainText(new List<string>());
         }
 
         protected virtual ISelectable SelectList(ISelector selector, List<String> strings)
         {
-            List<String> results = new List<String>();
-            foreach(var str in strings)
+            foreach (var str in strings)
             {
-                List<String> result = selector.SelectList(str);
-                results.AddRange(result);
+                new List<string>().AddRange(selector.SelectList(str));
             }
-            return new PlainText(results);
+            return new PlainText(new List<string>());
         }
 
-        public virtual List<String> All()
-        {
-            return GetSourceTexts();
-        }
+        public virtual List<String> All() => SourceTexts;
 
-        public virtual String Get()
-        {
-            var all = All();
-            return all?.Count > 0 ? all[0] : null;
-        }
+        public virtual String Get => All()?.Count > 0 ? All()[0] : null;
 
-        public virtual ISelectable Select(ISelector selector)
-        {
-            return Select(selector, GetSourceTexts());
-        }
+        public virtual ISelectable Select(ISelector selector) => 
+            Select(selector, SourceTexts);
 
-        public virtual ISelectable SelectList(ISelector selector)
-        {
-            return SelectList(selector, GetSourceTexts());
-        }
+        public virtual ISelectable SelectList(ISelector selector) => 
+            SelectList(selector, SourceTexts);
 
-        public virtual ISelectable Regex(String regex)
-        {
-            RegexSelector regexSelector = Selectors.Regex(regex);
-            return SelectList(regexSelector, GetSourceTexts());
-        }
+        public virtual ISelectable Regex(String regex) => 
+            SelectList(Selectors.Regex(regex), SourceTexts);
 
         public virtual ISelectable Regex(String regex, int group)
         {
             RegexSelector regexSelector = Selectors.Regex(regex, group);
-            return SelectList(regexSelector, GetSourceTexts());
+            return SelectList(regexSelector, SourceTexts);
         }
 
         public virtual ISelectable Replace(String regex, String replacement)
         {
             ReplaceSelector replaceSelector = new ReplaceSelector(regex, replacement);
-            return Select(replaceSelector, GetSourceTexts());
+            return Select(replaceSelector, SourceTexts);
         }
 
-        public virtual String GetFirstSourceText()
+        public virtual String FirstSourceText
         {
-            var list = GetSourceTexts();
-            if(list != null && list.Count > 0)
+            get
             {
-                return list[0];
+                if (SourceTexts != null && SourceTexts.Count > 0)
+                {
+                    return SourceTexts[0];
+                }
+                return null;
             }
-            return null;
         }
 
         public override String ToString()
         {
-            return Get();
+            return Get;
         }
 
-        public bool Match()
-        {
-            return GetSourceTexts() != null && GetSourceTexts().Count > 0;
-        }
+        public bool Match() => SourceTexts != null && SourceTexts.Count > 0;
 
         public abstract ISelectable Xpath(string xpath);
 

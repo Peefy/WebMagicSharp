@@ -11,26 +11,31 @@ namespace WebMagicSharp.Scheduler
     /// </summary>
     public class HashSetDuplicateRemover : IDuplicateRemover
     {
-        private HashSet<String> urls = 
+        private HashSet<String> _urls = 
             WMCollection<string>.NewHashSet(new HashSet<String>().ToArray());
 
         public HashSetDuplicateRemover()
         {
         }
 
-        public int GetTotalRequestsCount(ITask task)
+        protected String GetUrl(Request request)
         {
-            throw new NotImplementedException();
+            return request.GetUrl();
         }
 
-        public bool isDuplicate(Request request, ITask task)
+        public int GetTotalRequestsCount(ITask task)
         {
-            throw new NotImplementedException();
+            return _urls.Count;
+        }
+
+        public bool IsDuplicate(Request request, ITask task)
+        {
+            return !_urls.Add(GetUrl(request));
         }
 
         public void ResetDuplicateCheck(ITask task)
         {
-            throw new NotImplementedException();
+            _urls.Clear();
         }
     }
 }

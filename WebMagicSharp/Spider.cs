@@ -336,10 +336,10 @@ namespace WebMagicSharp
 
         private void doCycleRetry(Request request)
         {
-            Object cycleTriedTimesObject = request.getExtra(Request.CYCLE_TRIED_TIMES);
+            Object cycleTriedTimesObject = request.getExtra(Request.CycleTriedTimes);
             if (cycleTriedTimesObject == null)
             {
-                addRequest(request.putExtra(Request.CYCLE_TRIED_TIMES, 1));
+                addRequest(request.putExtra(Request.CycleTriedTimes, 1));
             }
             else
             {
@@ -347,7 +347,7 @@ namespace WebMagicSharp
                 cycleTriedTimes++;
                 if (cycleTriedTimes < site.getCycleRetryTimes())
                 {
-                    addRequest(request.putExtra(Request.CYCLE_TRIED_TIMES, cycleTriedTimes));
+                    addRequest(request.putExtra(Request.CycleTriedTimes, cycleTriedTimes));
                 }
             }
             sleep(site.getRetrySleepTime());

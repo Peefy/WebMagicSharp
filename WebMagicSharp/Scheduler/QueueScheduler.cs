@@ -6,22 +6,22 @@ namespace WebMagicSharp.Scheduler
 {
     public class QueueScheduler : DuplicateRemovedScheduler
     {
-        private Queue<Request> queue = new Queue<Request>();
+        protected Queue<Request> _queue = new Queue<Request>();
 
         protected override void PushWhenNoDuplicate(Request request, ITask task)
         {
-            queue.Enqueue(request);
+            _queue.Enqueue(request);
         }
 
         public override Request Poll(ITask task)
         {
-            return queue.Dequeue();
+            return _queue.Dequeue();
         }
 
 
         public int GetLeftRequestsCount(ITask task)
         {
-            return queue.Count;
+            return _queue.Count;
         }
 
         public int GetTotalRequestsCount(ITask task)

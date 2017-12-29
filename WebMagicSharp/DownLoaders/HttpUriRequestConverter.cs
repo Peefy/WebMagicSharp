@@ -13,12 +13,12 @@ namespace WebMagicSharp.DownLoaders
         public HttpClientRequestContext Convert(Request request, Site site, Proxy.Proxy proxy)
         {
             var httpClientRequestContext = new HttpClientRequestContext();
-            httpClientRequestContext.HttpClient = convertHttpClientContext(request, site, proxy);
-            httpClientRequestContext.HttpRequest = convertHttpUriRequest(request, site, proxy);
+            httpClientRequestContext.HttpClient = ConvertHttpClientContext(request, site, proxy);
+            httpClientRequestContext.HttpRequest = ConvertHttpUriRequest(request, site, proxy);
             return httpClientRequestContext;
         }
 
-        private HttpCoreClient convertHttpClientContext(Request request, Site site, Proxy.Proxy proxy)
+        private HttpCoreClient ConvertHttpClientContext(Request request, Site site, Proxy.Proxy proxy)
         {
             var httpContext = new HttpCoreClient();
             httpContext.Items.Url = UrlUtils.FixIllegalCharacterInUrl(request.GetUrl());
@@ -62,9 +62,9 @@ namespace WebMagicSharp.DownLoaders
             return httpContext;
         }
 
-        private HttpWebRequest convertHttpUriRequest(Request request, Site site, Proxy.Proxy proxy)
+        private HttpWebRequest ConvertHttpUriRequest(Request request, Site site, Proxy.Proxy proxy)
         {
-            var httpWebRequest = (HttpWebRequest)HttpWebRequest.
+            var httpWebRequest = (HttpWebRequest)WebRequest.
                 Create(UrlUtils.FixIllegalCharacterInUrl(request.GetUrl()));
             httpWebRequest.Headers = new WebHeaderCollection();
             if (site.getHeaders() != null)

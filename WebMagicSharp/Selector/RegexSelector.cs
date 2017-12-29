@@ -17,7 +17,7 @@ namespace WebMagicSharp.Selector
 
         private int group = 1;
 
-        public RegexSelector(String regexStr, int group)
+        public RegexSelector(string regexStr, int group)
         {
             this.CompileRegex(regexStr);
             this.group = group;

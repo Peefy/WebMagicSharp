@@ -14,19 +14,19 @@ namespace WebMagicSharp.Selector
     public abstract class BaseElementSelector : ISelector, IElementSelector
     {
 
-        HtmlDocument document;
+        HtmlDocument _document;
 
         public BaseElementSelector()
         {
-            document = new HtmlDocument();
+            _document = new HtmlDocument();
         }
 
         public string Select(string text)
         {
             if (text != null)
             {
-                document.LoadHtml(text);
-                return select(document);
+                _document.LoadHtml(text);
+                return Select(_document);
             }
             return null;
         }
@@ -35,8 +35,8 @@ namespace WebMagicSharp.Selector
         {
             if (text != null)
             {
-                document.LoadHtml(text);
-                return selectList(document);
+                _document.LoadHtml(text);
+                return SelectList(_document);
             }
             else
             {
@@ -44,22 +44,22 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        public virtual HtmlAgilityPack.HtmlNode selectElement(String text)
+        public virtual HtmlAgilityPack.HtmlNode SelectElement(string text)
         {
             if (text != null)
             {
-                document.LoadHtml(text);
-                return selectElement(document);
+                _document.LoadHtml(text);
+                return SelectElement(_document);
             }
             return null;
         }
 
-        public virtual List<HtmlAgilityPack.HtmlNode> selectElements(String text)
+        public virtual List<HtmlAgilityPack.HtmlNode> SelectElements(string text)
         {
             if (text != null)
             {
-                document.LoadHtml(text);
-                return selectElements(document);
+                _document.LoadHtml(text);
+                return SelectElements(_document);
             }
             else
             {
@@ -67,16 +67,16 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        public abstract string select(HtmlDocument element);
+        public abstract string Select(HtmlDocument element);
 
-        public abstract List<string> selectList(HtmlDocument element);
+        public abstract List<string> SelectList(HtmlDocument element);
 
 
-        public abstract HtmlAgilityPack.HtmlNode selectElement(HtmlDocument element);
+        public abstract HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element);
 
-        public abstract List<HtmlAgilityPack.HtmlNode> selectElements(HtmlDocument element);
+        public abstract List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element);
 
-        public abstract bool hasAttribute();
+        public abstract bool HasAttribute();
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用

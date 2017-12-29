@@ -7,16 +7,16 @@ namespace WebMagicSharp.Pipelines
     public class ResultItemsCollectorPipeline : ICollectorPipeline<ResultItems>
     {
 
-        private List<ResultItems> collector = new List<ResultItems>();
+        private List<ResultItems> _collector = new List<ResultItems>();
 
         public List<ResultItems> GetCollected()
         {
-            return collector;
+            return _collector;
         }
 
         public void Process(ResultItems resultItems, ITask task)
         {
-            collector.Add(resultItems);
+            _collector.Add(resultItems);
         }
 
         #region IDisposable Support
@@ -28,10 +28,10 @@ namespace WebMagicSharp.Pipelines
             {
                 if (disposing)
                 {
-                    if(collector != null)
+                    if(_collector != null)
                     {
-                        collector.Clear();
-                        collector = null;
+                        _collector.Clear();
+                        _collector = null;
                     }
                     // TODO: 释放托管状态(托管对象)。
                 }

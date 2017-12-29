@@ -9,15 +9,15 @@ namespace WebMagicSharp.DownLoaders
 {
     public class HttpClientGenerator
     {
-
-        HttpCoreClient http;
+        string _gzip = "gzip";
+        HttpCoreClient _http;
 
         public HttpClientGenerator()
         {
-            http = new HttpCoreClient();
+            _http = new HttpCoreClient();
         }
 
-        public HttpCoreClient getClient(Site site)
+        public HttpCoreClient GetClient(Site site)
         {
             return GenerateClient(site);
         }
@@ -26,18 +26,18 @@ namespace WebMagicSharp.DownLoaders
         {
             if (site.getUserAgent() != null)
             {
-                http.Items.UserAgent = site.getUserAgent();
+                _http.Items.UserAgent = site.getUserAgent();
             }
             else
             {
-                http.Items.UserAgent = "";
+                _http.Items.UserAgent = "";
             }
             if (site.isUseGzip())
             {
-                http.Items.Header.Add(HttpRequestHeader.AcceptEncoding, "gzip");
+                _http.Items.Header.Add(HttpRequestHeader.AcceptEncoding, _gzip);
             }
             GenerateCookie(site);
-            return http;
+            return _http;
         }
 
         private void GenerateCookie(Site site)
@@ -62,7 +62,7 @@ namespace WebMagicSharp.DownLoaders
                     cookieStore.Add(cookie);
                 }
             }
-            http.Items.Container = cookieStore;
+            _http.Items.Container = cookieStore;
         }
 
     }

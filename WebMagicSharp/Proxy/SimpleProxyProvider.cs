@@ -7,13 +7,13 @@ namespace WebMagicSharp.Proxy
     public class SimpleProxyProvider : IProxyProvider
     {
 
-        private List<Proxy> proxies;
+        private List<Proxy> _proxies;
 
-        private int pointer = -1;
+        private int _pointer = -1;
 
         public Proxy GetProxy(ITask task)
         {
-            return proxies[IncrForLoop];
+            return _proxies[IncrForLoop];
         }
 
         public void ReturnProxy(Proxy proxy, Page page, ITask task)
@@ -28,13 +28,13 @@ namespace WebMagicSharp.Proxy
 
         public SimpleProxyProvider(List<Proxy> proxies)
         {
-            this.proxies = proxies;
+            this._proxies = proxies;
         }
 
         private SimpleProxyProvider(List<Proxy> proxies, int pointer)
         {
-            this.proxies = proxies;
-            this.pointer = pointer;
+            this._proxies = proxies;
+            this._pointer = pointer;
         }
 
         public static SimpleProxyProvider From(IList<Proxy> proxies)
@@ -51,13 +51,13 @@ namespace WebMagicSharp.Proxy
         {
             get
             {
-                pointer = pointer + 1;
-                int size = proxies.Count;
-                if (pointer >= size)
+                _pointer = _pointer + 1;
+                int size = _proxies.Count;
+                if (_pointer >= size)
                 {
-                    pointer = 0;
+                    _pointer = 0;
                 }
-                return pointer;
+                return _pointer;
             }
         }
     }

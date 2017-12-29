@@ -16,53 +16,51 @@ namespace WebMagicSharp.DownLoaders
     public class HttpClientDownloader : AbstractDownloader
     {
 
-        private Dictionary<String, HttpCoreClient> httpClients = 
+        private Dictionary<String, HttpCoreClient> _httpClients = 
             new Dictionary<String, HttpCoreClient>();
 
-        private HttpClientGenerator httpClientGenerator = new HttpClientGenerator();
+        private HttpClientGenerator _httpClientGenerator = new HttpClientGenerator();
 
-        private HttpUriRequestConverter httpUriRequestConverter = new HttpUriRequestConverter();
+        private HttpUriRequestConverter _httpUriRequestConverter = new HttpUriRequestConverter();
 
-        private IProxyProvider proxyProvider;
+        private IProxyProvider _proxyProvider;
 
-        private bool responseHeader = true;
+        private bool _responseHeader = true;
 
-        private object lockedObj = new object();
+        private object _lockedObj = new object();
 
-        string contentType;
+        string _contentType;
 
-        string charset;
+        string _charset;
 
-        HttpClient client;
-
-        public void setProxyProvider(IProxyProvider proxyProvider)
+        public void SetProxyProvider(IProxyProvider proxyProvider)
         {
-            this.proxyProvider = proxyProvider;
+            this._proxyProvider = proxyProvider;
         }
 
-        public void setHttpUriRequestConverter(HttpUriRequestConverter httpUriRequestConverter)
+        public void SetHttpUriRequestConverter(HttpUriRequestConverter httpUriRequestConverter)
         {
-            this.httpUriRequestConverter = httpUriRequestConverter;
+            this._httpUriRequestConverter = httpUriRequestConverter;
         }
 
         private HttpCoreClient GetHttpClient(Site site)
         {
             if (site == null)
             {
-                return httpClientGenerator.getClient(null);
+                return _httpClientGenerator.GetClient(null);
             }
             var domain = site.getDomain();
             HttpCoreClient httpClient;
-            if (httpClients.TryGetValue(domain, out httpClient))
+            if (_httpClients.TryGetValue(domain, out httpClient))
             {
                 return httpClient;
             }
             else
             {
-                lock (lockedObj)
+                lock (_lockedObj)
                 {
-                    httpClient = httpClientGenerator.getClient(site);
-                    httpClients.Add(domain, httpClient);
+                    httpClient = _httpClientGenerator.GetClient(site);
+                    _httpClients.Add(domain, httpClient);
                 }
             }
             return httpClient;
@@ -76,22 +74,22 @@ namespace WebMagicSharp.DownLoaders
             }
             HttpResults httpResponse = null;
             var httpClient = GetHttpClient(task.GetSite());
-            var proxy = proxyProvider != null ? proxyProvider.GetProxy(task) : null;
-            var requestContext = httpUriRequestConverter.Convert(request, task.GetSite(), proxy);
+            var proxy = _proxyProvider != null ? _proxyProvider.GetProxy(task) : null;
+            var requestContext = _httpUriRequestConverter.Convert(request, task.GetSite(), proxy);
             Page page = Page.fail();
             try
             {             
                 httpResponse = httpClient.GetHtml();
-                contentType = httpClient.Items.ContentType;
-                charset = httpClient.Items.EncodingStr;
-                page = handleResponse(request, request.getCharset() != null ? request.getCharset() : task.GetSite().getCharset(), httpResponse, task);
+                _contentType = httpClient.Items.ContentType;
+                _charset = httpClient.Items.EncodingStr;
+                page = HandleResponse(request, request.getCharset() != null ? request.getCharset() : task.GetSite().getCharset(), httpResponse, task);
                 OnSuccess(request);
                 Debug.WriteLine($"downloading page success {request.GetUrl()}");
                 return page;
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"download page {request.GetUrl()} error");
+                Debug.WriteLine($"download page {request.GetUrl()} error : {e.Message}");
                 OnError(request);
                 return page;
             }
@@ -99,17 +97,16 @@ namespace WebMagicSharp.DownLoaders
             {
                 if (httpResponse != null)
                 {
-                    //ensure the connection is released back to pool
-                    
+                    //ensure the connection is released back to pool        
                 }
-                if (proxyProvider != null && proxy != null)
+                if (_proxyProvider != null && proxy != null)
                 {
-                    proxyProvider.ReturnProxy(proxy, page, task);
+                    _proxyProvider.ReturnProxy(proxy, page, task);
                 }
             }
         }
 
-        protected Page handleResponse(Request request, String charset, HttpResults httpResponse, ITask task) 
+        protected Page HandleResponse(Request request, String charset, HttpResults httpResponse, ITask task) 
         {
             var bytes = httpResponse.ResultByte;
             Page page = new Page();
@@ -120,7 +117,7 @@ namespace WebMagicSharp.DownLoaders
             page.setRequest(request);
             page.setStatusCode(httpResponse.StatusCodeNum);
             page.setDownloadSuccess(true);
-            if (responseHeader)
+            if (_responseHeader)
             {
                 page.setHeaders(HttpClientUtils.ConvertHeaders(httpResponse.Header));
             }
@@ -129,7 +126,7 @@ namespace WebMagicSharp.DownLoaders
 
         public override void SetThread(int threadNum)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public override void OnSuccess(Request request)

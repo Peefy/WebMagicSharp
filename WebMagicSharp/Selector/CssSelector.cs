@@ -12,46 +12,46 @@ namespace WebMagicSharp.Selector
     public class CssSelector : BaseElementSelector
     {
 
-        private String selectorText;
+        private string _selectorText;
 
-        private String attrName;
+        private string _attrName;
 
-        public CssSelector(String selectorText)
+        public CssSelector(string selectorText)
         {
-            this.selectorText = selectorText;
+            this._selectorText = selectorText;
         }
 
-        public CssSelector(String selectorText, String attrName)
+        public CssSelector(string selectorText, string attrName)
         {
-            this.selectorText = selectorText;
-            this.attrName = attrName;
+            this._selectorText = selectorText;
+            this._attrName = attrName;
         }
 
-        private String getValue(HtmlAgilityPack.HtmlNode element)
+        private string GetValue(HtmlAgilityPack.HtmlNode element)
         {
-            if (attrName == null)
+            if (_attrName == null)
             {
                 return element.OuterHtml;
             }
-            else if ("innerHtml".Equals(attrName.ToLower()))
+            else if ("innerHtml".Equals(_attrName.ToLower()))
             {
                 return element.InnerHtml;
             }
-            else if ("text".Equals(attrName.ToLower()))
+            else if ("text".Equals(_attrName.ToLower()))
             {
                 return element.WriteTo();
             }
-            else if ("allText".Equals(attrName.ToLower()))
+            else if ("allText".Equals(_attrName.ToLower()))
             {
                 return element.WriteContentTo();
             }
             else
             {
-                return element.Attributes[attrName].Name;
+                return element.Attributes[_attrName].Name;
             }
         }
 
-        protected String getText(HtmlAgilityPack.HtmlNode element)
+        protected string GetText(HtmlAgilityPack.HtmlNode element)
         {
             StringBuilder accum = new StringBuilder();
             foreach(var node in element.ChildNodes)
@@ -64,41 +64,40 @@ namespace WebMagicSharp.Selector
             return accum.ToString();
         }
 
-
-        public override bool hasAttribute()
+        public override bool HasAttribute()
         {
-            return !string.IsNullOrEmpty(attrName);
+            return !string.IsNullOrEmpty(_attrName);
         }
 
-        public override string select(HtmlDocument element)
+        public override string Select(HtmlDocument element)
         {
-            var elements = selectElements(element);
+            var elements = SelectElements(element);
             if (elements?.Count() == 0)
             {
                 return null;
             }
-            return getValue(elements[0]);
+            return GetValue(elements[0]);
         }
 
-        public override HtmlAgilityPack.HtmlNode selectElement(HtmlDocument element)
+        public override HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element)
         {
-            return element.DocumentNode.SelectNodes(selectorText)?.FirstOrDefault();
+            return element.DocumentNode.SelectNodes(_selectorText)?.FirstOrDefault();
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> selectElements(HtmlDocument element)
+        public override List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element)
         {
-            return element.DocumentNode.SelectNodes(selectorText)?.ToList();
+            return element.DocumentNode.SelectNodes(_selectorText)?.ToList();
         }
 
-        public override List<string> selectList(HtmlDocument element)
+        public override List<string> SelectList(HtmlDocument element)
         {
-            var strings = new List<String>();
-            var elements = selectElements(element);
+            var strings = new List<string>();
+            var elements = SelectElements(element);
             if (elements != null)
             {
                 foreach(var node in elements)
                 {
-                    String value = getValue(node);
+                    string value = GetValue(node);
                     if (value != null)
                     {
                         strings.Add(value);
@@ -108,14 +107,14 @@ namespace WebMagicSharp.Selector
             return strings;
         }
 
-        public override HtmlAgilityPack.HtmlNode selectElement(string text)
+        public override HtmlAgilityPack.HtmlNode SelectElement(string text)
         {
-            return base.selectElement(text);
+            return base.SelectElement(text);
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> selectElements(string text)
+        public override List<HtmlAgilityPack.HtmlNode> SelectElements(string text)
         {
-            return base.selectElements(text);
+            return base.SelectElements(text);
         }
 
     }

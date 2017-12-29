@@ -13,16 +13,16 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public class JsonPathSelector : ISelector
     {
-        string jsonPathString;
+        string _jsonPathString;
 
         public JsonPathSelector(string jsonPathString)
         {
-            this.jsonPathString = jsonPathString;
+            _jsonPathString = jsonPathString;
         }
 
         public string Select(string text)
         {
-            var jobjs = JObject.Parse(text).SelectTokens(jsonPathString);
+            var jobjs = JObject.Parse(text).SelectTokens(_jsonPathString);
             if (jobjs == null)
             {
                 return null;
@@ -33,7 +33,7 @@ namespace WebMagicSharp.Selector
         public List<string> SelectList(string text)
         {
             var list = new List<String>();
-            var jobjs = JObject.Parse(text).SelectTokens(jsonPathString);
+            var jobjs = JObject.Parse(text).SelectTokens(_jsonPathString);
             if (jobjs == null)
             {
                 return null;

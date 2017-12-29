@@ -11,24 +11,24 @@ namespace WebMagicSharp.Selector
     public class AndSelector : ISelector
     {
 
-        private List<ISelector> selectors = new List<ISelector>();
+        private List<ISelector> _selectors = new List<ISelector>();
 
         public AndSelector(ISelector[] selectors)
         {
             foreach(var selector in selectors)
             {
-                this.selectors.Add(selector);
+                this.Selectors.Add(selector);
             }
         }
 
         public AndSelector(List<ISelector> selectors)
         {
-            this.selectors = selectors;
+            this.Selectors = selectors;
         }
 
         public string Select(string text)
         {
-            foreach(var selector in selectors)
+            foreach(var selector in Selectors)
             {
                 if (text == null)
                 {
@@ -43,7 +43,7 @@ namespace WebMagicSharp.Selector
         {
             var results = new List<String>();
             var first = true;
-            foreach(var selector in selectors)
+            foreach(var selector in Selectors)
             {
                 if (first)
                 {
@@ -69,6 +69,8 @@ namespace WebMagicSharp.Selector
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
+
+        public List<ISelector> Selectors { get => _selectors; set => _selectors = value; }
 
         protected virtual void Dispose(bool disposing)
         {

@@ -9,24 +9,24 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public class OrSelector : ISelector
     {
-        private List<ISelector> selectors = new List<ISelector>();
+        private List<ISelector> _selectors = new List<ISelector>();
 
         public OrSelector(ISelector[] selectors)
         {
             foreach (var selector in selectors)
             {
-                this.selectors.Add(selector);
+                _selectors.Add(selector);
             }
         }
 
         public OrSelector(List<ISelector> selectors)
         {
-            this.selectors = selectors;
+            this._selectors = selectors;
         }
 
         public string Select(string text)
         {
-            foreach (var selector in selectors)
+            foreach (var selector in _selectors)
             {
                 var result = selector.Select(text);
                 if (result != null)
@@ -40,7 +40,7 @@ namespace WebMagicSharp.Selector
         public List<string> SelectList(string text)
         {
             var results = new List<String>();
-            foreach(var selector in selectors)
+            foreach(var selector in _selectors)
             {
                 var strings = selector.SelectList(text);
                 results.AddRange(strings);

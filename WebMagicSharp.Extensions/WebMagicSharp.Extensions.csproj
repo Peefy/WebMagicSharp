@@ -5,4 +5,14 @@
     <RootNamespace>WebMagicSharp</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pipelines\" />
+    <Folder Include="Model\" />
+    <Folder Include="DownLoaders\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebMagicSharp\WebMagicSharp.csproj" />
+  </ItemGroup>
+
 </Project>

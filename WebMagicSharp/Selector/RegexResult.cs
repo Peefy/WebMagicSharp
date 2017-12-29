@@ -21,7 +21,7 @@ namespace WebMagicSharp.Selector
 
         }
 
-        public RegexResult(String[] groups)
+        public RegexResult(string[] groups)
         {
             this.groups = groups;
         }

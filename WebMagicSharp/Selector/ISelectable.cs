@@ -92,7 +92,7 @@ namespace WebMagicSharp.Selector
          *
          * @return single string result
          */
-        String Get();
+        String Get { get; }
 
         /**
          * if result exist for select

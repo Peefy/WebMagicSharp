@@ -12,42 +12,46 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public class Html : HtmlNode
     {
-        private HtmlDocument document;
+        private HtmlDocument _document;
 
-        public Html(String text, String url)
+        public Html(string text, string url)
         {
             try
             {
-                this.document = new HtmlDocument();
-                this.document.LoadHtml(text);
+                _document = new HtmlDocument();
+                _document.LoadHtml(text);
             }
             catch
             {
-                this.document = null;
+                _document = null;
             }
         }
 
-        public Html(String text)
+        public Html(string text)
         {
+            if (text == null)
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
             try
             {
-                this.document = new HtmlDocument();
-                this.document.LoadHtml(text);
+                _document = new HtmlDocument();
+                _document.LoadHtml(text);
             }
             catch
             {
-                this.document = null;
+                _document = null;
             }
         }
 
         public Html(HtmlDocument document)
         {
-            this.document = document;
+            _document = document ?? throw new ArgumentNullException(nameof(document));
         }
 
-        public HtmlDocument getDocument()
+        public HtmlDocument GetDocument()
         {
-            return document;
+            return _document;
         }
     }
 }

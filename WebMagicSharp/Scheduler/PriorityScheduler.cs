@@ -10,41 +10,41 @@ namespace WebMagicSharp.Scheduler
 
     public class PriorityScheduler : DuplicateRemovedScheduler, IMonitorableScheduler
     {
-        private Queue<Request> noPriorityQueue = new Queue<Request>();
-        private SortedSet<Request> priorityQueuePlus = new SortedSet<Request>();
-        private SortedSet<Request> priorityQueueMinus = new SortedSet<Request>();
+        private Queue<Request> _noPriorityQueue = new Queue<Request>();
+        private SortedSet<Request> _priorityQueuePlus = new SortedSet<Request>();
+        private SortedSet<Request> _priorityQueueMinus = new SortedSet<Request>();
 
         protected override void PushWhenNoDuplicate(Request request, ITask task)
         {
             if (request.getPriority() == 0)
             {
-                noPriorityQueue.Enqueue(request);
+                _noPriorityQueue.Enqueue(request);
             }
             else if (request.getPriority() > 0)
             {
-                priorityQueuePlus.Add(request);
+                _priorityQueuePlus.Add(request);
             }
             else
             {
-                priorityQueueMinus.Add(request);
+                _priorityQueueMinus.Add(request);
             }
         }
 
         public override Request Poll(ITask task)
         {
-            Request poll = priorityQueuePlus.FirstOrDefault();
-            priorityQueuePlus.Remove(poll);
+            Request poll = _priorityQueuePlus.FirstOrDefault();
+            _priorityQueuePlus.Remove(poll);
             if (poll != null)
             {
                 return poll;
             }
-            poll = noPriorityQueue.Dequeue();
+            poll = _noPriorityQueue.Dequeue();
             if (poll != null)
             {
                 return poll;
             }
-            poll = priorityQueueMinus.FirstOrDefault();
-            priorityQueueMinus.Remove(poll);
+            poll = _priorityQueueMinus.FirstOrDefault();
+            _priorityQueueMinus.Remove(poll);
             return poll;
         }
 

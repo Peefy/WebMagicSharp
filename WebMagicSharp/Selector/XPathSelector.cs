@@ -20,15 +20,15 @@ namespace WebMagicSharp.Selector
 
         }
 
-        public override bool hasAttribute() => XPathString.Expression.Contains("@");
+        public override bool HasAttribute() => XPathString.Expression.Contains("@");
 
-        public override string select(HtmlDocument element)
+        public override string Select(HtmlDocument element)
         {
             return element.DocumentNode.SelectNodes(XPathString.Expression).ToString();
         }
 
 
-        public override List<string> selectList(HtmlDocument element)
+        public override List<string> SelectList(HtmlDocument element)
         {
             var list = new List<string>();
             var nodes = element.DocumentNode.SelectNodes(XPathString.Expression);
@@ -39,13 +39,13 @@ namespace WebMagicSharp.Selector
             return list;
         }
 
-        public override HtmlAgilityPack.HtmlNode selectElement(HtmlDocument element)
+        public override HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element)
         {
-            var elements = selectElements(element);
+            var elements = SelectElements(element);
             return elements.FirstOrDefault();
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> selectElements(HtmlDocument element)
+        public override List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element)
         {
             var list = element.DocumentNode.SelectNodes(XPathString.Expression).ToList();
             return list;

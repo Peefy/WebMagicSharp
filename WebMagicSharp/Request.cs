@@ -13,7 +13,7 @@ namespace WebMagicSharp
     {
         private const long serialVersionUID = 2062192774891352043L;
 
-        public const String CYCLE_TRIED_TIMES = "_cycle_tried_times";
+        public const String CycleTriedTimes = "_cycle_tried_times";
 
         private string url;
 

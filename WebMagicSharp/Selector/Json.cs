@@ -26,27 +26,27 @@ namespace WebMagicSharp.Selector
          * @param padding padding
          * @return json after padding removed
          */
-        public Json removePadding(String padding)
+        public Json RemovePadding(String padding)
         {
-            String text = GetFirstSourceText();
+            String text = FirstSourceText;
             text.Replace(" ","");
             return new Json(text);
         }
 
-        public T toObject<T>() where T : class
+        public T ToObject<T>() where T : class
         {
-            var str = GetFirstSourceText();
+            var str = FirstSourceText;
             if (str == null)
             {
                 return null;
             }
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str);
+            return JsonConvert.DeserializeObject<T>(str);
         }
 
         public override ISelectable JsonPath(String jsonPath)
         {
             var jsonPathSelector = new JsonPathSelector(jsonPath);
-            return SelectList(jsonPathSelector, GetSourceTexts());
+            return SelectList(jsonPathSelector, SourceTexts);
         }
     }
 }

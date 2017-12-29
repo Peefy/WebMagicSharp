@@ -10,20 +10,20 @@ namespace WebMagicSharp.Selector
     public class PlainText : AbstractSelectable
     {
 
-        protected List<String> sourceTexts;
+        protected List<String> _sourceTexts;
 
         public PlainText(List<String> sourceTexts)
         {
-            this.sourceTexts = sourceTexts;
+            _sourceTexts = sourceTexts;
         }
 
         public PlainText(String text)
         {
-            this.sourceTexts = new List<String>();
-            sourceTexts.Add(text);
+            _sourceTexts = new List<String>();
+            _sourceTexts.Add(text);
         }
 
-        public static PlainText create(String text)
+        public static PlainText Create(String text)
         {
             return new PlainText(text);
         }
@@ -51,9 +51,9 @@ namespace WebMagicSharp.Selector
         public override List<ISelectable> Nodes()
         {
             var nodes = new List<ISelectable>();
-            foreach(var str in GetSourceTexts())
+            foreach(var str in SourceTexts)
             {
-                nodes.Add(PlainText.create(str));
+                nodes.Add(PlainText.Create(str));
             }
             return nodes;
         }
@@ -68,9 +68,6 @@ namespace WebMagicSharp.Selector
             throw new NotImplementedException();
         }
 
-        protected override List<string> GetSourceTexts()
-        {
-            return sourceTexts;
-        }
+        protected override List<string> SourceTexts => _sourceTexts;
     }
 }

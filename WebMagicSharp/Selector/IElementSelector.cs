@@ -11,13 +11,13 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public interface IElementSelector
     {
-        String select(HtmlDocument element);
+        String Select(HtmlDocument element);
         /**
          * Extract all results in text.<br>
          *
          * @param element element
          * @return results
          */
-        List<String> selectList(HtmlDocument element);
+        List<String> SelectList(HtmlDocument element);
     }
 }
