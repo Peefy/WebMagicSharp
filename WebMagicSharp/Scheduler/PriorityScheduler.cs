@@ -16,11 +16,11 @@ namespace WebMagicSharp.Scheduler
 
         protected override void PushWhenNoDuplicate(Request request, ITask task)
         {
-            if (request.getPriority() == 0)
+            if (request.GetPriority() == 0)
             {
                 _noPriorityQueue.Enqueue(request);
             }
-            else if (request.getPriority() > 0)
+            else if (request.GetPriority() > 0)
             {
                 _priorityQueuePlus.Add(request);
             }

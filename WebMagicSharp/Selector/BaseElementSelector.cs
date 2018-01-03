@@ -40,7 +40,7 @@ namespace WebMagicSharp.Selector
             }
             else
             {
-                return new List<String>();
+                return new List<string>();
             }
         }
 

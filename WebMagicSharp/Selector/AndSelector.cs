@@ -41,7 +41,7 @@ namespace WebMagicSharp.Selector
 
         public List<string> SelectList(string text)
         {
-            var results = new List<String>();
+            var results = new List<string>();
             var first = true;
             foreach(var selector in Selectors)
             {
@@ -52,7 +52,7 @@ namespace WebMagicSharp.Selector
                 }
                 else
                 {
-                    var resultsTemp = new List<String>();
+                    var resultsTemp = new List<string>();
                     foreach(var result in results)
                     {
                         resultsTemp.AddRange(selector.SelectList(result));

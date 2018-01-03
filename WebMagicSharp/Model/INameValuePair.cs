@@ -3,8 +3,8 @@ namespace WebMagicSharp.Model
 {
     public interface INameValuePair
     {
-        String GetName();
+        string GetName();
 
-        String GetValue();
+        string GetValue();
     }
 }

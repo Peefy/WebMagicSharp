@@ -3,8 +3,8 @@ namespace WebMagicSharp.Utils
 {
     public interface ISpiderListener
     {
-        void onSuccess(Request request);
+        void OnSuccess(Request request);
 
-        void onError(Request request);
+        void OnError(Request request);
     }
 }

@@ -12,9 +12,11 @@ namespace WebMagicSharp.DownLoaders
     {
         public HttpClientRequestContext Convert(Request request, Site site, Proxy.Proxy proxy)
         {
-            var httpClientRequestContext = new HttpClientRequestContext();
-            httpClientRequestContext.HttpClient = ConvertHttpClientContext(request, site, proxy);
-            httpClientRequestContext.HttpRequest = ConvertHttpUriRequest(request, site, proxy);
+            var httpClientRequestContext = new HttpClientRequestContext
+            {
+                HttpClient = ConvertHttpClientContext(request, site, proxy),
+                HttpRequest = ConvertHttpUriRequest(request, site, proxy)
+            };
             return httpClientRequestContext;
         }
 
@@ -22,15 +24,15 @@ namespace WebMagicSharp.DownLoaders
         {
             var httpContext = new HttpCoreClient();
             httpContext.Items.Url = UrlUtils.FixIllegalCharacterInUrl(request.GetUrl());
-            httpContext.Items.Method = request.getMethod();
+            httpContext.Items.Method = request.GetMethod();
             if (site != null)
             {
-                httpContext.Items.Timeout = site.getTimeOut();
-                httpContext.Items.ReadWriteTimeout = site.getTimeOut();
+                httpContext.Items.Timeout = site.TimeOut;
+                httpContext.Items.ReadWriteTimeout = site.TimeOut;
             }
-            if (site?.getHeaders() != null)
+            if (site?.Headers != null)
             {
-                foreach (var headerEntry in site.getHeaders())
+                foreach (var headerEntry in site.Headers)
                 {
                     httpContext.Items.Header.Add(headerEntry.Key, headerEntry.Value);
                 }
@@ -41,20 +43,22 @@ namespace WebMagicSharp.DownLoaders
                 httpContext.Items.ProxyUserName = proxy.Username;
                 httpContext.Items.ProxyPwd = proxy.Password;
             }
-            if (request.getCookies() != null && request.getCookies().Count > 0)
+            if (request.GetCookies() != null && request.GetCookies().Count > 0)
             {
                 var cookieStore = new CookieContainer();
-                foreach(var cookieEntry in request.getCookies())
+                foreach(var cookieEntry in request.GetCookies())
                 {
-                    var cookie1 = new Cookie(cookieEntry.Key, cookieEntry.Value);
-                    cookie1.Domain = UrlUtils.RemovePort(UrlUtils.GetDomain(request.Url));
+                    var cookie1 = new Cookie(cookieEntry.Key, cookieEntry.Value)
+                    {
+                        Domain = UrlUtils.RemovePort(UrlUtils.GetDomain(request.Url))
+                    };
                     cookieStore.Add(cookie1);
                 }
                 httpContext.Items.Container = cookieStore;
             }
-            if (request.getHeaders() != null && request.getHeaders().Count > 0)
+            if (request.GetHeaders() != null && request.GetHeaders().Count > 0)
             {
-                foreach (var header in request.getHeaders())
+                foreach (var header in request.GetHeaders())
                 {
                     httpContext.Items.Header.Add(header.Key, header.Value);
                 }
@@ -67,9 +71,9 @@ namespace WebMagicSharp.DownLoaders
             var httpWebRequest = (HttpWebRequest)WebRequest.
                 Create(UrlUtils.FixIllegalCharacterInUrl(request.GetUrl()));
             httpWebRequest.Headers = new WebHeaderCollection();
-            if (site.getHeaders() != null)
+            if (site.Headers != null)
             {
-                foreach(var headerEntry in site.getHeaders())
+                foreach(var headerEntry in site.Headers)
                 {
                     httpWebRequest.Headers.Add(headerEntry.Key, headerEntry.Value);
                 }
@@ -77,18 +81,18 @@ namespace WebMagicSharp.DownLoaders
 
             if (site != null)
             {
-                httpWebRequest.Timeout = site.getTimeOut();
-                httpWebRequest.ContinueTimeout = site.getTimeOut();
-                httpWebRequest.ReadWriteTimeout = site.getTimeOut();
+                httpWebRequest.Timeout = site.TimeOut;
+                httpWebRequest.ContinueTimeout = site.TimeOut;
+                httpWebRequest.ReadWriteTimeout = site.TimeOut;
             }
 
             if (proxy != null)
             {
                 httpWebRequest.Proxy = new WebProxy(proxy.Host, proxy.Port);
             }
-            if (request.getHeaders() != null && request.getHeaders().Count > 0)
+            if (request.GetHeaders() != null && request.GetHeaders().Count > 0)
             {
-                foreach(var header in request.getHeaders())
+                foreach(var header in request.GetHeaders())
                 {
                     httpWebRequest.Headers.Add(header.Key, header.Value);
                 }

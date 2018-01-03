@@ -11,42 +11,45 @@ namespace WebMagicSharp
     /// </summary>
     public class Site
     {
-        private string domain;
+        private string _domain;
 
-        private string userAgent;
+        private string _userAgent;
 
-        private Dictionary<String, String> defaultCookies = 
+        private Dictionary<string, string> _defaultCookies = 
             new Dictionary<string, string>();
 
-        private Dictionary<String, Dictionary<String, String>> cookies =
+        private Dictionary<string, Dictionary<string, string>> _cookies =
             new Dictionary<string, Dictionary<string, string>>();
 
-        private String charset;
+        private string _charset;
 
-        private int sleepTime = 5000;
+        private int _sleepTime = 5000;
 
-        private int retryTimes = 0;
+        private int _retryTimes = 0;
 
-        private int cycleRetryTimes = 0;
+        private int _cycleRetryTimes = 0;
 
-        private int retrySleepTime = 1000;
+        private int _retrySleepTime = 1000;
 
-        private int timeOut = 5000;
+        private int _timeOut = 5000;
 
-        private static List<int> DEFAULT_STATUS_CODE_SET = new List<int>();
+        public static List<int> DefaultStatusCodeSet = new List<int>()
+        {
+            Utils.HttpConstant.StatusCode.Code200
+        };
 
-        private List<int> acceptStatCode = DEFAULT_STATUS_CODE_SET;
+        private List<int> _acceptStatCode = DefaultStatusCodeSet;
 
-        private Dictionary<String, String> headers =
+        private Dictionary<string, string> _headers =
             new Dictionary<string, string>();
 
-        private bool useGzip = true;
+        private bool _useGzip = true;
 
-        private bool disableCookieManagement = false;
+        private bool _disableCookieManagement = false;
 
         public Site()
         {
-            DEFAULT_STATUS_CODE_SET.Add(Utils.HttpConstant.StatusCode.CODE_200);
+
         }
 
         public static Site Me()
@@ -61,9 +64,9 @@ namespace WebMagicSharp
          * @param value value
          * @return this
          */
-        public Site AddCookie(String name, String value)
+        public Site AddCookie(string name, string value)
         {
-            defaultCookies.Add(name, value);
+            _defaultCookies.Add(name, value);
             return this;
         }
 
@@ -75,13 +78,13 @@ namespace WebMagicSharp
          * @param value value
          * @return this
          */
-        public Site addCookie(String domain, String name, String value)
+        public Site AddCookie(string domain, string name, string value)
         {
-            if (!cookies.ContainsKey(domain))
+            if (!_cookies.ContainsKey(domain))
             {
-                cookies.Add(domain, new Dictionary<string, string>());
+                _cookies.Add(domain, new Dictionary<string, string>());
             }
-            cookies[domain].Add(name, value);
+            _cookies[domain].Add(name, value);
             return this;
         }
 
@@ -91,9 +94,9 @@ namespace WebMagicSharp
          * @param userAgent userAgent
          * @return this
          */
-        public Site setUserAgent(String userAgent)
+        public Site SetUserAgent(string userAgent)
         {
-            this.userAgent = userAgent;
+            this._userAgent = userAgent;
             return this;
         }
 
@@ -102,9 +105,9 @@ namespace WebMagicSharp
          *
          * @return get cookies
          */
-        public Dictionary<String, String> getCookies()
+        public Dictionary<string, string> GetCookies()
         {
-            return defaultCookies;
+            return _defaultCookies;
         }
 
         /**
@@ -112,9 +115,9 @@ namespace WebMagicSharp
          *
          * @return get cookies
          */
-        public Dictionary<String, Dictionary<String, String>> getAllCookies()
+        public Dictionary<string, Dictionary<string, string>> GetAllCookies()
         {
-            return cookies;
+            return _cookies;
         }
 
         /**
@@ -122,20 +125,14 @@ namespace WebMagicSharp
          *
          * @return user agent
          */
-        public String getUserAgent()
-        {
-            return userAgent;
-        }
+        public string UserAgent => _userAgent;
 
         /**
          * get domain
          *
          * @return get domain
          */
-        public String getDomain()
-        {
-            return domain;
-        }
+        public string Domain => _domain;
 
         /**
          * set the domain of site.
@@ -143,9 +140,9 @@ namespace WebMagicSharp
          * @param domain domain
          * @return this
          */
-        public Site setDomain(String domain)
+        public Site SetDomain(string domain)
         {
-            this.domain = domain;
+            this._domain = domain;
             return this;
         }
 
@@ -156,9 +153,9 @@ namespace WebMagicSharp
          * @param charset charset
          * @return this
          */
-        public Site setCharset(String charset)
+        public Site SetCharset(string charset)
         {
-            this.charset = charset;
+            this._charset = charset;
             return this;
         }
 
@@ -167,15 +164,9 @@ namespace WebMagicSharp
          *
          * @return charset
          */
-        public String getCharset()
-        {
-            return charset;
-        }
+        public string Charset => _charset;
 
-        public int getTimeOut()
-        {
-            return timeOut;
-        }
+        public int TimeOut => _timeOut;
 
         /**
          * set timeout for downloader in ms
@@ -183,9 +174,9 @@ namespace WebMagicSharp
          * @param timeOut timeOut
          * @return this
          */
-        public Site setTimeOut(int timeOut)
+        public Site SetTimeOut(int timeOut)
         {
-            this.timeOut = timeOut;
+            this._timeOut = timeOut;
             return this;
         }
 
@@ -198,9 +189,9 @@ namespace WebMagicSharp
          * @param acceptStatCode acceptStatCode
          * @return this
          */
-        public Site setAcceptStatCode(List<int> acceptStatCode)
+        public Site SetAcceptStatCode(List<int> acceptStatCode)
         {
-            this.acceptStatCode = acceptStatCode;
+            this._acceptStatCode = acceptStatCode;
             return this;
         }
 
@@ -209,10 +200,7 @@ namespace WebMagicSharp
          *
          * @return acceptStatCode
          */
-        public List<int> getAcceptStatCode()
-        {
-            return acceptStatCode;
-        }
+        public List<int> AcceptStatCode => _acceptStatCode;
 
         /**
          * Set the interval between the processing of two pages.<br>
@@ -221,9 +209,9 @@ namespace WebMagicSharp
          * @param sleepTime sleepTime
          * @return this
          */
-        public Site setSleepTime(int sleepTime)
+        public Site SetSleepTime(int sleepTime)
         {
-            this.sleepTime = sleepTime;
+            this._sleepTime = sleepTime;
             return this;
         }
 
@@ -233,25 +221,16 @@ namespace WebMagicSharp
          *
          * @return the interval between the processing of two pages,
          */
-        public int getSleepTime()
-        {
-            return sleepTime;
-        }
+        public int SleepTime => _sleepTime;
 
         /**
          * Get retry times immediately when download fail, 0 by default.<br>
          *
          * @return retry times when download fail
          */
-        public int getRetryTimes()
-        {
-            return retryTimes;
-        }
+        public int RetryTimes => _retryTimes;
 
-        public Dictionary<String, String> getHeaders()
-        {
-            return headers;
-        }
+        public Dictionary<string, string> Headers => _headers;
 
         /**
          * Put an Http header for downloader. <br>
@@ -261,9 +240,9 @@ namespace WebMagicSharp
          * @param value value of header
          * @return this
          */
-        public Site addHeader(String key, String value)
+        public Site AddHeader(string key, string value)
         {
-            headers.Add(key, value);
+            _headers.Add(key, value);
             return this;
         }
 
@@ -273,9 +252,9 @@ namespace WebMagicSharp
          * @param retryTimes retryTimes
          * @return this
          */
-        public Site setRetryTimes(int retryTimes)
+        public Site SetRetryTimes(int retryTimes)
         {
-            this.retryTimes = retryTimes;
+            this._retryTimes = retryTimes;
             return this;
         }
 
@@ -284,9 +263,9 @@ namespace WebMagicSharp
          *
          * @return retry times when download fail
          */
-        public int getCycleRetryTimes()
+        public int GetCycleRetryTimes()
         {
-            return cycleRetryTimes;
+            return _cycleRetryTimes;
         }
 
         /**
@@ -295,20 +274,20 @@ namespace WebMagicSharp
          * @param cycleRetryTimes cycleRetryTimes
          * @return this
          */
-        public Site setCycleRetryTimes(int cycleRetryTimes)
+        public Site SetCycleRetryTimes(int cycleRetryTimes)
         {
-            this.cycleRetryTimes = cycleRetryTimes;
+            this._cycleRetryTimes = cycleRetryTimes;
             return this;
         }
 
-        public bool isUseGzip()
+        public bool IsUseGzip()
         {
-            return useGzip;
+            return _useGzip;
         }
 
-        public int getRetrySleepTime()
+        public int GetRetrySleepTime()
         {
-            return retrySleepTime;
+            return _retrySleepTime;
         }
 
         /**
@@ -317,9 +296,9 @@ namespace WebMagicSharp
          * @param retrySleepTime retrySleepTime
          * @return this
          */
-        public Site setRetrySleepTime(int retrySleepTime)
+        public Site SetRetrySleepTime(int retrySleepTime)
         {
-            this.retrySleepTime = retrySleepTime;
+            this._retrySleepTime = retrySleepTime;
             return this;
         }
 
@@ -330,15 +309,15 @@ namespace WebMagicSharp
          * @param useGzip useGzip
          * @return this
          */
-        public Site setUseGzip(bool useGzip)
+        public Site SetUseGzip(bool useGzip)
         {
-            this.useGzip = useGzip;
+            this._useGzip = useGzip;
             return this;
         }
 
-        public bool isDisableCookieManagement()
+        public bool IsDisableCookieManagement()
         {
-            return disableCookieManagement;
+            return _disableCookieManagement;
         }
 
         /**
@@ -348,13 +327,13 @@ namespace WebMagicSharp
          * @param disableCookieManagement disableCookieManagement
          * @return this
          */
-        public Site setDisableCookieManagement(bool disableCookieManagement)
+        public Site SetDisableCookieManagement(bool disableCookieManagement)
         {
-            this.disableCookieManagement = disableCookieManagement;
+            this._disableCookieManagement = disableCookieManagement;
             return this;
         }
 
-        public ITask toTask()
+        public ITask ToTask()
         {
             return new BaseTask(this);
         }
@@ -367,50 +346,50 @@ namespace WebMagicSharp
 
             Site site = (Site)obj;
 
-            if (cycleRetryTimes != site.cycleRetryTimes) return false;
-            if (retryTimes != site.retryTimes) return false;
-            if (sleepTime != site.sleepTime) return false;
-            if (timeOut != site.timeOut) return false;
-            if (acceptStatCode != null ? !acceptStatCode.Equals(site.acceptStatCode) : site.acceptStatCode != null)
+            if (_cycleRetryTimes != site._cycleRetryTimes) return false;
+            if (_retryTimes != site._retryTimes) return false;
+            if (_sleepTime != site._sleepTime) return false;
+            if (_timeOut != site._timeOut) return false;
+            if (_acceptStatCode != null ? !_acceptStatCode.Equals(site._acceptStatCode) : site._acceptStatCode != null)
                 return false;
-            if (charset != null ? !charset.Equals(site.charset) : site.charset != null) return false;
-            if (defaultCookies != null ? !defaultCookies.Equals(site.defaultCookies) : site.defaultCookies != null)
+            if (_charset != null ? !_charset.Equals(site._charset) : site._charset != null) return false;
+            if (_defaultCookies != null ? !_defaultCookies.Equals(site._defaultCookies) : site._defaultCookies != null)
                 return false;
-            if (domain != null ? !domain.Equals(site.domain) : site.domain != null) return false;
-            if (headers != null ? !headers.Equals(site.headers) : site.headers != null) return false;
-            if (userAgent != null ? !userAgent.Equals(site.userAgent) : site.userAgent != null) return false;
+            if (_domain != null ? !_domain.Equals(site._domain) : site._domain != null) return false;
+            if (_headers != null ? !_headers.Equals(site._headers) : site._headers != null) return false;
+            if (_userAgent != null ? !_userAgent.Equals(site._userAgent) : site._userAgent != null) return false;
 
             return true;
         }
 
         public override int GetHashCode()
         {
-            int result = domain != null ? domain.GetHashCode() : 0;
-            result = 31 * result + (userAgent != null ? userAgent.GetHashCode() : 0);
-            result = 31 * result + (defaultCookies != null ? defaultCookies.GetHashCode() : 0);
-            result = 31 * result + (charset != null ? charset.GetHashCode() : 0);
-            result = 31 * result + sleepTime;
-            result = 31 * result + retryTimes;
-            result = 31 * result + cycleRetryTimes;
-            result = 31 * result + timeOut;
-            result = 31 * result + (acceptStatCode != null ? acceptStatCode.GetHashCode() : 0);
-            result = 31 * result + (headers != null ? headers.GetHashCode() : 0);
+            int result = _domain != null ? _domain.GetHashCode() : 0;
+            result = 31 * result + (_userAgent != null ? _userAgent.GetHashCode() : 0);
+            result = 31 * result + (_defaultCookies != null ? _defaultCookies.GetHashCode() : 0);
+            result = 31 * result + (_charset != null ? _charset.GetHashCode() : 0);
+            result = 31 * result + _sleepTime;
+            result = 31 * result + _retryTimes;
+            result = 31 * result + _cycleRetryTimes;
+            result = 31 * result + _timeOut;
+            result = 31 * result + (_acceptStatCode != null ? _acceptStatCode.GetHashCode() : 0);
+            result = 31 * result + (_headers != null ? _headers.GetHashCode() : 0);
             return result;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return "Site{" +
-                    "domain='" + domain + '\'' +
-                    ", userAgent='" + userAgent + '\'' +
-                    ", cookies=" + defaultCookies +
-                    ", charset='" + charset + '\'' +
-                    ", sleepTime=" + sleepTime +
-                    ", retryTimes=" + retryTimes +
-                    ", cycleRetryTimes=" + cycleRetryTimes +
-                    ", timeOut=" + timeOut +
-                    ", acceptStatCode=" + acceptStatCode +
-                    ", headers=" + headers +
+                    "domain='" + _domain + '\'' +
+                    ", userAgent='" + _userAgent + '\'' +
+                    ", cookies=" + _defaultCookies +
+                    ", charset='" + _charset + '\'' +
+                    ", sleepTime=" + _sleepTime +
+                    ", retryTimes=" + _retryTimes +
+                    ", cycleRetryTimes=" + _cycleRetryTimes +
+                    ", timeOut=" + _timeOut +
+                    ", acceptStatCode=" + _acceptStatCode +
+                    ", headers=" + _headers +
                     '}';
         }
 

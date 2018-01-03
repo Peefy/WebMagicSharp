@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Net.Http;
+
 using WebMagicSharp.Selector;
 
 namespace WebMagicSharp.DownLoaders
@@ -10,15 +10,15 @@ namespace WebMagicSharp.DownLoaders
 
         public abstract void SetThread(int threadNum);
 
-        public Html Download(String url)
+        public Html Download(string url)
         {
             return Download(url, null);
         }
 
-        public Html Download(String url, String charset)
+        public Html Download(string url, string charset)
         {
-            Page page = Download(new Request(url), Site.Me().setCharset(charset).toTask());
-            return (Html)page.getHtml();
+            Page page = Download(new Request(url), Site.Me().SetCharset(charset).ToTask());
+            return (Html)page.GetHtml();
         }
 
         public virtual void OnSuccess(Request request)

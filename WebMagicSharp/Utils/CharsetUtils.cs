@@ -13,11 +13,10 @@ namespace WebMagicSharp.Utils
     public class CharsetUtils
     {
         
-        public static String DetectCharset(String contentType, byte[] contentBytes) 
+        public static string DetectCharset(string contentType, byte[] contentBytes) 
         {
-            String charset;
-            charset = UrlUtils.GetCharset(contentType);
-            if (String.IsNullOrEmpty(contentType) == false && 
+            var charset = UrlUtils.GetCharset(contentType);
+            if (string.IsNullOrEmpty(contentType) == false && 
                 string.IsNullOrEmpty(charset) == false)
             {
                 Debug.WriteLine($"Auto get charset: {charset}");

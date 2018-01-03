@@ -103,8 +103,7 @@ namespace WebMagicSharp.Utils
             }
             else
             {
-                Stream stream = new MemoryStream(sen);
-                return GetEncoding(stream);
+                return GetEncoding(new MemoryStream(sen));
             }
         }
 
@@ -139,8 +138,7 @@ namespace WebMagicSharp.Utils
                     }
                     else
                     {
-                        int i;
-                        int.TryParse(fs.Length.ToString(), out i);
+                        int.TryParse(fs.Length.ToString(), out var i);
                         ss = r.ReadBytes(i);
 
                         if (IsUTF8Bytes(ss))

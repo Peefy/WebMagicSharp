@@ -11,13 +11,13 @@ namespace WebMagicSharp.Proxy
         private string _username;
         private string _password;
 
-        public Proxy(String host, int port)
+        public Proxy(string host, int port)
         {
             this._host = host;
             this._port = port;
         }
 
-        public Proxy(String host, int port, String username, String password)
+        public Proxy(string host, int port, string username, string password)
         {
             this._host = host;
             this._port = port;
@@ -25,13 +25,13 @@ namespace WebMagicSharp.Proxy
             this._password = password;
         }
 
-        public String Host => _host;
+        public string Host => _host;
 
         public int Port => _port;
 
-        public String Username => _username;
+        public string Username => _username;
 
-        public String Password => _password;
+        public string Password => _password;
 
         public override bool Equals(object obj)
         {

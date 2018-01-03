@@ -21,7 +21,6 @@ namespace WebMagicSharp.Selector
             html = Regex.Replace(html, "(?is)<style.*?>.*?</style>", "");   // remove css
             html = Regex.Replace(html, "&.{2,5};|&#.{2,5};", " ");          // remove special char
             html = Regex.Replace(html, "(?is)<.*?>", "");
-            List<String> lines;
             int blocksWidth = 3;
             int threshold = 86;
             int start;
@@ -29,7 +28,7 @@ namespace WebMagicSharp.Selector
             StringBuilder strs = new StringBuilder();
             var indexDistribution = new List<int>();
 
-            lines = html.Split('\n').ToList();
+            var lines = html.Split('\n').ToList();
 
             for (int i = 0; i < lines.Count - blocksWidth; i++)
             {
@@ -77,7 +76,7 @@ namespace WebMagicSharp.Selector
                         if (lines[ii].Length < 5) continue;
                         tmp.Append(lines[ii] + "\n");
                     }
-                    String str = tmp.ToString();
+                    var str = tmp.ToString();
                     //System.out.println(str);
                     if (str.Contains("Copyright")) continue;
                     strs.Append(str);

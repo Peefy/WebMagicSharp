@@ -39,7 +39,7 @@ namespace WebMagicSharp.Selector
 
         public List<string> SelectList(string text)
         {
-            var results = new List<String>();
+            var results = new List<string>();
             foreach(var selector in _selectors)
             {
                 var strings = selector.SelectList(text);

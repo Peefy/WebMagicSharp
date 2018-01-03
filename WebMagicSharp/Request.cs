@@ -11,9 +11,7 @@ namespace WebMagicSharp
     /// </summary>
     public class Request : IComparable
     {
-        private const long serialVersionUID = 2062192774891352043L;
-
-        public const String CycleTriedTimes = "_cycle_tried_times";
+        public const string CycleTriedTimes = "_cycle_tried_times";
 
         private string url;
 
@@ -26,15 +24,15 @@ namespace WebMagicSharp
         /**
          * Store additional information in extras.
          */
-        private Dictionary<String, Object> extras;
+        private Dictionary<string, Object> extras;
 
         /**
          * cookies for current url, if not set use Site's cookies
          */
-        private Dictionary<String, String> cookies = 
+        private Dictionary<string, string> cookies = 
             new Dictionary<string, string>();
 
-        private Dictionary<String, String> headers =
+        private Dictionary<string, string> headers =
             new Dictionary<string, string>();
 
         /**
@@ -50,18 +48,18 @@ namespace WebMagicSharp
          */
         private bool binaryContent = false;
 
-        private String charset;
+        private string charset;
 
         public Request()
         {
         }
 
-        public Request(String url)
+        public Request(string url)
         {
             this.url = url;
         }
 
-        public long getPriority()
+        public long GetPriority()
         {
             return priority;
         }
@@ -74,13 +72,13 @@ namespace WebMagicSharp
          * @param priority priority
          * @return this
          */
-        public Request setPriority(long priority)
+        public Request SetPriority(long priority)
         {
             this.priority = priority;
             return this;
         }
 
-        public Object getExtra(String key)
+        public object GetExtra(string key)
         {
             if (extras == null)
             {
@@ -89,7 +87,7 @@ namespace WebMagicSharp
             return extras[key];
         }
 
-        public Request putExtra(String key, Object value)
+        public Request PutExtra(string key, object value)
         {
             if (extras == null)
             {
@@ -99,23 +97,23 @@ namespace WebMagicSharp
             return this;
         }
 
-        public String GetUrl()
+        public string GetUrl()
         {
             return url;
         }
 
-        public Dictionary<String, Object> getExtras()
+        public Dictionary<string, object> GetExtras()
         {
             return extras;
         }
 
-        public Request setExtras(Dictionary<String, Object> extras)
+        public Request SetExtras(Dictionary<string, Object> extras)
         {
             this.extras = extras;
             return this;
         }
 
-        public Request setUrl(String url)
+        public Request SetUrl(string url)
         {
             this.url = url;
             return this;
@@ -127,12 +125,12 @@ namespace WebMagicSharp
          * @see us.codecraft.webmagic.utils.HttpConstant.Method
          * @since 0.5.0
          */
-        public String getMethod()
+        public string GetMethod()
         {
             return method;
         }
 
-        public Request setMethod(String method)
+        public Request SetMethod(string method)
         {
             this.method = method;
             return this;
@@ -158,55 +156,55 @@ namespace WebMagicSharp
             return method != null ? method.Equals(request.method) : request.method == null;
         }
 
-        public Request addCookie(String name, String value)
+        public Request AddCookie(string name, string value)
         {
             cookies.Add(name, value);
             return this;
         }
 
-        public Request addHeader(String name, String value)
+        public Request AddHeader(string name, string value)
         {
             headers.Add(name, value);
             return this;
         }
 
-        public Dictionary<String, String> getCookies()
+        public Dictionary<string, string> GetCookies()
         {
             return cookies;
         }
 
-        public Dictionary<String, String> getHeaders()
+        public Dictionary<string, string> GetHeaders()
         {
             return headers;
         }
 
-        public HttpRequestBody getRequestBody()
+        public HttpRequestBody GetRequestBody()
         {
             return requestBody;
         }
 
-        public void setRequestBody(HttpRequestBody requestBody)
+        public void SetRequestBody(HttpRequestBody requestBody)
         {
             this.requestBody = requestBody;
         }
 
-        public bool isBinaryContent()
+        public bool IsBinaryContent()
         {
             return binaryContent;
         }
 
-        public Request setBinaryContent(bool binaryContent)
+        public Request SetBinaryContent(bool binaryContent)
         {
             this.binaryContent = binaryContent;
             return this;
         }
 
-        public String getCharset()
+        public string GetCharset()
         {
             return charset;
         }
 
-        public Request setCharset(String charset)
+        public Request SetCharset(string charset)
         {
             this.charset = charset;
             return this;
@@ -229,7 +227,7 @@ namespace WebMagicSharp
             if (obj is null)
                 return -1;
             var requestThat = obj as Request;
-            return this.getPriority().CompareTo(requestThat.getPriority());
+            return this.GetPriority().CompareTo(requestThat.GetPriority());
         }
     }
 }

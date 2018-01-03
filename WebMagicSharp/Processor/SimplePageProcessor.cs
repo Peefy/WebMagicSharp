@@ -11,11 +11,11 @@ namespace WebMagicSharp.Processor
     /// </summary>
     public class SimplePageProcessor : IPageProcessor, IDisposable
     {
-        private String _urlPattern;
+        private string _urlPattern;
 
         private Site _site;
 
-        public SimplePageProcessor(String urlPattern)
+        public SimplePageProcessor(string urlPattern)
         {
             this._site = Site.Me();
             //compile "*" expression to regex
@@ -27,14 +27,14 @@ namespace WebMagicSharp.Processor
 
         public void Process(Page page)
         {
-            var requests = page.getHtml().Links().Regex(_urlPattern).All();
+            var requests = page.GetHtml().Links().Regex(_urlPattern).All();
             //add urls to fetch
-            page.addTargetRequests(requests);
+            page.AddTargetRequests(requests);
             //extract by XPath
-            page.putField("title", page.getHtml().Xpath("//title"));
-            page.putField("html", page.getHtml().ToString());
+            page.PutField("title", page.GetHtml().Xpath("//title"));
+            page.PutField("html", page.GetHtml().ToString());
             //extract by Readability
-            page.putField("content", page.getHtml().SmartContent());
+            page.PutField("content", page.GetHtml().SmartContent());
         }
 
         public Site GetSite()

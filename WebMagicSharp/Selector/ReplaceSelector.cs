@@ -11,13 +11,13 @@ namespace WebMagicSharp.Selector
     public class ReplaceSelector : ISelector
     {
 
-        private String regexStr;
+        private string regexStr;
 
-        private String replacement;
+        private string replacement;
 
         private string regex;
 
-        public ReplaceSelector(String regexStr, String replacement)
+        public ReplaceSelector(string regexStr, string replacement)
         {
             this.regexStr = regexStr;
             this.replacement = replacement;
@@ -42,7 +42,7 @@ namespace WebMagicSharp.Selector
             throw new NotImplementedException();
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return regexStr + "_" + replacement;
         }

@@ -11,14 +11,14 @@ namespace WebMagicSharp.Scheduler
     /// </summary>
     public class HashSetDuplicateRemover : IDuplicateRemover
     {
-        private HashSet<String> _urls = 
-            WMCollection<string>.NewHashSet(new HashSet<String>().ToArray());
+        private HashSet<string> _urls = 
+            WMCollection<string>.NewHashSet(new HashSet<string>().ToArray());
 
         public HashSetDuplicateRemover()
         {
         }
 
-        protected String GetUrl(Request request)
+        protected string GetUrl(Request request)
         {
             return request.GetUrl();
         }

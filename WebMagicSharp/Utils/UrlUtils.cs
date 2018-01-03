@@ -39,14 +39,14 @@ namespace WebMagicSharp.Utils
             return url.Replace(" ", "%20");
         }
 
-        public static String FixIllegalCharacterInUrl(String url)
+        public static string FixIllegalCharacterInUrl(string url)
         {
             return url.Replace(" ", "%20").Replace("#+", "#");
         }
 
-        public static string GetHost(String url)
+        public static string GetHost(string url)
         {
-            string host = url;
+            var host = url;
             int i = url.IndexOf("/", 0, 3);
             if (i > 0)
             {
@@ -57,14 +57,14 @@ namespace WebMagicSharp.Utils
 
         public const string patternForProtoca = "[\\w]+://";
 
-        public static String RemoveProtocol(String url)
+        public static string RemoveProtocol(string url)
         {
             return Regex.Replace(url, patternForProtoca, "");
         }
 
-        public static String GetDomain(String url)
+        public static string GetDomain(string url)
         {
-            String domain = RemoveProtocol(url);
+            var domain = RemoveProtocol(url);
             int i = domain.IndexOf("/",0, 1);
             if (i > 0)
             {
@@ -73,7 +73,7 @@ namespace WebMagicSharp.Utils
             return RemovePort(domain);
         }
 
-        public static String RemovePort(String domain)
+        public static string RemovePort(string domain)
         {
             int portIndex = domain.IndexOf(":");
             if (portIndex != -1)
@@ -86,7 +86,7 @@ namespace WebMagicSharp.Utils
             }
         }
 
-        public static List<Request> ConvertToRequests(IList<String> urls)
+        public static List<Request> ConvertToRequests(IList<string> urls)
         {
             var requestList = new List<Request>();
             foreach (var url in urls)
@@ -94,9 +94,9 @@ namespace WebMagicSharp.Utils
             return requestList;
         }
 
-        public static List<String> ConvertToUrls(IList<Request> requests)
+        public static List<string> ConvertToUrls(IList<Request> requests)
         {
-            var urlList = new List<String>();
+            var urlList = new List<string>();
             foreach(var request in requests)
             {
                 urlList.Add(request.Url);

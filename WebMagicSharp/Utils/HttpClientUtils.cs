@@ -9,10 +9,9 @@ namespace WebMagicSharp.Utils
 {
     public class HttpClientUtils
     {
-        public static Dictionary<String, List<String>> ConvertHeaders(WebHeaderCollection headers)
+        public static Dictionary<string, List<string>> ConvertHeaders(WebHeaderCollection headers)
         {
-            Dictionary<String, List<String>> results = 
-                new Dictionary<String, List<String>>();
+            var results = new Dictionary<string, List<string>>();
             foreach (var header in headers.AllKeys)
             {
                 if(results.TryGetValue(header,out var list) == true)

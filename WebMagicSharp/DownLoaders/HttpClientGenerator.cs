@@ -24,15 +24,15 @@ namespace WebMagicSharp.DownLoaders
 
         private HttpCoreClient GenerateClient(Site site)
         {
-            if (site.getUserAgent() != null)
+            if (site.UserAgent != null)
             {
-                _http.Items.UserAgent = site.getUserAgent();
+                _http.Items.UserAgent = site.UserAgent;
             }
             else
             {
                 _http.Items.UserAgent = "";
             }
-            if (site.isUseGzip())
+            if (site.IsUseGzip())
             {
                 _http.Items.Header.Add(HttpRequestHeader.AcceptEncoding, _gzip);
             }
@@ -42,23 +42,27 @@ namespace WebMagicSharp.DownLoaders
 
         private void GenerateCookie(Site site)
         {
-            if (site.isDisableCookieManagement())
+            if (site.IsDisableCookieManagement())
             {
                 return;
             }
             var cookieStore = new CookieContainer();
-            foreach (var cookieEntry in site.getCookies())
+            foreach (var cookieEntry in site.GetCookies())
             {
-                var cookie = new Cookie(cookieEntry.Key, cookieEntry.Value);
-                cookie.Domain = site.getDomain();
+                var cookie = new Cookie(cookieEntry.Key, cookieEntry.Value)
+                {
+                    Domain = site.Domain
+                };
                 cookieStore.Add(cookie);
             }
-            foreach (var domainEntry in site.getAllCookies())
+            foreach (var domainEntry in site.GetAllCookies())
             {
                 foreach (var cookieEntry in domainEntry.Value)
                 {
-                    var cookie = new Cookie(cookieEntry.Key, cookieEntry.Value);
-                    cookie.Domain = domainEntry.Key;
+                    var cookie = new Cookie(cookieEntry.Key, cookieEntry.Value)
+                    {
+                        Domain = domainEntry.Key
+                    };
                     cookieStore.Add(cookie);
                 }
             }
@@ -75,10 +79,12 @@ namespace WebMagicSharp.DownLoaders
         public HttpCoreClient()
         {
             HttpClient = new HttpHelpers();
-            Items = new HttpItems();
-            Items.IsSetSecurityProtocolType = true;
-            Items.SecProtocolTypeEx = SecurityProtocolTypeEx.Ssl3;
-            Items.Method = "GET";
+            Items = new HttpItems
+            {
+                IsSetSecurityProtocolType = true,
+                SecProtocolTypeEx = SecurityProtocolTypeEx.Ssl3,
+                Method = "GET"
+            };
         }
 
         public HttpResults GetHtml()

@@ -33,7 +33,7 @@ namespace WebMagicSharp.Pipelines
                 File.WriteAllText(fileName, stringBuilder.ToString());
             }
             catch (IOException e) {
-                Debug.WriteLine("write file error:" + e.Message);
+                Debug.WriteLine($"write file error:{e.Message}");
             }
         }
 
@@ -42,7 +42,7 @@ namespace WebMagicSharp.Pipelines
 
         }
 
-        public FilePipeline(String path)
+        public FilePipeline(string path)
         {
             Path = path;
         }

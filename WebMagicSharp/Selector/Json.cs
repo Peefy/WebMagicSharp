@@ -11,12 +11,12 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public class Json : PlainText
     {
-        public Json(List<String> strings) : base(strings)
+        public Json(List<string> strings) : base(strings)
         {
             
         }
 
-        public Json(String text) : base(text)
+        public Json(string text) : base(text)
         {
             
         }
@@ -26,9 +26,9 @@ namespace WebMagicSharp.Selector
          * @param padding padding
          * @return json after padding removed
          */
-        public Json RemovePadding(String padding)
+        public Json RemovePadding(string padding)
         {
-            String text = FirstSourceText;
+            var text = FirstSourceText;
             text.Replace(" ","");
             return new Json(text);
         }
@@ -43,7 +43,7 @@ namespace WebMagicSharp.Selector
             return JsonConvert.DeserializeObject<T>(str);
         }
 
-        public override ISelectable JsonPath(String jsonPath)
+        public override ISelectable JsonPath(string jsonPath)
         {
             var jsonPathSelector = new JsonPathSelector(jsonPath);
             return SelectList(jsonPathSelector, SourceTexts);

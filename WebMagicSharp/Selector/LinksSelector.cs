@@ -33,7 +33,7 @@ namespace WebMagicSharp.Selector
         public override List<string> SelectList(HtmlDocument element)
         {
             var elements = element.DocumentNode.SelectNodes("a");
-            var links = new List<String>();
+            var links = new List<string>();
             foreach(var element0 in elements)
             {
                 links.Add(element0.Attributes["href"].ToString());

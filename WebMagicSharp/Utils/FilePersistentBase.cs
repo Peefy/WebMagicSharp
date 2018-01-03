@@ -7,11 +7,11 @@ namespace WebMagicSharp.Utils
 {
     public class FilePersistentBase
     {
-        protected String path;
+        protected string path;
 
-        public static String PathSeparator => Path.DirectorySeparatorChar.ToString();
+        public static string PathSeparator => Path.DirectorySeparatorChar.ToString();
 
-        public string GetFile(String fullName)
+        public string GetFile(string fullName)
         {
             return Path.GetFullPath(fullName);
         }

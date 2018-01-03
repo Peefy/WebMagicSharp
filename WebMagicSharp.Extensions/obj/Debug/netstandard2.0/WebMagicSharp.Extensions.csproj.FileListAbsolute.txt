@@ -1,0 +1,11 @@
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Debug\netstandard2.0\WebMagicSharp.Extensions.deps.json
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Debug\netstandard2.0\WebMagicSharp.Extensions.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Debug\netstandard2.0\WebMagicSharp.Extensions.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Debug\netstandard2.0\WebMagicSharp.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Debug\netstandard2.0\WebMagicSharp.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Debug\netstandard2.0\WebMagicSharp.Extensions.csprojResolveAssemblyReference.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Debug\netstandard2.0\WebMagicSharp.Extensions.csproj.CoreCompileInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Debug\netstandard2.0\WebMagicSharp.Extensions.AssemblyInfoInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Debug\netstandard2.0\WebMagicSharp.Extensions.AssemblyInfo.cs
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Debug\netstandard2.0\WebMagicSharp.Extensions.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Debug\netstandard2.0\WebMagicSharp.Extensions.pdb

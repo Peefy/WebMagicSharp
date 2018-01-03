@@ -11,7 +11,7 @@ namespace WebMagicSharp.Selector
     public class RegexSelector : ISelector
     {
 
-        private String regexStr;
+        private string regexStr;
 
         private Regex regex;
 
@@ -23,7 +23,7 @@ namespace WebMagicSharp.Selector
             this.group = group;
         }
 
-        private void CompileRegex(String regexStr)
+        private void CompileRegex(string regexStr)
         {
             if (string.IsNullOrEmpty(regexStr))
             {
@@ -44,7 +44,7 @@ namespace WebMagicSharp.Selector
          * Create a RegexSelector. When there is no capture group, the value is set to 0 else set to 1.
          * @param regexStr
          */
-        public RegexSelector(String regexStr)
+        public RegexSelector(string regexStr)
         {
             this.CompileRegex(regexStr);
             if (regex.Matches("").Count == 0)
@@ -57,14 +57,14 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        public String Select(String text)
+        public string Select(string text)
         {
             return SelectGroup(text).Get(group);
         }
 
-        public List<String> SelectList(String text)
+        public List<string> SelectList(String text)
         {
-            List<String> strings = new List<String>();
+            var strings = new List<string>();
             List<RegexResult> results = SelectGroupList(text);
             foreach (var result in results)
             {
@@ -73,13 +73,13 @@ namespace WebMagicSharp.Selector
             return strings;
         }
 
-        public RegexResult SelectGroup(String text)
+        public RegexResult SelectGroup(string text)
         {
             var matcher = regex.Matches(text);
             List<RegexResult> resultList = new List<RegexResult>();
             if(matcher.Count > 0)
             {
-                String[] groups = new String[matcher.Count + 1];
+                string[] groups = new string[matcher.Count + 1];
                 for (int i = 0; i < groups.Length; i++)
                 {
                     groups[i] = matcher[i].ToString();
@@ -89,11 +89,11 @@ namespace WebMagicSharp.Selector
             return RegexResult.EmptyResult;
         }
 
-        public List<RegexResult> SelectGroupList(String text)
+        public List<RegexResult> SelectGroupList(string text)
         {
             var matcher = regex.Matches(text);
             List<RegexResult> resultList = new List<RegexResult>();
-            String[] groups = new String[matcher.Count + 1];
+            string[] groups = new String[matcher.Count + 1];
             for (int i = 0; i < groups.Length; i++)
             {
                 groups[i] = matcher[i].ToString();

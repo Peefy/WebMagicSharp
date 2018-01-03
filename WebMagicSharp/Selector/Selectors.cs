@@ -9,12 +9,12 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public static class Selectors
     {
-        public static RegexSelector Regex(String expr)
+        public static RegexSelector Regex(string expr)
         {
             return new RegexSelector(expr);
         }
 
-        public static RegexSelector Regex(String expr, int group)
+        public static RegexSelector Regex(string expr, int group)
         {
             return new RegexSelector(expr, group);
         }
@@ -24,17 +24,17 @@ namespace WebMagicSharp.Selector
             return new SmartContentSelector();
         }
 
-        public static XPathSelector XPath(String expr)
+        public static XPathSelector XPath(string expr)
         {
             return new XPathSelector(expr);
         }
 
-        public static CssSelector Css(String expr) 
+        public static CssSelector Css(string expr) 
         {
             return new CssSelector(expr);
         }
 
-        public static CssSelector Css(String expr, String attrName) 
+        public static CssSelector Css(string expr, string attrName) 
         {
             return new CssSelector(expr, attrName);
         }

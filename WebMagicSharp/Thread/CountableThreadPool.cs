@@ -13,7 +13,7 @@ namespace WebMagicSharp.Thread
             this.ThreadNum = threadNum;
         }
 
-        public int getThreadAlive()
+        public int GetThreadAlive()
         {
             return 0;
         }
@@ -23,12 +23,12 @@ namespace WebMagicSharp.Thread
             
         }
 
-        public bool isShutdown()
+        public bool IsShutdown()
         {
             return true;
         }
 
-        public void shutdown()
+        public void Shutdown()
         {
             
         }

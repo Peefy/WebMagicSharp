@@ -10,7 +10,7 @@ namespace WebMagicSharp.Selector
     public class RegexResult
     {
 
-        private String[] groups;
+        private string[] groups;
 
         private static RegexResult _emptyResult;
         public static RegexResult EmptyResult =>
@@ -26,7 +26,7 @@ namespace WebMagicSharp.Selector
             this.groups = groups;
         }
 
-        public String Get(int groupId)
+        public string Get(int groupId)
         {
             if (groups == null)
             {

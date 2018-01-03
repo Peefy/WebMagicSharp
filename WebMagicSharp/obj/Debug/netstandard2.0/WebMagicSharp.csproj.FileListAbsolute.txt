@@ -2,3 +2,8 @@ D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Debug\netstandard2.0\
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Debug\netstandard2.0\WebMagicSharp.csproj.CoreCompileInputs.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Debug\netstandard2.0\WebMagicSharp.AssemblyInfoInputs.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Debug\netstandard2.0\WebMagicSharp.AssemblyInfo.cs
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Debug\netstandard2.0\WebMagicSharp.deps.json
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Debug\netstandard2.0\WebMagicSharp.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Debug\netstandard2.0\WebMagicSharp.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Debug\netstandard2.0\WebMagicSharp.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Debug\netstandard2.0\WebMagicSharp.pdb

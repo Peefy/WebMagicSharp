@@ -33,12 +33,12 @@ namespace WebMagicSharp.Scheduler
 
         protected virtual bool ShouldReserved(Request request)
         {
-            return request.getExtra(Request.CycleTriedTimes) != null;
+            return request.GetExtra(Request.CycleTriedTimes) != null;
         }
 
         protected virtual bool NoNeedToRemoveDuplicate(Request request)
         {
-            return HttpConstant.Method.POST.Equals(request.getMethod(), 
+            return HttpConstant.Method.Post.Equals(request.GetMethod(), 
                 StringComparison.CurrentCultureIgnoreCase);
         }
 

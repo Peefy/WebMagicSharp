@@ -7,10 +7,10 @@ namespace WebMagicSharp.Model
     public class BasicNameValuePair : INameValuePair
     {
 
-        private readonly String name;
-        private readonly String value;
+        private readonly string name;
+        private readonly string value;
 
-        public BasicNameValuePair( String name,  String value)
+        public BasicNameValuePair(string name, string value)
         {
             if(string.IsNullOrEmpty(name) || string.IsNullOrEmpty(value))
             {
@@ -61,8 +61,8 @@ namespace WebMagicSharp.Model
         public override int GetHashCode()
         {
             int hash = LangUtils.HASH_SEED;
-            hash = LangUtils.hashCode(hash, this.name);
-            hash = LangUtils.hashCode(hash, this.value);
+            hash = LangUtils.HashCode(hash, this.name);
+            hash = LangUtils.HashCode(hash, this.value);
             return hash;
         }
 

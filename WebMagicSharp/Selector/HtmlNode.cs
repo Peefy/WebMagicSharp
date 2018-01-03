@@ -42,8 +42,10 @@ namespace WebMagicSharp.Selector
             var selectables = new List<ISelectable>();
             foreach(var element in GetElements())
             {
-                var childElements = new List<HtmlAgilityPack.HtmlNode>(1);
-                childElements.Add(element);
+                var childElements = new List<HtmlAgilityPack.HtmlNode>(1)
+                {
+                    element
+                };
                 selectables.Add(new HtmlNode(childElements));
             }
             return selectables;
@@ -106,7 +108,7 @@ namespace WebMagicSharp.Selector
             else
             {
                 // has attribute, consider as plaintext
-                var resultStrings = new List<String>();
+                var resultStrings = new List<string>();
                 var document = CheckElementAndConvert(elementsTemp);
                 foreach (var element in elementsTemp)
                 {                  

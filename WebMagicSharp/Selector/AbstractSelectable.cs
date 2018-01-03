@@ -9,13 +9,13 @@ namespace WebMagicSharp.Selector
     /// </summary>
     public abstract class AbstractSelectable : ISelectable
     {
-        protected abstract List<String> SourceTexts { get; }
+        protected abstract List<string> SourceTexts { get; }
 
-        public virtual ISelectable Css(String selector) => Jquery(selector);
+        public virtual ISelectable Css(string selector) => Jquery(selector);
 
-        public virtual ISelectable Css(String selector, String attrName) => Jquery(selector, attrName);
+        public virtual ISelectable Css(string selector, string attrName) => Jquery(selector, attrName);
 
-        protected virtual ISelectable Select(ISelector selector, List<String> strings)
+        protected virtual ISelectable Select(ISelector selector, List<string> strings)
         {
             foreach (var str in strings)
             {
@@ -27,7 +27,7 @@ namespace WebMagicSharp.Selector
             return new PlainText(new List<string>());
         }
 
-        protected virtual ISelectable SelectList(ISelector selector, List<String> strings)
+        protected virtual ISelectable SelectList(ISelector selector, List<string> strings)
         {
             foreach (var str in strings)
             {
@@ -36,9 +36,9 @@ namespace WebMagicSharp.Selector
             return new PlainText(new List<string>());
         }
 
-        public virtual List<String> All() => SourceTexts;
+        public virtual List<string> All() => SourceTexts;
 
-        public virtual String Get => All()?.Count > 0 ? All()[0] : null;
+        public virtual string Get => All()?.Count > 0 ? All()[0] : null;
 
         public virtual ISelectable Select(ISelector selector) => 
             Select(selector, SourceTexts);
@@ -46,22 +46,22 @@ namespace WebMagicSharp.Selector
         public virtual ISelectable SelectList(ISelector selector) => 
             SelectList(selector, SourceTexts);
 
-        public virtual ISelectable Regex(String regex) => 
+        public virtual ISelectable Regex(string regex) => 
             SelectList(Selectors.Regex(regex), SourceTexts);
 
-        public virtual ISelectable Regex(String regex, int group)
+        public virtual ISelectable Regex(string regex, int group)
         {
             RegexSelector regexSelector = Selectors.Regex(regex, group);
             return SelectList(regexSelector, SourceTexts);
         }
 
-        public virtual ISelectable Replace(String regex, String replacement)
+        public virtual ISelectable Replace(string regex, string replacement)
         {
             ReplaceSelector replaceSelector = new ReplaceSelector(regex, replacement);
             return Select(replaceSelector, SourceTexts);
         }
 
-        public virtual String FirstSourceText
+        public virtual string FirstSourceText
         {
             get
             {
@@ -73,7 +73,7 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Get;
         }
@@ -88,7 +88,7 @@ namespace WebMagicSharp.Selector
 
         public abstract List<ISelectable> Nodes();
 
-        public abstract ISelectable JsonPath(String jsonPath);
+        public abstract ISelectable JsonPath(string jsonPath);
 
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用

@@ -9,35 +9,35 @@ namespace WebMagicSharp.Utils
         public static class Method
         {
 
-            public const String GET = "GET";
+            public const string Get = "GET";
 
-            public const String HEAD = "HEAD";
+            public const string Head = "HEAD";
 
-            public const String POST = "POST";
+            public const string Post = "POST";
 
-            public const String PUT = "PUT";
+            public const string Put = "PUT";
 
-            public const String DELETE = "DELETE";
+            public const string Delete = "DELETE";
 
-            public const String TRACE = "TRACE";
+            public const string Trace = "TRACE";
 
-            public const String CONNECT = "CONNECT";
+            public const string Connect = "CONNECT";
 
         }
 
         public static class StatusCode
         {
 
-            public const int CODE_200 = 200;
+            public const int Code200 = 200;
 
         }
 
         public static class Header
         {
 
-            public const String REFERER = "Referer";
+            public const string Referer = "Referer";
 
-            public const String USER_AGENT = "User-Agent";
+            public const string UserAgent = "User-Agent";
         }
     }
 }

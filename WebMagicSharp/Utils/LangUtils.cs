@@ -8,19 +8,19 @@ namespace WebMagicSharp.Utils
 
         /** Disabled default constructor. */
 
-        public static int hashCode(int seed, int hashcode)
+        public static int HashCode(int seed, int hashcode)
         {
             return seed * HASH_OFFSET + hashcode;
         }
 
-        public static int hashCode(int seed, bool b)
+        public static int HashCode(int seed, bool b)
         {
-            return hashCode(seed, b ? 1 : 0);
+            return HashCode(seed, b ? 1 : 0);
         }
 
-        public static int hashCode(int seed, object obj)
+        public static int HashCode(int seed, object obj)
         {
-            return hashCode(seed, obj != null ? obj.GetHashCode() : 0);
+            return HashCode(seed, obj != null ? obj.GetHashCode() : 0);
         }
 
         /**
@@ -30,7 +30,7 @@ namespace WebMagicSharp.Utils
          * @param obj2 second object to compare, may be {@code null}
          * @return {@code true} if the objects are equal or both null
          */
-        public static bool equals(object obj1, object obj2)
+        public new static bool Equals(object obj1, object obj2)
         {
             return obj1 == null ? obj2 == null : obj1.Equals(obj2);
         }
@@ -49,7 +49,7 @@ namespace WebMagicSharp.Utils
          * @param a2 second array to compare, may be {@code null}
          * @return {@code true} if the arrays are equal or both null
          */
-        public static bool equals(object[] a1, object[] a2)
+        public static bool Equals(object[] a1, object[] a2)
         {
             if (a1 == null)
             {
@@ -61,7 +61,7 @@ namespace WebMagicSharp.Utils
                 {
                     for (int i = 0; i < a1.Length; i++)
                     {
-                        if (!equals(a1[i], a2[i]))
+                        if (!Equals(a1[i], a2[i]))
                         {
                             return false;
                         }

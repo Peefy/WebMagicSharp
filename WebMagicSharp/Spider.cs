@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
-using System.Text;
 
 using WebMagicSharp.DownLoaders;
 using WebMagicSharp.Pipelines;
@@ -14,6 +12,9 @@ using WebMagicSharp.Utils;
 
 namespace WebMagicSharp
 {
+    /// <summary>
+    /// Finish the Spider
+    /// </summary>
     public class Spider : ITask , IDisposable
     {
 
@@ -27,7 +28,7 @@ namespace WebMagicSharp
 
         protected Site site;
 
-        protected String guid;
+        protected string guid;
 
         protected IScheduler scheduler = new QueueScheduler();
 
@@ -65,7 +66,7 @@ namespace WebMagicSharp
 
         private int emptySleepTime = 30000;
 
-        public static Spider create(IPageProcessor pageProcessor)
+        public static Spider Create(IPageProcessor pageProcessor)
         {
             return new Spider(pageProcessor);
         }
@@ -81,7 +82,7 @@ namespace WebMagicSharp
             this.site = pageProcessor.GetSite();
         }
 
-        protected void checkIfRunning()
+        protected void CheckIfRunning()
         {
             if (stat == SpiderStatus.Running)
             {
@@ -89,21 +90,21 @@ namespace WebMagicSharp
             }
         }
 
-        public Spider startUrls(List<String> startUrls)
+        public Spider StartUrls(List<string> startUrls)
         {
-            checkIfRunning();
+            CheckIfRunning();
             this.startRequests = UrlUtils.ConvertToRequests(startUrls);
             return this;
         }
 
-        public Spider startRequest(List<Request> startRequests)
+        public Spider StartRequest(List<Request> startRequests)
         {
-            checkIfRunning();
+            CheckIfRunning();
             this.startRequests = startRequests;
             return this;
         }
 
-        public Spider setUUID(String guid)
+        public Spider SetGuid(string guid)
         {
             this.guid = guid;
             return this;
@@ -111,12 +112,12 @@ namespace WebMagicSharp
 
         public Spider Scheduler(IScheduler scheduler)
         {
-            return setScheduler(scheduler);
+            return SetScheduler(scheduler);
         }
 
-        public Spider setScheduler(IScheduler scheduler)
+        public Spider SetScheduler(IScheduler scheduler)
         {
-            checkIfRunning();
+            CheckIfRunning();
             IScheduler oldScheduler = this.scheduler;
             this.scheduler = scheduler;
             if (oldScheduler != null)
@@ -130,26 +131,26 @@ namespace WebMagicSharp
             return this;
         }
 
-        public Spider pipeline(IPipeline pipeline)
+        public Spider Pipeline(IPipeline pipeline)
         {
-            return addPipeline(pipeline);
+            return AddPipeline(pipeline);
         }
 
-        public Spider addPipeline(IPipeline pipeline)
+        public Spider AddPipeline(IPipeline pipeline)
         {
-            checkIfRunning();
+            CheckIfRunning();
             this.pipelines.Add(pipeline);
             return this;
         }
 
-        public Spider setPipelines(List<IPipeline> pipelines)
+        public Spider SetPipelines(List<IPipeline> pipelines)
         {
-            checkIfRunning();
+            CheckIfRunning();
             this.pipelines = pipelines;
             return this;
         }
 
-        public Spider clearPipeline()
+        public Spider ClearPipeline()
         {
             pipelines = new List<IPipeline>();
             return this;
@@ -157,17 +158,17 @@ namespace WebMagicSharp
 
         public Spider Downloader(IDownloader downloader)
         {
-            return setDownloader(downloader);
+            return SetDownloader(downloader);
         }
 
-        public Spider setDownloader(IDownloader downloader)
+        public Spider SetDownloader(IDownloader downloader)
         {
-            checkIfRunning();
+            CheckIfRunning();
             this.downloader = downloader;
             return this;
         }
 
-        protected void initComponent()
+        protected void InitComponent()
         {
             if (downloader == null)
             {
@@ -177,8 +178,7 @@ namespace WebMagicSharp
             {
                 pipelines.Add(new ConsolePipeline());
             }
-            //downloader.setThread(threadNum);
-            if (threadPool == null || threadPool.isShutdown())
+            if (threadPool == null || threadPool.IsShutdown())
             {
                 threadPool = new CountableThreadPool(threadNum);
             }
@@ -186,14 +186,14 @@ namespace WebMagicSharp
             {
                 foreach (var request in startRequests)
                 {
-                    addRequest(request);
+                    AddRequest(request);
                 }
                 startRequests.Clear();
             }
             startTime = DateTime.Now;
         }
 
-        private void checkRunningStat()
+        private void CheckRunningStat()
         {
             while (true)
             {
@@ -210,17 +210,17 @@ namespace WebMagicSharp
             }
         }
 
-        public void run()
+        public void Run()
         {
-            checkRunningStat();
-            initComponent();
+            CheckRunningStat();
+            InitComponent();
             Debug.WriteLine($"Spider {GetGuid()} started!");
             while (!(stat == SpiderStatus.Running))
             {
                 var request = scheduler.Poll(this);
                 if (request == null)
                 {
-                    waitNewUrl();
+                    WaitNewUrl();
                 }
                 else
                 {
@@ -228,87 +228,87 @@ namespace WebMagicSharp
                     {
                         try
                         {
-                            processRequest(request);
-                            onSuccess(request);
+                            ProcessRequest(request);
+                            OnSuccess(request);
                         }
                         catch (Exception e)
                         {
-                            onError(request);
+                            OnError(request);
                             Debug.WriteLine($"process request {request} error : {e.Message}");
 
                         }
                         finally
                         {
                             pageCount++;
-                            signalNewUrl();
+                            SignalNewUrl();
                         }
                     });
                 }
             }
             stat = SpiderStatus.Stop;
             if (destroyWhenExit == true)
-                close();
+                Close();
             Debug.WriteLine($"Spider {GetGuid()} closed! {pageCount} pages downloaded.");
         }
 
-        protected void onError(Request request)
+        protected void OnError(Request request)
         {
             if (spiderListeners?.Count > 0)
             {
                 foreach(var spiderListener in spiderListeners)
                 {
-                    spiderListener.onError(request);
+                    spiderListener.OnError(request);
                 }
             }
         }
 
-        protected void onSuccess(Request request)
+        protected void OnSuccess(Request request)
         {
             if (spiderListeners?.Count > 0)
             {
                 foreach (var spiderListener in spiderListeners)
                 {
-                    spiderListener.onSuccess(request);
+                    spiderListener.OnSuccess(request);
                 }
             }
         }
 
-        public void test(string[] urls)
+        public void Test(string[] urls)
         {
-            initComponent();
+            InitComponent();
             if (urls.Length > 0)
             {
                 foreach(var url in urls)
                 {
-                    processRequest(new Request(url));
+                    ProcessRequest(new Request(url));
                 }
             }
         }
 
-        private void processRequest(Request request)
+        private void ProcessRequest(Request request)
         {
             Page page = downloader.Download(request, this);
-            if (page.isDownloadSuccess())
+            if (page.IsDownloadSuccess())
             {
-                onDownloadSuccess(request, page);
+                OnDownloadSuccess(request, page);
             }
             else
             {
-                onDownloaderFail(request);
+                OnDownloaderFail(request);
             }
         }
 
-        private void onDownloadSuccess(Request request, Page page)
+        private void OnDownloadSuccess(Request request, Page page)
         {
-            if (site.getAcceptStatCode().Contains(page.getStatusCode()))
+            if (site.AcceptStatCode.Contains(page.GetStatusCode()))
             {
                 pageProcessor.Process(page);
-                extractAndAddRequests(page, spawnUrl);
-                if (!page.getResultItems().IsSkip())
+                ExtractAndAddRequests(page, spawnUrl);
+                if (!page.GetResultItems().IsSkip())
                 {
                     foreach(var pipeline in pipelines)
                     {
-                        pipeline.Process(page.getResultItems(), this);
+                        pipeline.Process(page.GetResultItems(), this);
                     }
                 }
             }
@@ -317,43 +317,43 @@ namespace WebMagicSharp
                 Debug.WriteLine($"page status code error, page {request.Url}" +
                                 " , code: {page.getStatusCode()}");
             }
-            sleep(site.getSleepTime());
+            Sleep(site.SleepTime);
             return;
         }
 
-        private void onDownloaderFail(Request request)
+        private void OnDownloaderFail(Request request)
         {
-            if (site.getCycleRetryTimes() == 0)
+            if (site.GetCycleRetryTimes() == 0)
             {
-                sleep(site.getSleepTime());
+                Sleep(site.SleepTime);
             }
             else
             {
                 // for cycle retry
-                doCycleRetry(request);
+                DoCycleRetry(request);
             }
         }
 
-        private void doCycleRetry(Request request)
+        private void DoCycleRetry(Request request)
         {
-            Object cycleTriedTimesObject = request.getExtra(Request.CycleTriedTimes);
+            Object cycleTriedTimesObject = request.GetExtra(Request.CycleTriedTimes);
             if (cycleTriedTimesObject == null)
             {
-                addRequest(request.putExtra(Request.CycleTriedTimes, 1));
+                AddRequest(request.PutExtra(Request.CycleTriedTimes, 1));
             }
             else
             {
                 int cycleTriedTimes = (int)cycleTriedTimesObject;
                 cycleTriedTimes++;
-                if (cycleTriedTimes < site.getCycleRetryTimes())
+                if (cycleTriedTimes < site.GetCycleRetryTimes())
                 {
-                    addRequest(request.putExtra(Request.CycleTriedTimes, cycleTriedTimes));
+                    AddRequest(request.PutExtra(Request.CycleTriedTimes, cycleTriedTimes));
                 }
             }
-            sleep(site.getRetrySleepTime());
+            Sleep(site.GetRetrySleepTime());
         }
 
-        protected void sleep(int time)
+        protected void Sleep(int time)
         {
             try
             {
@@ -365,22 +365,22 @@ namespace WebMagicSharp
             }
         }
 
-        protected void extractAndAddRequests(Page page, bool spawnUrl)
+        protected void ExtractAndAddRequests(Page page, bool spawnUrl)
         {
-            if (spawnUrl && page.getTargetRequests()?.Count > 0)
+            if (spawnUrl && page.GetTargetRequests()?.Count > 0)
             {
-                foreach(var request in page.getTargetRequests())
+                foreach(var request in page.GetTargetRequests())
                 {
-                    addRequest(request);
+                    AddRequest(request);
                 }
             }
         }
 
-        private void addRequest(Request request)
+        private void AddRequest(Request request)
         {
-            if (site.getDomain() == null && request != null && request.Url != null)
+            if (site.Domain== null && request != null && request.Url != null)
             {
-                site.setDomain(UrlUtils.GetDomain(request.Url));
+                site.SetDomain(UrlUtils.GetDomain(request.Url));
             }
             scheduler.Push(request, this);
         }
@@ -389,21 +389,21 @@ namespace WebMagicSharp
         {
             Task.Run(()=>
             {
-                this.run();
+                this.Run();
             });
         }
 
-        public Spider addUrl(String[] urls)
+        public Spider AddUrl(string[] urls)
         {
             foreach(var url in urls)
             {
-                addRequest(new Request(url));
+                AddRequest(new Request(url));
             }
-            signalNewUrl();
+            SignalNewUrl();
             return this;
         }
 
-        public List<ResultItems> getAll(IList<String> urls)
+        public List<ResultItems> GetAll(IList<string> urls)
         {
             destroyWhenExit = false;
             spawnUrl = false;
@@ -413,25 +413,25 @@ namespace WebMagicSharp
             }
             foreach(var request in UrlUtils.ConvertToRequests(urls))
             {
-                addRequest(request);
+                AddRequest(request);
             }
-            var collectorPipeline = getCollectorPipeline();
+            var collectorPipeline = GetCollectorPipeline();
             pipelines.Add(collectorPipeline);
-            run();
+            Run();
             spawnUrl = true;
             destroyWhenExit = true;
             return collectorPipeline.GetCollected();
         }
 
-        protected virtual ICollectorPipeline<ResultItems> getCollectorPipeline() => new ResultItemsCollectorPipeline();
+        protected virtual ICollectorPipeline<ResultItems> GetCollectorPipeline() => new ResultItemsCollectorPipeline();
 
-        public ResultItems get(String url) 
+        public ResultItems Get(string url) 
         {
             var urls = new List<string>
             {
                 url
             };
-            var resultItemses = getAll(urls);
+            var resultItemses = GetAll(urls);
             if (resultItemses != null && resultItemses.Count > 0)
             {
                 return resultItemses[0];
@@ -442,17 +442,17 @@ namespace WebMagicSharp
             }
         }
 
-        public Spider addRequest(Request[] requests)
+        public Spider AddRequest(Request[] requests)
         {
             foreach(var request in requests)
             {
-                addRequest(request);
+                AddRequest(request);
             }
-            signalNewUrl();
+            SignalNewUrl();
             return this;
         }
 
-        private void waitNewUrl()
+        private void WaitNewUrl()
         {
             lock(newUrlLock)
             {
@@ -462,7 +462,7 @@ namespace WebMagicSharp
             }
         }
 
-        private void signalNewUrl()
+        private void SignalNewUrl()
         {
             lock (newUrlLock)
             {
@@ -470,17 +470,17 @@ namespace WebMagicSharp
             }
         }
 
-        public void start()
+        public void Start()
         {
             RunAsync();
         }
 
-        public void close()
+        public void Close()
         {
             Dispose();
         }
 
-        public void stop()
+        public void Stop()
         {
             if(stat == SpiderStatus.Running)
             {
@@ -489,9 +489,9 @@ namespace WebMagicSharp
             }
         }
 
-        public Spider thread(int threadNum)
+        public Spider Thread(int threadNum)
         {
-            checkIfRunning();
+            CheckIfRunning();
             this.threadNum = threadNum;
             if (threadNum <= 0)
             {
@@ -501,59 +501,59 @@ namespace WebMagicSharp
             return this;
         }
 
-        public bool isExitWhenComplete()
+        public bool IsExitWhenComplete()
         {
             return exitWhenComplete;
         }
 
-        public Spider setExitWhenComplete(bool exitWhenComplete)
+        public Spider SetExitWhenComplete(bool exitWhenComplete)
         {
             this.exitWhenComplete = exitWhenComplete;
             return this;
         }
 
-        public int getThreadAlive()
+        public int GetThreadAlive()
         {
             if (threadPool == null)
             {
                 return 0;
             }
-            return threadPool.getThreadAlive();
+            return threadPool.GetThreadAlive();
         }
 
-        public bool isSpawnUrl()
+        public bool IsSpawnUrl()
         {
             return spawnUrl;
         }
 
-        public long getPageCount()
+        public long GetPageCount()
         {
             return pageCount;
         }
 
-        public Spider setSpawnUrl(bool spawnUrl)
+        public Spider SetSpawnUrl(bool spawnUrl)
         {
             this.spawnUrl = spawnUrl;
             return this;
         }
 
-        public List<ISpiderListener> getSpiderListeners()
+        public List<ISpiderListener> GetSpiderListeners()
         {
             return spiderListeners;
         }
 
-        public Spider setSpiderListeners(List<ISpiderListener> spiderListeners)
+        public Spider SetSpiderListeners(List<ISpiderListener> spiderListeners)
         {
             this.spiderListeners = spiderListeners;
             return this;
         }
 
-        public DateTime getStartTime()
+        public DateTime GetStartTime()
         {
             return startTime;
         }
 
-        public IScheduler getScheduler()
+        public IScheduler GetScheduler()
         {
             return scheduler;
         }
@@ -563,7 +563,7 @@ namespace WebMagicSharp
          *
          * @param emptySleepTime In MILLISECONDS.
          */
-        public void setEmptySleepTime(int emptySleepTime)
+        public void SetEmptySleepTime(int emptySleepTime)
         {
             this.emptySleepTime = emptySleepTime;
         }
@@ -576,7 +576,7 @@ namespace WebMagicSharp
             }
             if (site != null)
             {
-                return site.getDomain();
+                return site.Domain;
             }
             guid = Guid.NewGuid().ToString();
             return guid;
@@ -621,8 +621,6 @@ namespace WebMagicSharp
             // GC.SuppressFinalize(this);
         }
         #endregion
-
-
 
     }
 }

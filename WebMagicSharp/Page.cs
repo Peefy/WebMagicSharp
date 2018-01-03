@@ -13,44 +13,44 @@ namespace WebMagicSharp
     public class Page
     {
 
-        private Request request;
+        private Request _request;
 
-        private ResultItems resultItems = new ResultItems();
+        private ResultItems _resultItems = new ResultItems();
 
-        private Html html;
+        private Html _html;
 
-        private Json json;
+        private Json _json;
 
-        private String rawText;
+        private string _rawText;
 
-        private ISelectable url;
+        private ISelectable _url;
 
-        private Dictionary<String, List<String>> headers;
+        private Dictionary<string, List<string>> _headers;
 
-        private int statusCode = HttpConstant.StatusCode.CODE_200;
+        private int _statusCode = HttpConstant.StatusCode.Code200;
 
-        private bool downloadSuccess = true;
+        private bool _downloadSuccess = true;
 
-        private byte[] bytes;
+        private byte[] _bytes;
 
-        private List<Request> targetRequests = new List<Request>();
+        private List<Request> _targetRequests = new List<Request>();
 
-        private String charset;
+        private string _charset;
 
         public Page()
         {
         }
 
-        public static Page fail()
+        public static Page Fail()
         {
             Page page = new Page();
-            page.setDownloadSuccess(false);
+            page.SetDownloadSuccess(false);
             return page;
         }
 
-        public Page setSkip(bool skip)
+        public Page SetSkip(bool skip)
         {
-            resultItems.SetSkip(skip);
+            _resultItems.SetSkip(skip);
             return this;
 
         }
@@ -61,9 +61,9 @@ namespace WebMagicSharp
          * @param key key
          * @param field field
          */
-        public void putField(String key, Object field)
+        public void PutField(string key, Object field)
         {
-            resultItems.Put(key, field);
+            _resultItems.Put(key, field);
         }
 
         /**
@@ -71,13 +71,13 @@ namespace WebMagicSharp
          *
          * @return html
          */
-        public Html getHtml()
+        public Html GetHtml()
         {
-            if (html == null)
+            if (_html == null)
             {
-                html = new Html(rawText);
+                _html = new Html(_rawText);
             }
-            return html;
+            return _html;
         }
 
         /**
@@ -86,13 +86,13 @@ namespace WebMagicSharp
          * @return json
          * @since 0.5.0
          */
-        public Json getJson()
+        public Json GetJson()
         {
-            if (json == null)
+            if (_json == null)
             {
-                json = new Json(rawText);
+                _json = new Json(_rawText);
             }
-            return json;
+            return _json;
         }
 
         /**
@@ -100,14 +100,14 @@ namespace WebMagicSharp
          * @deprecated since 0.4.0
          * The html is parse just when first time of calling {@link #getHtml()}, so use {@link #setRawText(String)} instead.
          */
-        public void setHtml(Html html)
+        public void SetHtml(Html html)
         {
-            this.html = html;
+            this._html = html;
         }
 
-        public List<Request> getTargetRequests()
+        public List<Request> GetTargetRequests()
         {
-            return targetRequests;
+            return _targetRequests;
         }
 
         /**
@@ -115,7 +115,7 @@ namespace WebMagicSharp
          *
          * @param requests requests
          */
-        public void addTargetRequests(List<String> requests)
+        public void AddTargetRequests(List<string> requests)
         {
             for(var i = 0;i < requests.Count ;++i)
             {
@@ -124,8 +124,8 @@ namespace WebMagicSharp
                 {
                     continue;
                 }
-                requests[i] = UrlUtils.CanonicalizeUrl(requests[i], url.ToString());
-                targetRequests.Add(new Request(requests[i]));
+                requests[i] = UrlUtils.CanonicalizeUrl(requests[i], _url.ToString());
+                _targetRequests.Add(new Request(requests[i]));
             }
         }
 
@@ -135,7 +135,7 @@ namespace WebMagicSharp
          * @param requests requests
          * @param priority priority
          */
-        public void addTargetRequests(List<String> requests, long priority)
+        public void AddTargetRequests(List<string> requests, long priority)
         {
             for (var i = 0; i < requests.Count; ++i)
             {
@@ -144,8 +144,8 @@ namespace WebMagicSharp
                 {
                     continue;
                 }
-                requests[i] = UrlUtils.CanonicalizeUrl(requests[i], url.ToString());
-                targetRequests.Add(new Request(requests[i]).setPriority(priority));
+                requests[i] = UrlUtils.CanonicalizeUrl(requests[i], _url.ToString());
+                _targetRequests.Add(new Request(requests[i]).SetPriority(priority));
             }
         }
 
@@ -154,14 +154,14 @@ namespace WebMagicSharp
          *
          * @param requestString requestString
          */
-        public void addTargetRequest(String requestString)
+        public void AddTargetRequest(string requestString)
         {
             if (string.IsNullOrEmpty(requestString) || requestString.Equals("#"))
             {
                 return;
             }
-            requestString = UrlUtils.CanonicalizeUrl(requestString, url.ToString());
-            targetRequests.Add(new Request(requestString));
+            requestString = UrlUtils.CanonicalizeUrl(requestString, _url.ToString());
+            _targetRequests.Add(new Request(requestString));
         }
 
         /**
@@ -169,9 +169,9 @@ namespace WebMagicSharp
          *
          * @param request request
          */
-        public void addTargetRequest(Request request)
+        public void AddTargetRequest(Request request)
         {
-            targetRequests.Add(request);
+            _targetRequests.Add(request);
         }
 
         /**
@@ -179,14 +179,14 @@ namespace WebMagicSharp
          *
          * @return url of current page
          */
-        public ISelectable getUrl()
+        public ISelectable GetUrl()
         {
-            return url;
+            return _url;
         }
 
-        public void setUrl(ISelectable url)
+        public void SetUrl(ISelectable url)
         {
-            this.url = url;
+            this._url = url;
         }
 
         /**
@@ -194,98 +194,98 @@ namespace WebMagicSharp
          *
          * @return request
          */
-        public Request getRequest()
+        public Request GetRequest()
         {
-            return request;
+            return _request;
         }
 
-        public void setRequest(Request request)
+        public void SetRequest(Request request)
         {
-            this.request = request;
-            this.resultItems.SetRequest(request);
+            this._request = request;
+            this._resultItems.SetRequest(request);
         }
 
-        public ResultItems getResultItems()
+        public ResultItems GetResultItems()
         {
-            return resultItems;
+            return _resultItems;
         }
 
-        public int getStatusCode()
+        public int GetStatusCode()
         {
-            return statusCode;
+            return _statusCode;
         }
 
-        public void setStatusCode(int statusCode)
+        public void SetStatusCode(int statusCode)
         {
-            this.statusCode = statusCode;
+            this._statusCode = statusCode;
         }
 
-        public String getRawText()
+        public string GetRawText()
         {
-            return rawText;
+            return _rawText;
         }
 
-        public Page setRawText(String rawText)
+        public Page SetRawText(string rawText)
         {
-            this.rawText = rawText;
+            this._rawText = rawText;
             return this;
         }
 
-        public Dictionary<String, List<String>> getHeaders()
+        public Dictionary<string, List<string>> GetHeaders()
         {
-            return headers;
+            return _headers;
         }
 
-        public void setHeaders(Dictionary<String, List<String>> headers)
+        public void SetHeaders(Dictionary<string, List<string>> headers)
         {
-            this.headers = headers;
+            this._headers = headers;
         }
 
-        public bool isDownloadSuccess()
+        public bool IsDownloadSuccess()
         {
-            return downloadSuccess;
+            return _downloadSuccess;
         }
 
-        public void setDownloadSuccess(bool downloadSuccess)
+        public void SetDownloadSuccess(bool downloadSuccess)
         {
-            this.downloadSuccess = downloadSuccess;
+            this._downloadSuccess = downloadSuccess;
         }
 
-        public byte[] getBytes()
+        public byte[] GetBytes()
         {
-            return bytes;
+            return _bytes;
         }
 
-        public void setBytes(byte[] bytes)
+        public void SetBytes(byte[] bytes)
         {
-            this.bytes = bytes;
+            this._bytes = bytes;
         }
 
-        public String getCharset()
+        public string GetCharset()
         {
-            return charset;
+            return _charset;
         }
 
-        public void setCharset(String charset)
+        public void SetCharset(string charset)
         {
-            this.charset = charset;
+            this._charset = charset;
         }
 
         public override string ToString()
         {
             return "Page{" +
-                    "request=" + request +
-                    ", resultItems=" + resultItems +
-                    ", html=" + html +
-                    ", json=" + json +
-                    ", rawText='" + rawText + '\'' +
-                    ", url=" + url +
-                    ", headers=" + headers +
-                    ", statusCode=" + statusCode +
-                    ", downloadSuccess=" + downloadSuccess +
-                    ", targetRequests=" + targetRequests +
-                    ", charset='" + charset + '\'' +
-                    ", bytes=" + ArrayToString(bytes) +
+                    "request=" + _request +
+                    ", resultItems=" + _resultItems +
+                    ", html=" + _html +
+                    ", json=" + _json +
+                    ", rawText='" + _rawText + '\'' +
+                    ", url=" + _url +
+                    ", headers=" + _headers +
+                    ", statusCode=" + _statusCode +
+                    ", downloadSuccess=" + _downloadSuccess +
+                    ", targetRequests=" + _targetRequests +
+                    ", charset='" + _charset + '\'' +
+                    ", bytes=" + ArrayToString(_bytes) +
                     '}';
         }
 

@@ -10,20 +10,22 @@ namespace WebMagicSharp.Selector
     public class PlainText : AbstractSelectable
     {
 
-        protected List<String> _sourceTexts;
+        protected List<string> _sourceTexts;
 
-        public PlainText(List<String> sourceTexts)
+        public PlainText(List<string> sourceTexts)
         {
             _sourceTexts = sourceTexts;
         }
 
-        public PlainText(String text)
+        public PlainText(string text)
         {
-            _sourceTexts = new List<String>();
-            _sourceTexts.Add(text);
+            _sourceTexts = new List<string>
+            {
+                text
+            };
         }
 
-        public static PlainText Create(String text)
+        public static PlainText Create(string text)
         {
             return new PlainText(text);
         }

@@ -4,27 +4,29 @@ using System.Text;
 
 namespace WebMagicSharp
 {
-    /// <summary>
-    /// Base task.
-    /// </summary>
     public class BaseTask : ITask
     {
+
         Site _site;
 
-        private BaseTask()
+        public BaseTask()
         {
-
+            _site = new Site();
         }
 
         public BaseTask(Site site)
         {
-
+            _site = site;
         }
 
         public string GetGuid()
         {
-            string guid = _site.getDomain();
-            return guid ?? Guid.NewGuid().ToString();
+            var guid = _site.Domain;
+            if(guid == null)
+            {
+                return Guid.NewGuid().ToString();
+            }
+            return guid;
         }
 
         public Site GetSite()

@@ -24,19 +24,19 @@ namespace WebMagicSharp
             this.httpClientDownloader = new HttpClientDownloader();
         }
 
-        public void setProxyProvider(IProxyProvider proxyProvider)
+        public void SetProxyProvider(IProxyProvider proxyProvider)
         {
             this.httpClientDownloader.SetProxyProvider(proxyProvider);
         }
 
-        public Page get(String url)
+        public Page Get(string url)
         {
-            return httpClientDownloader.Download(new Request(url), site.toTask());
+            return httpClientDownloader.Download(new Request(url), site.ToTask());
         }
 
-        public Page get(Request request)
+        public Page Get(Request request)
         {
-            return httpClientDownloader.Download(request, site.toTask());
+            return httpClientDownloader.Download(request, site.ToTask());
         }
     }
 }
