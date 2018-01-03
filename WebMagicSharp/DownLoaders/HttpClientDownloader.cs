@@ -70,7 +70,7 @@ namespace WebMagicSharp.DownLoaders
         {
             if (task == null || task.GetSite() == null)
             {
-                throw new ArgumentNullException("task or site can not be null");
+                throw new ArgumentNullException("task", "task or site can not be null");
             }
             HttpResults httpResponse = null;
             var httpClient = GetHttpClient(task.GetSite());

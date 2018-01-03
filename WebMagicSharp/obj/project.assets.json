@@ -1568,7 +1568,7 @@
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
+      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
       "files": [
@@ -4780,33 +4780,29 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aorus\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/dugu/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp\\WebMagicSharp.csproj",
+      "projectUniqueName": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj",
       "projectName": "WebMagicSharp",
-      "projectPath": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp\\WebMagicSharp.csproj",
-      "packagesPath": "C:\\Users\\Aorus\\.nuget\\packages\\",
-      "outputPath": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp\\obj\\",
+      "projectPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj",
+      "packagesPath": "/Users/dugu/.nuget/packages/",
+      "outputPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Aorus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/dugu/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "/Developer/vs_pro/xamarin.forms/DuGu.XFLib": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
