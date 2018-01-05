@@ -54,32 +54,27 @@ namespace WebMagicSharp.Selector
             return _document;
         }
 
-        protected override List<Element> getElements()
-        {
-            return Collections.< Element > singletonList(getDocument());
-        }
-
         /**
          * @param selector selector
          * @return result
          */
-        public String selectDocument(Selector selector)
+        public String SelectDocument(ISelector selector)
         {
-            if (selector instanceof ElementSelector) {
-                ElementSelector elementSelector = (ElementSelector)selector;
-                return elementSelector.select(getDocument());
+            if (selector is IElementSelector) {
+                IElementSelector elementSelector = (IElementSelector)selector;
+                return elementSelector.Select(GetDocument());
             } else {
-                return selector.select(getFirstSourceText());
+                return selector.Select(FirstSourceText);
             }
         }
 
-        public List<String> selectDocumentForList(Selector selector)
+        public List<String> SelectDocumentForList(ISelector selector)
         {
-            if (selector instanceof ElementSelector) {
-                ElementSelector elementSelector = (ElementSelector)selector;
-                return elementSelector.selectList(getDocument());
+            if (selector is IElementSelector) {
+                IElementSelector elementSelector = (IElementSelector)selector;
+                return elementSelector.SelectList(GetDocument());
             } else {
-                return selector.selectList(getFirstSourceText());
+                return selector.SelectList(FirstSourceText);
             }
         }
 

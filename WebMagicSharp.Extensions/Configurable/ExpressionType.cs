@@ -1,10 +1,11 @@
 ﻿using System;
 namespace WebMagicSharp.Configurable
 {
-    public class ExpressionType
+    public enum ExpressionType
     {
-        public ExpressionType()
-        {
-        }
+        XPath, 
+        Regex, 
+        Css, 
+        JsonPath
     }
 }

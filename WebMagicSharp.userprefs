@@ -1,5 +1,5 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebMagicSharp.Extensions/Configurable/ConfigurablePageProcessor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebMagicSharp.Extensions/DownLoaders/PhantomJSDownloader.cs">
     <Files>
       <File FileName="WebMagicSharp/Proxy/IProxyProvider.cs" Line="1" Column="1" />
       <File FileName="WebMagicSharp/Utils/ProxyUtils.cs" Line="1" Column="1" />
@@ -24,8 +24,8 @@
       <File FileName="WebMagicSharp/Selector/ReplaceSelector.cs" Line="9" Column="9" />
       <File FileName="WebMagicSharp/Selector/RegexSelector.cs" Line="9" Column="9" />
       <File FileName="WebMagicSharp/Selector/BaseElementSelector.cs" Line="13" Column="17" />
-      <File FileName="WebMagicSharp/Selector/Html.cs" Line="13" Column="29" />
-      <File FileName="WebMagicSharp/Selector/HtmlNode.cs" Line="15" Column="36" />
+      <File FileName="WebMagicSharp/Selector/Html.cs" Line="81" Column="47" />
+      <File FileName="WebMagicSharp/Selector/HtmlNode.cs" Line="24" Column="9" />
       <File FileName="WebMagicSharp/Selector/AndSelector.cs" Line="13" Column="9" />
       <File FileName="WebMagicSharp/Selector/IElementSelector.cs" Line="16" Column="26" />
       <File FileName="WebMagicSharp/Selector/LinksSelector.cs" Line="9" Column="9" />
@@ -66,8 +66,9 @@
       <File FileName="WebMagicSharp.Extensions/IMultiPageModel.cs" Line="31" Column="34" />
       <File FileName="WebMagicSharp.Extensions/Utils/MultiKeyMapBase.cs" Line="14" Column="45" />
       <File FileName="WebMagicSharp.Extensions/Configurable/ExpressionType.cs" Line="9" Column="17" />
-      <File FileName="WebMagicSharp.Extensions/Configurable/ExtractRule.cs" Line="110" Column="25" />
-      <File FileName="WebMagicSharp.Extensions/Configurable/ConfigurablePageProcessor.cs" Line="2" Column="16" />
+      <File FileName="WebMagicSharp.Extensions/Configurable/ExtractRule.cs" Line="19" Column="9" />
+      <File FileName="WebMagicSharp.Extensions/Configurable/ConfigurablePageProcessor.cs" Line="17" Column="9" />
+      <File FileName="WebMagicSharp.Extensions/DownLoaders/PhantomJSDownloader.cs" Line="197" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
