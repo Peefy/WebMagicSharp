@@ -9,6 +9,11 @@
     <Folder Include="Pipelines\" />
     <Folder Include="Model\" />
     <Folder Include="DownLoaders\" />
+    <Folder Include="Configurable\" />
+    <Folder Include="Example\" />
+    <Folder Include="Handler\" />
+    <Folder Include="Monitor\" />
+    <Folder Include="Scheduler\" />
   </ItemGroup>
 
   <ItemGroup>

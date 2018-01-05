@@ -1,5 +1,5 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="WebMagicSharp.Extensions/Pipelines/IPageModelPipeline.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebMagicSharp.Extensions/Configurable/ConfigurablePageProcessor.cs">
     <Files>
       <File FileName="WebMagicSharp/Proxy/IProxyProvider.cs" Line="1" Column="1" />
       <File FileName="WebMagicSharp/Utils/ProxyUtils.cs" Line="1" Column="1" />
@@ -13,7 +13,7 @@
       <File FileName="WebMagicSharp/Selector/XPathSelector.cs" Line="15" Column="17" />
       <File FileName="WebMagicSharp/BaseTask.cs" Line="22" Column="10" />
       <File FileName="WebMagicSharp/IDownloader.cs" Line="13" Column="16" />
-      <File FileName="WebMagicSharp/Spider.cs" Line="19" Column="9" />
+      <File FileName="WebMagicSharp/Spider.cs" Line="19" Column="6" />
       <File FileName="WebMagicSharp/Model/INameValuePair.cs" Line="1" Column="1" />
       <File FileName="WebMagicSharp/Processor/SimplePageProcessor.cs" Line="28" Column="39" />
       <File FileName="WebMagicSharp/Selector/CssSelector.cs" Line="10" Column="22" />
@@ -44,7 +44,7 @@
       <File FileName="WebMagicSharp/Utils/RegexUtil.cs" Line="15" Column="23" />
       <File FileName="WebMagicSharp/Pipelines/ResultItemsCollectorPipeline.cs" Line="15" Column="10" />
       <File FileName="WebMagicSharp/Request.cs" Line="10" Column="9" />
-      <File FileName="WebMagicSharp/Model/HttpRequestBody.cs" Line="1" Column="14" />
+      <File FileName="WebMagicSharp/Model/HttpRequestBody.cs" Line="10" Column="35" />
       <File FileName="WebMagicSharp/SpiderStatus.cs" Line="8" Column="9" />
       <File FileName="WebMagicSharp/Site.cs" Line="10" Column="9" />
       <File FileName="WebMagicSharp/ResultItem.cs" Line="8" Column="9" />
@@ -56,11 +56,18 @@
       <File FileName="WebMagicSharp/Thread/CountableThreadPool.cs" Line="19" Column="10" />
       <File FileName="WebMagicSharp/Utils/ISpiderListener.cs" Line="8" Column="9" />
       <File FileName="WebMagicSharp/Pipelines/ICollectorPipeline.cs" Line="6" Column="2" />
-      <File FileName="WebMagicSharp.Extensions/Utils/IpUtils.cs" Line="1" Column="1" />
-      <File FileName="WebMagicSharp.Extensions/Utils/RequestUtils.cs" Line="1" Column="1" />
+      <File FileName="WebMagicSharp.Extensions/Utils/IpUtils.cs" Line="21" Column="18" />
+      <File FileName="WebMagicSharp.Extensions/Utils/RequestUtils.cs" Line="28" Column="58" />
       <File FileName="WebMagicSharp.Extensions/SimpleHttpClient.cs" Line="34" Column="11" />
       <File FileName="WebMagicSharp/DownLoaders/HttpClientDownloader.cs" Line="72" Column="14" />
-      <File FileName="WebMagicSharp.Extensions/Pipelines/IPageModelPipeline.cs" Line="9" Column="1" />
+      <File FileName="WebMagicSharp.Extensions/Pipelines/IPageModelPipeline.cs" Line="6" Column="15" />
+      <File FileName="WebMagicSharp.Extensions/Pipelines/CollectorPageModelPipeline.cs" Line="23" Column="2" />
+      <File FileName="WebMagicSharp/Utils/FilePersistentBase.cs" Line="1" Column="1" />
+      <File FileName="WebMagicSharp.Extensions/IMultiPageModel.cs" Line="31" Column="34" />
+      <File FileName="WebMagicSharp.Extensions/Utils/MultiKeyMapBase.cs" Line="14" Column="45" />
+      <File FileName="WebMagicSharp.Extensions/Configurable/ExpressionType.cs" Line="9" Column="17" />
+      <File FileName="WebMagicSharp.Extensions/Configurable/ExtractRule.cs" Line="110" Column="25" />
+      <File FileName="WebMagicSharp.Extensions/Configurable/ConfigurablePageProcessor.cs" Line="2" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
