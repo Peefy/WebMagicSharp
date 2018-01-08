@@ -6,14 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Model\Annotation\" />
+    <Folder Include="Model\Formatter\" />
     <Folder Include="Pipelines\" />
-    <Folder Include="Model\" />
     <Folder Include="DownLoaders\" />
     <Folder Include="Configurable\" />
-    <Folder Include="Example\" />
-    <Folder Include="Handler\" />
-    <Folder Include="Monitor\" />
-    <Folder Include="Scheduler\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
   </ItemGroup>
 
   <ItemGroup>
