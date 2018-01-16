@@ -30,4 +30,5 @@ namespace WebMagicSharp.Monitor
 
         int getPagePerSecond();
     }
+
 }

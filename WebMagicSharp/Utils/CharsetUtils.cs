@@ -10,6 +10,9 @@ using System.Linq;
 
 namespace WebMagicSharp.Utils
 {
+    /// <summary>
+    /// Charset utils.
+    /// </summary>
     public class CharsetUtils
     {
         
@@ -34,10 +37,10 @@ namespace WebMagicSharp.Utils
                 // 2.1、html4.01 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                     var metaContent = link.Attributes["content"].Value;
                     var metaCharset = link.Attributes["charset"].Value;
-                    if (metaContent.IndexOf("charset") != -1)
+                    if (metaContent.IndexOf("charset", StringComparison.Ordinal) != -1)
                     {
                         metaContent = metaContent.Substring(
-                            metaContent.IndexOf("charset"), metaContent.Length);
+                            metaContent.IndexOf("charset", StringComparison.Ordinal), metaContent.Length);
                         charset = metaContent.Split('=')[1];
                         break;
                     }

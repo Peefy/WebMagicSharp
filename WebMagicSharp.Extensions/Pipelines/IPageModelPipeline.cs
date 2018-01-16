@@ -5,4 +5,5 @@ namespace WebMagicSharp.Pipelines
     {
         void Process(T t, ITask task);
     }
+
 }
