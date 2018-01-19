@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace WebMagicSharp.Pipelines
 {
     public interface IPageModelPipeline<T>

@@ -1936,7 +1936,7 @@
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
       "files": [
@@ -5700,36 +5700,41 @@
     ]
   },
   "packageFolders": {
-    "/Users/dugu/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Aorus\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp.Extensions/WebMagicSharp.Extensions.csproj",
+      "projectUniqueName": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp.Extensions\\WebMagicSharp.Extensions.csproj",
       "projectName": "WebMagicSharp.Extensions",
-      "projectPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp.Extensions/WebMagicSharp.Extensions.csproj",
-      "packagesPath": "/Users/dugu/.nuget/packages/",
-      "outputPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp.Extensions/obj",
+      "projectPath": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp.Extensions\\WebMagicSharp.Extensions.csproj",
+      "packagesPath": "C:\\Users\\Aorus\\.nuget\\packages\\",
+      "outputPath": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp.Extensions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/dugu/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Aorus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "/Developer/vs_pro/xamarin.forms/DuGu.XFLib": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://dotnet.myget.org/F/dotnet-core/api/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj": {
-              "projectPath": "/Developer/vs_pro/NetStadard/WebMagicSharp/WebMagicSharp/WebMagicSharp.csproj"
+            "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp\\WebMagicSharp.csproj": {
+              "projectPath": "D:\\_VSPros\\C#\\.NET Stadard\\WebMagicSharp\\WebMagicSharp\\WebMagicSharp.csproj"
             }
           }
         }
@@ -5746,12 +5751,12 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           },
           "StackExchange.Redis": {
             "target": "Package",
-            "version": "1.2.6"
+            "version": "[1.2.6, )"
           }
         },
         "imports": [

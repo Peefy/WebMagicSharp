@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Annotation\" />
+    <Compile Remove="Model\Annotation\**" />
+    <EmbeddedResource Remove="Model\Annotation\**" />
+    <None Remove="Model\Annotation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Model\Formatter\" />
     <Folder Include="DownLoaders\" />
     <Folder Include="Configurable\" />
