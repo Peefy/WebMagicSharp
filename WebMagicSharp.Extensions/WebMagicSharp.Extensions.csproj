@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Formatter\" />
     <Folder Include="DownLoaders\" />
     <Folder Include="Configurable\" />
   </ItemGroup>

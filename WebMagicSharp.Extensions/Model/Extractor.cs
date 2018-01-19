@@ -2,6 +2,7 @@
 
 using WebMagicSharp;
 using WebMagicSharp.Selector;
+using WebMagicSharp.Model.Attributes;
 
 namespace WebMagicSharp.Model
 {
