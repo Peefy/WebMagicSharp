@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebMagicSharp.Example
+namespace WebMagicSharp.Examples
 {
     public class AppStoreExample
     {
     }
+
 }
