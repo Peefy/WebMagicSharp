@@ -4,10 +4,12 @@ using WebMagicSharp.Model.Formatter;
 
 namespace WebMagicSharp.Model.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class FormatterAttribute : Attribute
     {
-        public string Value { get; set; } = "";
+        public static Type DefaultFormatterType => typeof(IObjectFormatter<object>);
+
+        public string[] Value { get; set; } = new string[] { "" };
         public Type SubType { get; set; } = typeof(void);
         public Type Formatter { get; set; } = typeof(IObjectFormatter<object>);
     }

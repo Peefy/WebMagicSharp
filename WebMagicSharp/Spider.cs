@@ -66,16 +66,20 @@ namespace WebMagicSharp
 
         private int emptySleepTime = 30000;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pageProcessor"></param>
+        /// <returns></returns>
         public static Spider Create(IPageProcessor pageProcessor)
         {
             return new Spider(pageProcessor);
         }
 
-        /**
-         * create a spider with pageProcessor.
-         *
-         * @param pageProcessor pageProcessor
-         */
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pageProcessor"></param>
         public Spider(IPageProcessor pageProcessor)
         {
             this.pageProcessor = pageProcessor;
@@ -90,6 +94,11 @@ namespace WebMagicSharp
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="startUrls"></param>
+        /// <returns></returns>
         public Spider StartUrls(List<string> startUrls)
         {
             CheckIfRunning();
@@ -97,6 +106,11 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="startRequests"></param>
+        /// <returns></returns>
         public Spider StartRequest(List<Request> startRequests)
         {
             CheckIfRunning();
@@ -104,17 +118,32 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
         public Spider SetGuid(string guid)
         {
             this.guid = guid;
             return this;
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scheduler"></param>
+        /// <returns></returns>
         public Spider Scheduler(IScheduler scheduler)
         {
             return SetScheduler(scheduler);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scheduler"></param>
+        /// <returns></returns>
         public Spider SetScheduler(IScheduler scheduler)
         {
             CheckIfRunning();
@@ -131,11 +160,21 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pipeline"></param>
+        /// <returns></returns>
         public Spider Pipeline(IPipeline pipeline)
         {
             return AddPipeline(pipeline);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pipeline"></param>
+        /// <returns></returns>
         public Spider AddPipeline(IPipeline pipeline)
         {
             CheckIfRunning();
@@ -143,6 +182,11 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pipelines"></param>
+        /// <returns></returns>
         public Spider SetPipelines(List<IPipeline> pipelines)
         {
             CheckIfRunning();
@@ -150,17 +194,31 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Spider ClearPipeline()
         {
             pipelines = new List<IPipeline>();
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="downloader"></param>
+        /// <returns></returns>
         public Spider Downloader(IDownloader downloader)
         {
             return SetDownloader(downloader);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="downloader"></param>
+        /// <returns></returns>
         public Spider SetDownloader(IDownloader downloader)
         {
             CheckIfRunning();
@@ -168,6 +226,9 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected void InitComponent()
         {
             if (downloader == null)
@@ -210,6 +271,9 @@ namespace WebMagicSharp
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Run()
         {
             CheckRunningStat();
@@ -385,6 +449,9 @@ namespace WebMagicSharp
             scheduler.Push(request, this);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void RunAsync()
         {
             Task.Run(()=>
@@ -393,6 +460,11 @@ namespace WebMagicSharp
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="urls"></param>
+        /// <returns></returns>
         public Spider AddUrl(string[] urls)
         {
             foreach(var url in urls)
@@ -403,6 +475,11 @@ namespace WebMagicSharp
             return this;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="urls"></param>
+        /// <returns></returns>
         public List<ResultItems> GetAll(IList<string> urls)
         {
             destroyWhenExit = false;
@@ -425,6 +502,11 @@ namespace WebMagicSharp
 
         protected virtual ICollectorPipeline<ResultItems> GetCollectorPipeline() => new ResultItemsCollectorPipeline();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public ResultItems Get(string url) 
         {
             var urls = new List<string>
@@ -442,6 +524,11 @@ namespace WebMagicSharp
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="requests"></param>
+        /// <returns></returns>
         public Spider AddRequest(Request[] requests)
         {
             foreach(var request in requests)
