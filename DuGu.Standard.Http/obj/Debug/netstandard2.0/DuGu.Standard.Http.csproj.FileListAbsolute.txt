@@ -1,0 +1,9 @@
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\obj\Debug\netstandard2.0\DuGu.Standard.Http.csprojResolveAssemblyReference.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\obj\Debug\netstandard2.0\DuGu.Standard.Http.csproj.CoreCompileInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\obj\Debug\netstandard2.0\DuGu.Standard.Http.AssemblyInfoInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\obj\Debug\netstandard2.0\DuGu.Standard.Http.AssemblyInfo.cs
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\bin\Debug\netstandard2.0\DuGu.Standard.Http.deps.json
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\bin\Debug\netstandard2.0\DuGu.Standard.Http.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\bin\Debug\netstandard2.0\DuGu.Standard.Http.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\obj\Debug\netstandard2.0\DuGu.Standard.Http.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Http\obj\Debug\netstandard2.0\DuGu.Standard.Http.pdb
