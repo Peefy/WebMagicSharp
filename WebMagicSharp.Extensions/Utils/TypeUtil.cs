@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebMagicSharp.Utils
 {
-    public static class TypeUtil
+    internal static class TypeUtil
     {
 
         public static List<FieldInfo> GetFieldsIncludeBaseClass(Type type)

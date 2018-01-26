@@ -108,6 +108,12 @@ namespace WebMagicSharp.Model
         private void InitClassExtractors()
         {
             var attr = AttributeUtil.GetAttribute<TargetUrlAttribute>(type);
+            if (attr == null)
+                targetUrlRegexs.Add(new Regex(".*"));
+            else
+            {
+
+            }
         }
 
         public object Process(Page page)
