@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebMagicSharp.Utils
 {
-    public class DoubleKeyMap<K1, K2, V> : MultiKeyMapBase
+    internal class DoubleKeyMap<K1, K2, V> : MultiKeyMapBase
     {
         private Dictionary<K1, Dictionary<K2, V>> map;
 

@@ -3,7 +3,7 @@ using System.Net;
 using System.Collections.Generic;
 using System.Text;
 
-using HttpCode.Core;
+using DuGu.Standard.Http;
 
 namespace WebMagicSharp.DownLoaders
 {

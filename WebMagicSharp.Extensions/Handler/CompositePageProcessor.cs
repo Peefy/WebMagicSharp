@@ -29,10 +29,10 @@ namespace WebMagicSharp.Handler
         {
             foreach(var subPageProcessor in subPageProcessors)
             {
-                if (subPageProcessor.match(page.GetRequest()))
+                if (subPageProcessor.Match(page.GetRequest()))
                 {
-                    MatchOther matchOtherProcessorProcessor = subPageProcessor.processPage(page);
-                    if (matchOtherProcessorProcessor != MatchOther.YES)
+                    MatchOther matchOtherProcessorProcessor = subPageProcessor.ProcessPage(page);
+                    if (matchOtherProcessorProcessor != MatchOther.Yes)
                     {
                         return;
                     }

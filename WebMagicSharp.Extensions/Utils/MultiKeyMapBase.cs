@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebMagicSharp.Utils
 {
-    public abstract class MultiKeyMapBase
+    internal abstract class MultiKeyMapBase
     {
         public MultiKeyMapBase()
         {

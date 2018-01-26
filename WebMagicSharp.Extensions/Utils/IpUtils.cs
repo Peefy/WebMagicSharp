@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebMagicSharp.Utils
 {
-    public class IpUtils
+    internal class IpUtils
     {
         public static string FirstNoLoopbackIPAddresses
         {

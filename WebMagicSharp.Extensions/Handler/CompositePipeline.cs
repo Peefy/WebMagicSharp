@@ -20,10 +20,10 @@ namespace WebMagicSharp.Handler
         {
             foreach(var subPipeline in subPipelines)
             {
-                if (subPipeline.match(resultItems.GetRequest()))
+                if (subPipeline.Match(resultItems.GetRequest()))
                 {
-                    var matchOtherProcessorProcessor = subPipeline.processResult(resultItems, task);
-                    if (matchOtherProcessorProcessor != MatchOther.YES)
+                    var matchOtherProcessorProcessor = subPipeline.ProcessResult(resultItems, task);
+                    if (matchOtherProcessorProcessor != MatchOther.Yes)
                     {
                         return;
                     }

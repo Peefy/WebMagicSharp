@@ -8,9 +8,9 @@ namespace WebMagicSharp.Model
 {
     public class Extractor
     {
-        public ISelector selector { get; set; }
+        public ISelector Selector { get; set; }
 
-        public Source source { get; set; }
+        public Source Source { get; set; }
 
         public bool IsNotNull => notNull;
 
@@ -22,8 +22,8 @@ namespace WebMagicSharp.Model
 
         public Extractor(ISelector selector, Source source, bool notNull, bool multi)
         {
-            this.selector = selector;
-            this.source = source;
+            this.Selector = selector;
+            this.Source = source;
             this.notNull = notNull;
             this.multi = multi;
         }

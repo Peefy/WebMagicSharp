@@ -18,7 +18,7 @@ namespace WebMagicSharp.Handler
             this.patternCompiled = new Regex(pattern);
         }
 
-        public bool match(Request request)
+        public bool Match(Request request)
         {
             return patternCompiled.IsMatch(request.GetUrl());
         }

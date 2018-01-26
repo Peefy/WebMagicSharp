@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-using HttpCode.Core;
+using DuGu.Standard.Http;
 
 using WebMagicSharp.Proxy;
 using WebMagicSharp.Selector;

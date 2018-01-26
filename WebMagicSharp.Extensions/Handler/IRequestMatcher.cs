@@ -8,13 +8,14 @@ namespace WebMagicSharp.Handler
 {
     public interface IRequestMatcher
     {
-        bool match(Request request);
+        bool Match(Request request);
 
     }
 
     public enum MatchOther
     {
-        YES, NO
+        Yes,
+        No
     }
 
 }

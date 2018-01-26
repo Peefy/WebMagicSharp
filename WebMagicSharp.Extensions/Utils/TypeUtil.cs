@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,33 @@ namespace WebMagicSharp.Utils
 {
     public static class TypeUtil
     {
+
+        public static List<FieldInfo> GetFieldsIncludeBaseClass(Type type)
+        {
+            var fields = new List<FieldInfo>();
+            var currentType = type;
+            while(currentType != null)
+            {
+                var currentFields = currentType.GetRuntimeFields();
+                fields.AddRange(currentFields);
+                currentType = currentType.BaseType;
+            }
+            return fields;
+        }
+
+        public static List<PropertyInfo> GetPropertysIncludeBaseClass(Type type)
+        {
+            var propertys = new List<PropertyInfo>();
+            var currentType = type;
+            while (currentType != null)
+            {
+                var currentFields = currentType.GetRuntimeProperties();
+                propertys.AddRange(currentFields);
+                currentType = currentType.BaseType;
+            }
+            return propertys;
+        }
+
         public static Type DetectBasicType(Type type)
         {
             if (type == typeof(ushort))

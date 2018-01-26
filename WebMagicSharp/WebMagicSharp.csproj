@@ -7,8 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.6.8" />
-    <PackageReference Include="HttpCode.Core" Version="4.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DuGu.Standard.Html\DuGu.Standard.Html.csproj" />
+    <ProjectReference Include="..\DuGu.Standard.Http\DuGu.Standard.Http.csproj" />
   </ItemGroup>
 
 </Project>

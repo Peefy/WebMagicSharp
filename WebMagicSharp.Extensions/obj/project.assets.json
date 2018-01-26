@@ -2,18 +2,6 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "CoreCompat.System.Drawing.v2/5.2.0-preview1-r131": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.Permissions": "4.4.0-preview1-25305-02"
-        },
-        "compile": {
-          "lib/netstandard2.0/CoreCompat.System.Drawing.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/CoreCompat.System.Drawing.dll": {}
-        }
-      },
       "HtmlAgilityPack/1.6.8": {
         "type": "package",
         "dependencies": {
@@ -27,18 +15,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {}
-        }
-      },
-      "HttpCode.Core/4.2.0": {
-        "type": "package",
-        "dependencies": {
-          "CoreCompat.System.Drawing.v2": "5.2.0-preview1-r131"
-        },
-        "compile": {
-          "lib/netstandard2.0/HttpCode.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/HttpCode.Core.dll": {}
         }
       },
       "Microsoft.CSharp/4.3.0": {
@@ -1110,24 +1086,6 @@
           "lib/netstandard1.3/System.Runtime.Serialization.Primitives.dll": {}
         }
       },
-      "System.Security.AccessControl/4.4.0-preview1-25305-02": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.Principal.Windows": "4.4.0-preview1-25305-02"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Security.AccessControl.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
       "System.Security.Claims/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1363,18 +1321,6 @@
           }
         }
       },
-      "System.Security.Permissions/4.4.0-preview1-25305-02": {
-        "type": "package",
-        "dependencies": {
-          "System.Security.AccessControl": "4.4.0-preview1-25305-02"
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Security.Permissions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Permissions.dll": {}
-        }
-      },
       "System.Security.Principal/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1387,15 +1333,32 @@
           "lib/netstandard1.0/System.Security.Principal.dll": {}
         }
       },
-      "System.Security.Principal.Windows/4.4.0-preview1-25305-02": {
+      "System.Security.Principal.Windows/4.3.0": {
         "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.Security.Principal.Windows.dll": {}
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.Win32.Primitives": "4.3.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Claims": "4.3.0",
+          "System.Security.Principal": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading": "4.3.0"
         },
-        "runtime": {
-          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
+        "compile": {
+          "ref/netstandard1.3/_._": {}
         },
         "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
           "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll": {
             "assetType": "runtime",
             "rid": "win"
@@ -1604,12 +1567,33 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
+      "DuGu.Standard.Html/1.0.2": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/DuGu.Standard.Html.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DuGu.Standard.Html.dll": {}
+        }
+      },
+      "DuGu.Standard.Http/1.0.3": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/DuGu.Standard.Http.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DuGu.Standard.Http.dll": {}
+        }
+      },
       "WebMagicSharp/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "DuGu.Standard.Html": "1.0.2",
+          "DuGu.Standard.Http": "1.0.3",
           "HtmlAgilityPack": "1.6.8",
-          "HttpCode.Core": "4.2.0",
           "Newtonsoft.Json": "10.0.3"
         },
         "compile": {
@@ -1622,16 +1606,6 @@
     }
   },
   "libraries": {
-    "CoreCompat.System.Drawing.v2/5.2.0-preview1-r131": {
-      "sha512": "+WrScg+skrIiNLBwbl+BFdlSyzUqKOZtAUskW2xfI8vcKQdDJp+UoreUFC9uMSEgSiAR32e5l3fTtFDUKEpRaA==",
-      "type": "package",
-      "path": "corecompat.system.drawing.v2/5.2.0-preview1-r131",
-      "files": [
-        "corecompat.system.drawing.v2.5.2.0-preview1-r131.nupkg.sha512",
-        "corecompat.system.drawing.v2.nuspec",
-        "lib/netstandard2.0/CoreCompat.System.Drawing.dll"
-      ]
-    },
     "HtmlAgilityPack/1.6.8": {
       "sha512": "fjlzK2MRWB8o10UGloXFQJXwN/NGRKYFJc4zG+OUdyrEXxFKWQft4UN/6SMuR+/Xptc0todjx/kLN/aNOXAp+g==",
       "type": "package",
@@ -1676,16 +1650,6 @@
         "lib/uap10.0/HtmlAgilityPack.dll",
         "lib/uap10.0/HtmlAgilityPack.pdb",
         "lib/uap10.0/HtmlAgilityPack.pri"
-      ]
-    },
-    "HttpCode.Core/4.2.0": {
-      "sha512": "WpT0vfoFoy13eJG6hFTnjKeWdL9aDdFB8nDWEJGqwZtZ22m4S/XzCPZx2fUVChCDJZMck/Y+dFqna/dD2BPU/g==",
-      "type": "package",
-      "path": "httpcode.core/4.2.0",
-      "files": [
-        "httpcode.core.4.2.0.nupkg.sha512",
-        "httpcode.core.nuspec",
-        "lib/netstandard2.0/HttpCode.Core.dll"
       ]
     },
     "Microsoft.CSharp/4.3.0": {
@@ -4555,64 +4519,6 @@
         "system.runtime.serialization.primitives.nuspec"
       ]
     },
-    "System.Security.AccessControl/4.4.0-preview1-25305-02": {
-      "sha512": "E3acs1/hAThiFxLFwfS0XXEOk/qw9+Wf2He4y0hj8ZQ7wQZum4/q7nv+zHUA/MigdYChM94qTArnUWkXdcFNkw==",
-      "type": "package",
-      "path": "system.security.accesscontrol/4.4.0-preview1-25305-02",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net46/System.Security.AccessControl.dll",
-        "lib/net461/System.Security.AccessControl.dll",
-        "lib/netstandard1.3/System.Security.AccessControl.dll",
-        "lib/netstandard2.0/System.Security.AccessControl.dll",
-        "ref/net46/System.Security.AccessControl.dll",
-        "ref/net461/System.Security.AccessControl.dll",
-        "ref/netstandard1.3/System.Security.AccessControl.dll",
-        "ref/netstandard1.3/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/de/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/es/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/fr/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/it/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/ja/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/ko/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/ru/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/zh-hans/System.Security.AccessControl.xml",
-        "ref/netstandard1.3/zh-hant/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/System.Security.AccessControl.dll",
-        "ref/netstandard2.0/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/de/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/es/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/fr/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/it/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/ja/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/ko/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/ru/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/zh-hans/System.Security.AccessControl.xml",
-        "ref/netstandard2.0/zh-hant/System.Security.AccessControl.xml",
-        "ref/uap10.1/System.Security.AccessControl.dll",
-        "ref/uap10.1/System.Security.AccessControl.xml",
-        "ref/uap10.1/de/System.Security.AccessControl.xml",
-        "ref/uap10.1/es/System.Security.AccessControl.xml",
-        "ref/uap10.1/fr/System.Security.AccessControl.xml",
-        "ref/uap10.1/it/System.Security.AccessControl.xml",
-        "ref/uap10.1/ja/System.Security.AccessControl.xml",
-        "ref/uap10.1/ko/System.Security.AccessControl.xml",
-        "ref/uap10.1/ru/System.Security.AccessControl.xml",
-        "ref/uap10.1/zh-hans/System.Security.AccessControl.xml",
-        "ref/uap10.1/zh-hant/System.Security.AccessControl.xml",
-        "runtimes/unix/lib/netcoreapp2.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/net46/System.Security.AccessControl.dll",
-        "runtimes/win/lib/net461/System.Security.AccessControl.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll",
-        "runtimes/win/lib/netstandard1.3/System.Security.AccessControl.dll",
-        "runtimes/win/lib/uap10.1/System.Security.AccessControl.dll",
-        "system.security.accesscontrol.4.4.0-preview1-25305-02.nupkg.sha512",
-        "system.security.accesscontrol.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Security.Claims/4.3.0": {
       "sha512": "P/+BR/2lnc4PNDHt/TPBAWHVMLMRHsyYZbU1NphW4HIWzCggz8mJbTQQ3MKljFE7LS3WagmVFuBgoLcFzYXlkA==",
       "type": "package",
@@ -4879,25 +4785,6 @@
         "system.security.cryptography.x509certificates.nuspec"
       ]
     },
-    "System.Security.Permissions/4.4.0-preview1-25305-02": {
-      "sha512": "W4+sOQhP/hijYNMx/TQK2zXP1+8a9WYAvuMQS4XBe+Phfv8fqc4h+U/fzkWC5BuNN0InNY46F5WT1bbOyObQdg==",
-      "type": "package",
-      "path": "system.security.permissions/4.4.0-preview1-25305-02",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net461/System.Security.Permissions.dll",
-        "lib/netstandard2.0/System.Security.Permissions.dll",
-        "ref/net461/System.Security.Permissions.dll",
-        "ref/netstandard2.0/System.Security.Permissions.dll",
-        "ref/uap10.1/System.Security.Permissions.dll",
-        "runtimes/win/lib/net461/System.Security.Permissions.dll",
-        "system.security.permissions.4.4.0-preview1-25305-02.nupkg.sha512",
-        "system.security.permissions.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Security.Principal/4.3.0": {
       "sha512": "I1tkfQlAoMM2URscUtpcRo/hX0jinXx6a/KUtEQoz3owaYwl3qwsO8cbzYVVnjxrzxjHo3nJC+62uolgeGIS9A==",
       "type": "package",
@@ -4955,19 +4842,15 @@
         "system.security.principal.nuspec"
       ]
     },
-    "System.Security.Principal.Windows/4.4.0-preview1-25305-02": {
-      "sha512": "i/87uUlutjoXKIGEgjAh6tzpFtwhBZxMqX+ZW38UoJqHxaW0+cglUovfEfPRJeEYFhck9SqJqJnEqsVvAgu6oQ==",
+    "System.Security.Principal.Windows/4.3.0": {
+      "sha512": "HVL1rvqYtnRCxFsYag/2le/ZfKLK4yMw79+s6FmKXbSCNN0JeAhrYxnRAHFoWRa0dEojsDcbBSpH3l22QxAVyw==",
       "type": "package",
-      "path": "system.security.principal.windows/4.4.0-preview1-25305-02",
+      "path": "system.security.principal.windows/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/net46/System.Security.Principal.Windows.dll",
-        "lib/net461/System.Security.Principal.Windows.dll",
-        "lib/netstandard1.3/System.Security.Principal.Windows.dll",
-        "lib/netstandard2.0/System.Security.Principal.Windows.dll",
         "ref/net46/System.Security.Principal.Windows.dll",
-        "ref/net461/System.Security.Principal.Windows.dll",
         "ref/netstandard1.3/System.Security.Principal.Windows.dll",
         "ref/netstandard1.3/System.Security.Principal.Windows.xml",
         "ref/netstandard1.3/de/System.Security.Principal.Windows.xml",
@@ -4979,38 +4862,11 @@
         "ref/netstandard1.3/ru/System.Security.Principal.Windows.xml",
         "ref/netstandard1.3/zh-hans/System.Security.Principal.Windows.xml",
         "ref/netstandard1.3/zh-hant/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/System.Security.Principal.Windows.dll",
-        "ref/netstandard2.0/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/de/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/es/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/fr/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/it/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/ja/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/ko/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/ru/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/zh-hans/System.Security.Principal.Windows.xml",
-        "ref/netstandard2.0/zh-hant/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/System.Security.Principal.Windows.dll",
-        "ref/uap10.1/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/de/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/es/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/fr/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/it/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/ja/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/ko/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/ru/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/zh-hans/System.Security.Principal.Windows.xml",
-        "ref/uap10.1/zh-hant/System.Security.Principal.Windows.xml",
-        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netstandard1.3/System.Security.Principal.Windows.dll",
         "runtimes/win/lib/net46/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/net461/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
         "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
-        "runtimes/win/lib/uap10.1/System.Security.Principal.Windows.dll",
-        "system.security.principal.windows.4.4.0-preview1-25305-02.nupkg.sha512",
-        "system.security.principal.windows.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.security.principal.windows.4.3.0.nupkg.sha512",
+        "system.security.principal.windows.nuspec"
       ]
     },
     "System.Text.Encoding/4.3.0": {
@@ -5685,6 +5541,16 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "DuGu.Standard.Html/1.0.2": {
+      "type": "project",
+      "path": "../DuGu.Standard.Html/DuGu.Standard.Html.csproj",
+      "msbuildProject": "../DuGu.Standard.Html/DuGu.Standard.Html.csproj"
+    },
+    "DuGu.Standard.Http/1.0.3": {
+      "type": "project",
+      "path": "../DuGu.Standard.Http/DuGu.Standard.Http.csproj",
+      "msbuildProject": "../DuGu.Standard.Http/DuGu.Standard.Http.csproj"
     },
     "WebMagicSharp/1.0.0": {
       "type": "project",

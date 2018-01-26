@@ -337,17 +337,17 @@ namespace DuGu.Standard.Http
         /// <param name="str">需要解码的字符串</param>
         /// <param name="encoding">指定解码类型</param>
         /// <returns>解码后的字符串</returns>
-        public string UrlDecoding(string str, Encoding encoding = null)
-        {
-            if (encoding == null)
-            {
-                return System.Web.HttpUtility.UrlDecode(str, Encoding.UTF8);
-            }
-            else
-            {
-                return System.Web.HttpUtility.UrlDecode(str, encoding);
-            }
-        }
+//         public string UrlDecoding(string str, Encoding encoding = null)
+//         {
+//             if (encoding == null)
+//             {
+//                 return System.Web.HttpUtility.UrlDecode(str, Encoding.UTF8);
+//             }
+//             else
+//             {
+//                 return System.Web.HttpUtility.UrlDecode(str, encoding);
+//             }
+//         }
 
         /// <summary>
         /// Html解码

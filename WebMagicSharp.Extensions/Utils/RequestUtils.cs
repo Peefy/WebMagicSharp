@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebMagicSharp.Utils
 {
-    public class RequestUtils
+    internal class RequestUtils
     {
         private static string p4Range = "\\[(\\d+)\\-(\\d+)\\]";
 
@@ -25,7 +25,7 @@ namespace WebMagicSharp.Utils
             {
                 return new List<Request>();
             }
-            List<Request> requests = new List<Request>();
+            var requests = new List<Request>();
             for (int i = rangeFrom; i <= rangeTo; i++)
             {
                 requests.Add(new Request(Regex.Replace(exp, p4Range, i.ToString())));

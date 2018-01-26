@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebMagicSharp.Utils
 {
-    public static class AttributeUtil
+    internal static class AttributeUtil
     {
         public static T GetAttribute<T>(MemberInfo member) where T : Attribute
         {

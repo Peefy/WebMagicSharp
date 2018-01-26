@@ -1,9 +1,9 @@
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\bin\Release\netstandard2.0\DuGu.Standard.Html.deps.json
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\bin\Release\netstandard2.0\DuGu.Standard.Html.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\bin\Release\netstandard2.0\DuGu.Standard.Html.pdb
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\obj\Release\netstandard2.0\DuGu.Standard.Html.csprojResolveAssemblyReference.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\obj\Release\netstandard2.0\DuGu.Standard.Html.csproj.CoreCompileInputs.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\obj\Release\netstandard2.0\DuGu.Standard.Html.AssemblyInfoInputs.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\obj\Release\netstandard2.0\DuGu.Standard.Html.AssemblyInfo.cs
-D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\bin\Release\netstandard2.0\DuGu.Standard.Html.deps.json
-D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\bin\Release\netstandard2.0\DuGu.Standard.Html.dll
-D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\bin\Release\netstandard2.0\DuGu.Standard.Html.pdb
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\obj\Release\netstandard2.0\DuGu.Standard.Html.dll
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\DuGu.Standard.Html\obj\Release\netstandard2.0\DuGu.Standard.Html.pdb

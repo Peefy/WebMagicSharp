@@ -6,6 +6,6 @@ namespace WebMagicSharp.Handler
 {
     public interface ISubPageProcessor : IRequestMatcher
     {
-        MatchOther processPage(Page page);
+        MatchOther ProcessPage(Page page);
     }
 }
