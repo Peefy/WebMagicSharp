@@ -60,20 +60,24 @@ namespace WebMagicSharp.Selector
          */
         public String SelectDocument(ISelector selector)
         {
-            if (selector is IElementSelector) {
-                IElementSelector elementSelector = (IElementSelector)selector;
+            if (selector is IElementSelector elementSelector)
+            {
                 return elementSelector.Select(GetDocument());
-            } else {
+            }
+            else
+            {
                 return selector.Select(FirstSourceText);
             }
         }
 
         public List<String> SelectDocumentForList(ISelector selector)
         {
-            if (selector is IElementSelector) {
-                IElementSelector elementSelector = (IElementSelector)selector;
+            if (selector is IElementSelector elementSelector)
+            {
                 return elementSelector.SelectList(GetDocument());
-            } else {
+            }
+            else
+            {
                 return selector.SelectList(FirstSourceText);
             }
         }

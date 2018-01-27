@@ -141,8 +141,7 @@ namespace DuGu.Standard.Http
                     }
                     else
                     {
-                        int i;
-                        int.TryParse(fs.Length.ToString(), out i);
+                        int.TryParse(fs.Length.ToString(), out int i);
                         ss = r.ReadBytes(i);
 
                         if (IsUTF8Bytes(ss))

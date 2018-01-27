@@ -84,8 +84,7 @@ namespace DuGu.Standard.Html
                 _allPairs.Add(nvp);
 
                 // index by name
-                List<KeyValuePair<string, string>> al;
-                if (!_pairsWithName.TryGetValue(nvp.Key, out al))
+                if (!_pairsWithName.TryGetValue(nvp.Key, out List<KeyValuePair<string, string>> al))
                 {
                     al = new List<KeyValuePair<string, string>>();
                     _pairsWithName.Add(nvp.Key, al);

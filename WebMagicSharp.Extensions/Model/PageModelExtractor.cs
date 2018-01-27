@@ -116,10 +116,7 @@ namespace WebMagicSharp.Model
                 propertyExtractor = new PropertyExtractor(property,
                     new RegexSelector(regexPattern), Source.Url,
                     extractByUrlAttr.NotNull, extractByUrlAttr.IsMulti ||
-                    typeof(List<object>).IsAssignableFrom(property.GetType()))
-                {
-                    SetterMethod = GetSetterMethod(type, property)
-                };
+                    typeof(List<object>).IsAssignableFrom(property.GetType()));
             }
             return propertyExtractor;
         }
@@ -227,8 +224,10 @@ namespace WebMagicSharp.Model
                         break;
                 }
                 fieldExtractor = new FieldExtractor(field, selector, source,
-                    extractBy.NotNull, true);
-                fieldExtractor.SetterMethod = null;
+                    extractBy.NotNull, true)
+                {
+                    SetterMethod = null
+                };
 
             }
             return fieldExtractor;
@@ -425,7 +424,7 @@ namespace WebMagicSharp.Model
             return o;
         }
 
-        private object Convert(string value, IObjectFormatter<object> objectFormatter)
+        private object Convert(string value, IObjectFormatter objectFormatter)
         {
             try
             {
@@ -440,7 +439,7 @@ namespace WebMagicSharp.Model
             return null;
         }
 
-        private List<object> Convert(List<string> values, IObjectFormatter<object> objectFormatter)
+        private List<object> Convert(List<string> values, IObjectFormatter objectFormatter)
         {
             var objects = new List<object>();
             foreach(var value in values)

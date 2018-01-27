@@ -39,8 +39,7 @@ namespace DuGu.Standard.Html
                 {
                     throw new ArgumentNullException("name");
                 }
-                HtmlAttribute value;
-                return Hashitems.TryGetValue(name.ToLower(), out value) ? value : null;
+                return Hashitems.TryGetValue(name.ToLower(), out HtmlAttribute value) ? value : null;
             }
             set { Append(value); }
         }

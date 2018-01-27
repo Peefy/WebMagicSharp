@@ -600,8 +600,7 @@ namespace DuGu.Standard.Html
                 throw new ArgumentNullException("name");
             }
 
-            HtmlElementFlag flag;
-            if (!ElementsFlags.TryGetValue(name, out flag))
+            if (!ElementsFlags.TryGetValue(name, out HtmlElementFlag flag))
             {
                 return false;
             }
@@ -649,8 +648,7 @@ namespace DuGu.Standard.Html
                 throw new ArgumentNullException("name");
             }
 
-            HtmlElementFlag flag;
-            if (!ElementsFlags.TryGetValue(name, out flag))
+            if (!ElementsFlags.TryGetValue(name, out HtmlElementFlag flag))
             {
                 return false;
             }
@@ -670,8 +668,7 @@ namespace DuGu.Standard.Html
                 throw new ArgumentNullException("name");
             }
 
-            HtmlElementFlag flag;
-            if (!ElementsFlags.TryGetValue(name, out flag))
+            if (!ElementsFlags.TryGetValue(name, out HtmlElementFlag flag))
             {
                 return false;
             }
@@ -708,8 +705,7 @@ namespace DuGu.Standard.Html
                 return true;
             }
 
-            HtmlElementFlag flag;
-            if (!ElementsFlags.TryGetValue(name, out flag))
+            if (!ElementsFlags.TryGetValue(name, out HtmlElementFlag flag))
             {
                 return false;
             }
@@ -879,13 +875,8 @@ namespace DuGu.Standard.Html
         /// <returns>The cloned node.</returns>
         public HtmlNode CloneNode(string newName, bool deep)
         {
-            if (newName == null)
-            {
-                throw new ArgumentNullException("newName");
-            }
-
             HtmlNode node = CloneNode(deep);
-            node.Name = newName;
+            node.Name = newName ?? throw new ArgumentNullException("newName");
             return node;
         }
 

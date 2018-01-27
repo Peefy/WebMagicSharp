@@ -1016,8 +1016,10 @@ namespace DuGu.Standard.Html
         public HtmlDocument Load(string url, string proxyHost, int proxyPort, string userId, string password)
         {
             //Create my proxy
-            WebProxy myProxy = new WebProxy(proxyHost, proxyPort);
-            myProxy.BypassProxyOnLocal = true;
+            WebProxy myProxy = new WebProxy(proxyHost, proxyPort)
+            {
+                BypassProxyOnLocal = true
+            };
 
             //Create my credentials
             NetworkCredential myCreds = null;
@@ -1046,8 +1048,10 @@ namespace DuGu.Standard.Html
         public HtmlDocument Load(Uri uri, string proxyHost, int proxyPort, string userId, string password)
         {
             //Create my proxy
-            WebProxy myProxy = new WebProxy(proxyHost, proxyPort);
-            myProxy.BypassProxyOnLocal = true;
+            WebProxy myProxy = new WebProxy(proxyHost, proxyPort)
+            {
+                BypassProxyOnLocal = true
+            };
 
             //Create my credentials
             NetworkCredential myCreds = null;
@@ -1102,8 +1106,10 @@ namespace DuGu.Standard.Html
             {
                 if (uri.Scheme == Uri.UriSchemeFile)
                 {
-                    doc = new HtmlDocument();
-                    doc.OptionAutoCloseOnEnd = false;
+                    doc = new HtmlDocument
+                    {
+                        OptionAutoCloseOnEnd = false
+                    };
                     doc.OptionAutoCloseOnEnd = true;
                     if (OverrideEncoding != null)
                         doc.Load(uri.OriginalString, OverrideEncoding);
@@ -1160,8 +1166,10 @@ namespace DuGu.Standard.Html
             {
                 if (uri.Scheme == Uri.UriSchemeFile)
                 {
-                    doc = new HtmlDocument();
-                    doc.OptionAutoCloseOnEnd = false;
+                    doc = new HtmlDocument
+                    {
+                        OptionAutoCloseOnEnd = false
+                    };
                     doc.OptionAutoCloseOnEnd = true;
                     doc.DetectEncodingAndLoad(uri.OriginalString, _autoDetectEncoding);
                 }
@@ -1378,10 +1386,9 @@ namespace DuGu.Standard.Html
                 if (resp.StatusCode == HttpStatusCode.Found)
                 {
                     var location = resp.Headers["Location"];
-                    Uri locationUri;
 
                     // Do the redirection after we've eaten all the cookies...
-                    if (!Uri.TryCreate(location, UriKind.Absolute, out locationUri))
+                    if (!Uri.TryCreate(location, UriKind.Absolute, out Uri locationUri))
                     {
                         locationUri = new Uri(uri, location);
                     }
@@ -1514,9 +1521,11 @@ namespace DuGu.Standard.Html
 
         private HtmlDocument LoadUrl(Uri uri, string method, WebProxy proxy, NetworkCredential creds)
         {
-            HtmlDocument doc = new HtmlDocument();
-            doc.OptionAutoCloseOnEnd = false;
-            doc.OptionFixNestedTags = true;
+            HtmlDocument doc = new HtmlDocument
+            {
+                OptionAutoCloseOnEnd = false,
+                OptionFixNestedTags = true
+            };
             _statusCode = Get(uri, method, null, doc, proxy, creds);
             if (_statusCode == HttpStatusCode.NotModified)
             {

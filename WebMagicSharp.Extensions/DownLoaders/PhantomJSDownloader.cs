@@ -131,14 +131,16 @@ namespace WebMagicSharp.DownLoaders
             if (string.IsNullOrEmpty(command) == false)
             {
                 Process process = new Process();//创建进程对象  
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.FileName = "cmd.exe";//设定需要执行的命令  
-                //startInfo.Arguments = "/C " + command;//“/C”表示执行完命令后马上退出 
-                //startInfo.Arguments = command;//“/C”表示执行完命令后马上退出 
-                startInfo.UseShellExecute = false;//不使用系统外壳程序启动  
-                startInfo.RedirectStandardInput = true;  //重定向输入  
-                startInfo.RedirectStandardOutput = true; //重定向输出  
-                startInfo.CreateNoWindow = true;//不创建窗口  
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",//设定需要执行的命令  
+                                         //startInfo.Arguments = "/C " + command;//“/C”表示执行完命令后马上退出 
+                                         //startInfo.Arguments = command;//“/C”表示执行完命令后马上退出 
+                    UseShellExecute = false,//不使用系统外壳程序启动  
+                    RedirectStandardInput = true,  //重定向输入  
+                    RedirectStandardOutput = true, //重定向输出  
+                    CreateNoWindow = true//不创建窗口  
+                };
                 process.StartInfo = startInfo;
                 try
                 {

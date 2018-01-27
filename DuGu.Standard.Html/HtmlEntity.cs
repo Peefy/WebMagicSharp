@@ -640,8 +640,7 @@ namespace DuGu.Standard.Html
                                     else
                                     {
                                         // named entity?
-                                        int code;
-                                        if (!_entityValue.TryGetValue(entity.ToString(), out code))
+                                        if (!_entityValue.TryGetValue(entity.ToString(), out int code))
                                         {
                                             // nope
                                             sb.Append("&" + entity + ";");
@@ -767,8 +766,7 @@ namespace DuGu.Standard.Html
                 if ((code > 127) ||
                     (entitizeQuotAmpAndLtGt && ((code == 34) || (code == 38) || (code == 60) || (code == 62))))
                 {
-                    string entity;
-                    EntityName.TryGetValue(code, out entity);
+                    EntityName.TryGetValue(code, out string entity);
 
                     if ((entity == null) || (!useNames))
                     {
