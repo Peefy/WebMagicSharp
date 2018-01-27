@@ -7,6 +7,8 @@ namespace WebMagicSharp.Model.Attributes
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = false)]
     public class ComboExtractAttribute : Attribute
     {
+
+        public ExtractByAttribute[] Value { get; set; }
         /// <summary>
         /// Judge is not null.
         /// </summary>

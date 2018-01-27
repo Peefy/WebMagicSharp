@@ -72,6 +72,19 @@ namespace WebMagicSharp.Model
             }
         }
 
+        [Obsolete]
+        private FieldExtractor GetAttributeExtractCombo(Type type, FieldInfo field)
+        {
+            FieldExtractor fieldExtractor = null;
+            var comboExtract = AttributeUtil.GetAttribute<ComboExtractAttribute>(type);
+            if(comboExtract != null)
+            {
+                var extractBys = comboExtract.Value;
+
+            }
+            return fieldExtractor;
+        }
+
         private FieldExtractor GetAttributeExtractBy(Type type, FieldInfo field)
         {
             FieldExtractor fieldExtractor = null;
@@ -105,14 +118,71 @@ namespace WebMagicSharp.Model
             return fieldExtractor;
         }
 
+        private PropertyExtractor GetAttributeExtractBy(Type type, PropertyInfo property)
+        {
+            PropertyExtractor propertyExtractor = null;
+            var extractBy = AttributeUtil.GetAttribute<ExtractByAttribute>(property);
+            if (extractBy != null)
+            {
+                var selector = ExtractorUtils.GetSelector(extractBy);
+                var sourceTmp = extractBy.Source;
+                if (extractBy.Type == ExtractType.JsonPath)
+                {
+                    sourceTmp = ExtractSource.RawText;
+                }
+                Source source = Source.Html;
+                switch (sourceTmp)
+                {
+                    case ExtractSource.RawText:
+                        source = Source.RawText;
+                        break;
+                    case ExtractSource.RawHtml:
+                        source = Source.RawHtml;
+                        break;
+                    case ExtractSource.SelectedHtml:
+                        source = Source.Html;
+                        break;
+                }
+                propertyExtractor = new PropertyExtractor(property, selector, source,
+                    extractBy.NotNull, true);
+            }
+            return propertyExtractor;
+        }
+
+        public static MethodInfo GetSetterMethod(Type type, PropertyInfo property)
+        {
+            return property?.SetMethod;
+        }
+
         private void InitClassExtractors()
         {
-            var attr = AttributeUtil.GetAttribute<TargetUrlAttribute>(type);
-            if (attr == null)
+            var targeturlAttr = AttributeUtil.GetAttribute<TargetUrlAttribute>(type);
+            if (targeturlAttr == null)
                 targetUrlRegexs.Add(new Regex(".*"));
             else
             {
-
+                var value = (targeturlAttr as TargetUrlAttribute).Value;
+                targetUrlRegexs.Add(new Regex(value.Replace(".", "\\.").
+                    Replace("*", "[^\"'#]*")));
+                if(!(targeturlAttr as TargetUrlAttribute).SourceRegion.Equals(""))
+                {
+                    targetUrlRegionSelector = new XPathSelector((targeturlAttr as TargetUrlAttribute).SourceRegion);
+                }
+            }
+            var helpUrlAttr = AttributeUtil.GetAttribute<HelpUrlAttribute>(type);
+            if(helpUrlAttr != null)
+            {
+                var value = helpUrlAttr.Value;
+                helpUrlRegexs.Add(new Regex(value.Replace(".", "\\.")
+                    .Replace("*", "[^\"'#]*")));
+                if (!helpUrlAttr.SourceRegion.Equals(""))
+                    helpUrlRegionSelector = new XPathSelector(helpUrlAttr.SourceRegion);
+            }
+            var extractByAttr = AttributeUtil.GetAttribute<ExtractByAttribute>(type);
+            if(extractByAttr != null)
+            {
+                objectExtractor = new Extractor(new XPathSelector(extractByAttr.Value),
+                    Source.Html, extractByAttr.NotNull, extractByAttr.IsMulti);
             }
         }
 
@@ -270,6 +340,17 @@ namespace WebMagicSharp.Model
                 fieldExtractor.SetterMethod.Invoke(obj, parameters: new object[] { value });
             }
             fieldExtractor.Field.SetValue(obj, value);
+        }
+
+        private void SetProperty(object obj, PropertyExtractor propertyExtractor, object value)
+        {
+            if (value == null)
+                return;
+            if(propertyExtractor.SetterMethod != null)
+            {
+                propertyExtractor.SetterMethod.Invoke(obj, parameters: new object[] { value });
+            }
+            propertyExtractor.Property.SetValue(obj, value);
         }
 
         public Type Type => type;

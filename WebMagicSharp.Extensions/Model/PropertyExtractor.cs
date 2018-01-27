@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+
 using WebMagicSharp.Model.Formatter;
 using WebMagicSharp.Selector;
 
@@ -8,7 +10,9 @@ namespace WebMagicSharp.Model
     {
         protected PropertyInfo propertyInfo;
 
-        public MethodInfo SetterMethod { get; set; }
+        public MethodInfo SetterMethod => propertyInfo.GetSetMethod();
+
+        public MethodInfo GetterMethod => propertyInfo.GetGetMethod();
 
         public IObjectFormatter<object> ObjectFormatter { get; set; }
 
