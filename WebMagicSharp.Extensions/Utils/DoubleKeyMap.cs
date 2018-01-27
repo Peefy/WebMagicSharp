@@ -10,7 +10,7 @@ namespace WebMagicSharp.Utils
 
         public DoubleKeyMap()
         {
-            init();
+            Init();
         }
 
         public DoubleKeyMap(Dictionary<K1, Dictionary<K2, V>> map) 
@@ -18,7 +18,7 @@ namespace WebMagicSharp.Utils
             this.map = map;
         }
 
-        private void init()
+        private void Init()
         {
             if (map == null)
             {
@@ -40,12 +40,12 @@ namespace WebMagicSharp.Utils
             return Get(key1)[key2];
         }
 
-        public V put(K1 key1, Dictionary<K2, V> submap)
+        public V Put(K1 key1, Dictionary<K2, V> submap)
         {
-            return put(key1, submap);
+            return Put(key1, submap);
         }
 
-        public void put(K1 key1, K2 key2, V value)
+        public void Put(K1 key1, K2 key2, V value)
         {
             lock(this)
             {

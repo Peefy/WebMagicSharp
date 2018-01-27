@@ -30,28 +30,28 @@ namespace WebMagicSharp.Configurable
         {
             foreach(var extractRule in extractRules)
             {
-                if (extractRule.isMulti())
+                if (extractRule.IsMulti())
                 {
-                    List<String> results = page.GetHtml().SelectDocumentForList(extractRule.getSelector());
-                    if (extractRule.isNotNull() && results.Count == 0)
+                    List<String> results = page.GetHtml().SelectDocumentForList(extractRule.GetSelector());
+                    if (extractRule.IsNotNull() && results.Count == 0)
                     {
                         page.SetSkip(true);
                     }
                     else
                     {
-                        page.GetResultItems().Put(extractRule.getFieldName(), results);
+                        page.GetResultItems().Put(extractRule.GetFieldName(), results);
                     }
                 }
                 else
                 {
-                    String result = page.GetHtml().SelectDocument(extractRule.getSelector());
-                    if (extractRule.isNotNull() && result == null)
+                    String result = page.GetHtml().SelectDocument(extractRule.GetSelector());
+                    if (extractRule.IsNotNull() && result == null)
                     {
                         page.SetSkip(true);
                     }
                     else
                     {
-                        page.GetResultItems().Put(extractRule.getFieldName(), result);
+                        page.GetResultItems().Put(extractRule.GetFieldName(), result);
                     }
                 }
             }

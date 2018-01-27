@@ -113,7 +113,7 @@ namespace DuGu.Standard.Http
         /// <returns></returns>
         public string GetTimeToStamp(DateTime time)
         {
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+            DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
             return ((time - startTime).TotalSeconds).ToString();
         }
 

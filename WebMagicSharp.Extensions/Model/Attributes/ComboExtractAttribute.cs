@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebMagicSharp.Model.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class ComboExtractAttribute : Attribute
     {
 

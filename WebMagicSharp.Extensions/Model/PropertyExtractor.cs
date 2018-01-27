@@ -14,7 +14,7 @@ namespace WebMagicSharp.Model
 
         public MethodInfo GetterMethod => propertyInfo.GetGetMethod();
 
-        public IObjectFormatter<object> ObjectFormatter { get; set; }
+        public IObjectFormatter ObjectFormatter { get; set; }
 
         public PropertyExtractor(PropertyInfo property, ISelector selector, Source source, bool notNull, bool multi) : 
             base(selector, source, notNull, multi)

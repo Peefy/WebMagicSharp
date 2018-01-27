@@ -48,7 +48,7 @@ namespace WebMagicSharp.Model
             {
                 if(IsExtractLinks == true)
                 {
-                    ExtractLinks(page, pageModelExtractor)
+                    ExtractLinks(page, pageModelExtractor);
                 }
             }
         }

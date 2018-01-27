@@ -1,0 +1,13 @@
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\WebMagicSharp.deps.json
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\WebMagicSharp.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\WebMagicSharp.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\DuGu.Standard.Html.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\DuGu.Standard.Http.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\DuGu.Standard.Html.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\bin\Release\netstandard2.0\DuGu.Standard.Http.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.csprojResolveAssemblyReference.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.csproj.CoreCompileInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.AssemblyInfoInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.AssemblyInfo.cs
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.pdb

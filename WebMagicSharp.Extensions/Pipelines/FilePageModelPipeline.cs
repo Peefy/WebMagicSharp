@@ -1,5 +1,4 @@
 ﻿using System;
-<<<<<<< HEAD
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
@@ -58,14 +57,4 @@ namespace WebMagicSharp.Pipelines
         }
     }
 
-=======
-using System.Collections.Generic;
-using System.Text;
-
-namespace WebMagicSharp.Pipelines
-{
-    public class FilePageModelPipeline
-    {
-    }
->>>>>>> fe0493ec8c1dbdf2b0c98f6d6f050907a7aed103
 }

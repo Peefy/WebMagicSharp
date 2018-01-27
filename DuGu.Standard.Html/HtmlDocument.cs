@@ -182,10 +182,7 @@ namespace DuGu.Standard.Html
         /// </summary>
         public HtmlDocument()
         {
-            if (DefaultBuilder != null)
-            {
-                DefaultBuilder(this);
-            }
+            DefaultBuilder?.Invoke(this);
 
             _documentnode = CreateNode(HtmlNodeType.Document, 0);
 
@@ -378,11 +375,8 @@ namespace DuGu.Standard.Html
         /// <returns>The new HTML attribute.</returns>
         public HtmlAttribute CreateAttribute(string name)
         {
-            if (name == null)
-                throw new ArgumentNullException("name");
-
             HtmlAttribute att = CreateAttribute();
-            att.Name = name;
+            att.Name = name ?? throw new ArgumentNullException("name");
             return att;
         }
 
@@ -420,13 +414,8 @@ namespace DuGu.Standard.Html
         /// <returns>The new HTML comment node.</returns>
         public HtmlCommentNode CreateComment(string comment)
         {
-            if (comment == null)
-            {
-                throw new ArgumentNullException("comment");
-            }
-
             HtmlCommentNode c = CreateComment();
-            c.Comment = comment;
+            c.Comment = comment ?? throw new ArgumentNullException("comment");
             return c;
         }
 
@@ -437,13 +426,8 @@ namespace DuGu.Standard.Html
         /// <returns>The new HTML node.</returns>
         public HtmlNode CreateElement(string name)
         {
-            if (name == null)
-            {
-                throw new ArgumentNullException("name");
-            }
-
             HtmlNode node = CreateNode(HtmlNodeType.Element);
-            node.Name = name;
+            node.Name = name ?? throw new ArgumentNullException("name");
             return node;
         }
 
@@ -463,13 +447,8 @@ namespace DuGu.Standard.Html
         /// <returns>The new HTML text node.</returns>
         public HtmlTextNode CreateTextNode(string text)
         {
-            if (text == null)
-            {
-                throw new ArgumentNullException("text");
-            }
-
             HtmlTextNode t = CreateTextNode();
-            t.Text = text;
+            t.Text = text ?? throw new ArgumentNullException("text");
             return t;
         }
 
@@ -520,8 +499,7 @@ namespace DuGu.Standard.Html
                 Nodesid = null;
             }
 
-            StreamReader sr = reader as StreamReader;
-            if (sr != null)
+            if (reader is StreamReader sr)
             {
                 Text = sr.ReadToEnd();
                 _streamencoding = sr.CurrentEncoding;
@@ -666,8 +644,7 @@ namespace DuGu.Standard.Html
                 Nodesid = null;
             }
 
-            StreamReader sr = reader as StreamReader;
-            if (sr != null)
+            if (reader is StreamReader sr)
             {
                 try
                 {
@@ -1099,9 +1076,8 @@ namespace DuGu.Standard.Html
 
         private string[] GetResetters(string name)
         {
-            string[] resetters;
 
-            if (!HtmlResetters.TryGetValue(name, out resetters))
+            if (!HtmlResetters.TryGetValue(name, out string[] resetters))
             {
                 return null;
             }

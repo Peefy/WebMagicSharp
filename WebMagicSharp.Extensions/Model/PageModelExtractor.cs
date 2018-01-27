@@ -25,6 +25,8 @@ namespace WebMagicSharp.Model
 
         private List<FieldExtractor> fieldExtractors;
 
+        private List<PropertyExtractor> propertyExtractors;
+
         private Extractor objectExtractor;
 
         private Type type;
@@ -41,24 +43,25 @@ namespace WebMagicSharp.Model
             this.type = type;
             InitClassExtractors();
             fieldExtractors = new List<FieldExtractor>();
-            var fields = type.GetFields();
-            var propertys = type.GetProperties();
+            propertyExtractors = new List<PropertyExtractor>();
+            var fields = TypeUtil.GetFieldsIncludeBaseClass(type);
+            var propertys = TypeUtil.GetPropertysIncludeBaseClass(type);
             foreach(var field in fields)
             {
-                FieldExtractor fieldExtractor = getAnnotationExtractBy(clazz, field);
-                FieldExtractor fieldExtractorTmp = getAnnotationExtractCombo(clazz, field);
+                var fieldExtractor = GetAttributeExtractBy(type, field);
+                var fieldExtractorTmp = GetAttributeExtractCombo(type, field);
                 if (fieldExtractor != null && fieldExtractorTmp != null)
                 {
-                    throw new IllegalStateException("Only one of 'ExtractBy ComboExtract ExtractByUrl' can be added to a field!");
+                    throw new Exception("Only one of 'ExtractByAttribute, ComboExtractAttribute or ExtractByUrl' can be added to a field!");
                 }
                 else if (fieldExtractor == null && fieldExtractorTmp != null)
                 {
                     fieldExtractor = fieldExtractorTmp;
                 }
-                fieldExtractorTmp = getAnnotationExtractByUrl(clazz, field);
+                fieldExtractorTmp = GetAttributeExtractByUrl(type, field);
                 if (fieldExtractor != null && fieldExtractorTmp != null)
                 {
-                    throw new IllegalStateException("Only one of 'ExtractBy ComboExtract ExtractByUrl' can be added to a field!");
+                    throw new Exception("Only one of 'ExtractBy ComboExtract ExtractByUrl' can be added to a field!");
                 }
                 else if (fieldExtractor == null && fieldExtractorTmp != null)
                 {
@@ -66,21 +69,134 @@ namespace WebMagicSharp.Model
                 }
                 if (fieldExtractor != null)
                 {
-                    fieldExtractor.setObjectFormatter(new ObjectFormatterBuilder().setField(field).build());
-                    fieldExtractors.add(fieldExtractor);
+                    fieldExtractor.ObjectFormatter = new ObjectFormatterBuilder<IObjectFormatter>().SetField(field).Build();
+                    fieldExtractors.Add(fieldExtractor);
                 }
             }
+            foreach(var property in propertys)
+            {
+                var propertyExtractor = GetAttributeExtractBy(type, property);
+                var propertyExtractorTmp = GetAttributeExtractCombo(type, property);
+                if (propertyExtractor != null && propertyExtractorTmp != null)
+                {
+                    throw new Exception("Only one of 'ExtractByAttribute, ComboExtractAttribute or ExtractByUrl' can be added to a field!");
+                }
+                else if (propertyExtractor == null && propertyExtractorTmp != null)
+                {
+                    propertyExtractor = propertyExtractorTmp;
+                }
+                propertyExtractorTmp = GetAttributeExtractByUrl(type, property);
+                if (propertyExtractor != null && propertyExtractorTmp != null)
+                {
+                    throw new Exception("Only one of 'ExtractBy ComboExtract ExtractByUrl' can be added to a field!");
+                }
+                else if (propertyExtractor == null && propertyExtractorTmp != null)
+                {
+                    propertyExtractor = propertyExtractorTmp;
+                }
+                if (propertyExtractor != null)
+                {
+                    propertyExtractor.ObjectFormatter = new ObjectFormatterBuilder<IObjectFormatter>().SetProperty(property).Build();
+                    propertyExtractors.Add(propertyExtractor);
+                }
+            }              
         }
 
-        [Obsolete]
+        private PropertyExtractor GetAttributeExtractByUrl(Type type, PropertyInfo property)
+        {
+            PropertyExtractor propertyExtractor = null;
+            var extractByUrlAttr = AttributeUtil.GetAttribute<ExtractByUrlAttribute>(property);
+            if (extractByUrlAttr != null)
+            {
+                var regexPattern = extractByUrlAttr.Value;
+                if (regexPattern.Trim().Equals(""))
+                {
+                    regexPattern = ".*";
+                }
+                propertyExtractor = new PropertyExtractor(property,
+                    new RegexSelector(regexPattern), Source.Url,
+                    extractByUrlAttr.NotNull, extractByUrlAttr.IsMulti ||
+                    typeof(List<object>).IsAssignableFrom(property.GetType()))
+                {
+                    SetterMethod = GetSetterMethod(type, property)
+                };
+            }
+            return propertyExtractor;
+        }
+
+        private FieldExtractor GetAttributeExtractByUrl(Type type, FieldInfo field)
+        {
+            FieldExtractor fieldExtractor = null;
+            var extractByUrlAttr = AttributeUtil.GetAttribute<ExtractByUrlAttribute>(field);
+            if(extractByUrlAttr != null)
+            {
+                var regexPattern = extractByUrlAttr.Value;
+                if(regexPattern.Trim().Equals(""))
+                {
+                    regexPattern = ".*";
+                }
+                fieldExtractor = new FieldExtractor(field,
+                    new RegexSelector(regexPattern), Source.Url,
+                    extractByUrlAttr.NotNull, extractByUrlAttr.IsMulti ||
+                    typeof(List<object>).IsAssignableFrom(field.GetType()))
+                {
+                    SetterMethod = GetSetterMethod(type, field)
+                };
+            }
+            return fieldExtractor;
+        }
+
+        private PropertyExtractor GetAttributeExtractCombo(Type type, PropertyInfo property)
+        {
+           PropertyExtractor propertyExtractor = null;
+            var comboExtract = AttributeUtil.GetAttribute<ComboExtractAttribute>(property);
+            if (comboExtract != null)
+            {
+                var extractBys = comboExtract.Value;
+                var selectors = ExtractorUtils.GetSelectors(extractBys);
+                ISelector selector = new AndSelector(selectors);
+                switch (comboExtract.Op)
+                {
+                    case Op.And:
+                        selector = new AndSelector(selectors);
+                        break;
+                    case Op.Or:
+                        selector = new OrSelector(selectors);
+                        break;
+                }
+                var source = comboExtract.Source == ExtractSource.RawHtml ? Source.RawHtml : Source.Html;
+                propertyExtractor = new PropertyExtractor(property, selector, source,
+                    comboExtract.NotNull, comboExtract.IsMulti ||
+                    typeof(List<object>).IsAssignableFrom(property.GetType()));
+            }
+            return propertyExtractor;
+        }
+
         private FieldExtractor GetAttributeExtractCombo(Type type, FieldInfo field)
         {
             FieldExtractor fieldExtractor = null;
-            var comboExtract = AttributeUtil.GetAttribute<ComboExtractAttribute>(type);
+            var comboExtract = AttributeUtil.GetAttribute<ComboExtractAttribute>(field);
             if(comboExtract != null)
             {
                 var extractBys = comboExtract.Value;
-
+                var selectors = ExtractorUtils.GetSelectors(extractBys);
+                ISelector selector = new AndSelector(selectors);
+                switch(comboExtract.Op)
+                {
+                    case Op.And:
+                        selector = new AndSelector(selectors);
+                        break;
+                    case Op.Or:
+                        selector = new OrSelector(selectors);
+                        break;
+                }
+                var source = comboExtract.Source == ExtractSource.RawHtml ? Source.RawHtml : Source.Html;
+                fieldExtractor = new FieldExtractor(field, selector, source,
+                    comboExtract.NotNull, comboExtract.IsMulti ||
+                    typeof(List<object>).IsAssignableFrom(field.GetType()))
+                {
+                    SetterMethod = GetSetterMethod(type, field) ?? null
+                };
             }
             return fieldExtractor;
         }
@@ -152,6 +268,11 @@ namespace WebMagicSharp.Model
         public static MethodInfo GetSetterMethod(Type type, PropertyInfo property)
         {
             return property?.SetMethod;
+        }
+
+        public static MethodInfo GetSetterMethod(Type type, FieldInfo field)
+        {
+            return null;
         }
 
         private void InitClassExtractors()

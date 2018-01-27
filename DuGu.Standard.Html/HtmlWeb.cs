@@ -1024,10 +1024,12 @@ namespace DuGu.Standard.Html
             if ((userId != null) && (password != null))
             {
                 myCreds = new NetworkCredential(userId, password);
-                CredentialCache credCache = new CredentialCache();
-                //Add the creds
-                credCache.Add(myProxy.Address, "Basic", myCreds);
-                credCache.Add(myProxy.Address, "Digest", myCreds);
+                CredentialCache credCache = new CredentialCache
+                {
+                    //Add the creds
+                    { myProxy.Address, "Basic", myCreds },
+                    { myProxy.Address, "Digest", myCreds }
+                };
             }
 
             return Load(url, "GET", myProxy, myCreds);
@@ -1052,10 +1054,12 @@ namespace DuGu.Standard.Html
             if ((userId != null) && (password != null))
             {
                 myCreds = new NetworkCredential(userId, password);
-                CredentialCache credCache = new CredentialCache();
-                //Add the creds
-                credCache.Add(myProxy.Address, "Basic", myCreds);
-                credCache.Add(myProxy.Address, "Digest", myCreds);
+                CredentialCache credCache = new CredentialCache
+                {
+                    //Add the creds
+                    { myProxy.Address, "Basic", myCreds },
+                    { myProxy.Address, "Digest", myCreds }
+                };
             }
 
             return Load(uri, "GET", myProxy, myCreds);
@@ -1112,10 +1116,7 @@ namespace DuGu.Standard.Html
                 }
             }
 
-            if (PreHandleDocument != null)
-            {
-                PreHandleDocument(doc);
-            }
+            PreHandleDocument?.Invoke(doc);
 
             return doc;
         }

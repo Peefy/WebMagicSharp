@@ -2,7 +2,7 @@
 
 namespace WebMagicSharp.Model.Attributes
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class ExtractByUrlAttribute : Attribute
     {
         public string Value { get; set; } = "";

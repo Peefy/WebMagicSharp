@@ -1,0 +1,4 @@
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.csprojResolveAssemblyReference.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.csproj.CoreCompileInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.AssemblyInfoInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.AssemblyInfo.cs

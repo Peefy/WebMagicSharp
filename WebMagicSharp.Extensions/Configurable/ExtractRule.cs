@@ -21,57 +21,57 @@ namespace WebMagicSharp.Configurable
 
         private bool notNull = false;
 
-        public String getFieldName()
+        public String GetFieldName()
         {
             return fieldName;
         }
 
-        public void setFieldName(String fieldName)
+        public void SetFieldName(String fieldName)
         {
             this.fieldName = fieldName;
         }
 
-        public ExpressionType getExpressionType()
+        public ExpressionType GetExpressionType()
         {
             return expressionType;
         }
 
-        public void setExpressionType(ExpressionType expressionType)
+        public void SetExpressionType(ExpressionType expressionType)
         {
             this.expressionType = expressionType;
         }
 
-        public String getExpressionValue()
+        public String GetExpressionValue()
         {
             return expressionValue;
         }
 
-        public void setExpressionValue(String expressionValue)
+        public void SetExpressionValue(String expressionValue)
         {
             this.expressionValue = expressionValue;
         }
 
-        public String[] getExpressionParams()
+        public String[] GetExpressionParams()
         {
             return expressionParams;
         }
 
-        public void setExpressionParams(String[] expressionParams)
+        public void SetExpressionParams(String[] expressionParams)
         {
             this.expressionParams = expressionParams;
         }
 
-        public bool isMulti()
+        public bool IsMulti()
         {
             return multi;
         }
 
-        public void setMulti(bool multi)
+        public void SetMulti(bool multi)
         {
             this.multi = multi;
         }
 
-        public ISelector getSelector()
+        public ISelector GetSelector()
         {
             if (selector == null)
             {
@@ -79,14 +79,14 @@ namespace WebMagicSharp.Configurable
                 {
                     if (selector == null)
                     {
-                        selector = compileSelector();
+                        selector = CompileSelector();
                     }
                 }
             }
             return selector;
         }
 
-        private ISelector compileSelector()
+        private ISelector CompileSelector()
         {
             switch (expressionType)
             {
@@ -118,17 +118,17 @@ namespace WebMagicSharp.Configurable
             }
         }
 
-        public void setSelector(ISelector selector)
+        public void SetSelector(ISelector selector)
         {
             this.selector = selector;
         }
 
-        public bool isNotNull()
+        public bool IsNotNull()
         {
             return notNull;
         }
 
-        public void setNotNull(bool notNull)
+        public void SetNotNull(bool notNull)
         {
             this.notNull = notNull;
         }

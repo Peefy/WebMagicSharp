@@ -19,7 +19,7 @@ namespace WebMagicSharp.DownLoaders
 
     public PhantomJSDownloader()
     {
-        this.initPhantomjsCrawlPath();
+        this.InitPhantomjsCrawlPath();
     }
 
     /**
@@ -32,9 +32,9 @@ namespace WebMagicSharp.DownLoaders
      *   
      * @param phantomJsCommand phantomJsCommand
      */
-    public PhantomJSDownloader(String phantomJsCommand)
+    public PhantomJSDownloader(string phantomJsCommand)
     {
-        this.initPhantomjsCrawlPath();
+        this.InitPhantomjsCrawlPath();
         PhantomJSDownloader.phantomJsCommand = phantomJsCommand;
     }
 
@@ -77,7 +77,7 @@ namespace WebMagicSharp.DownLoaders
         PhantomJSDownloader.crawlJsPath = crawlJsPath;
     }
 
-    private void initPhantomjsCrawlPath()
+    private void InitPhantomjsCrawlPath()
     {
         crawlJsPath = Path.Combine(Environment.CurrentDirectory, "crawl.js ");
     }
@@ -85,12 +85,12 @@ namespace WebMagicSharp.DownLoaders
     public override Page Download(Request request, ITask task)
     {
             Debug.WriteLine("downloading page: " + request.GetUrl());
-            var content = getPage(request);
+            var content = GetPage(request);
         if (content.Contains("HTTP request failed"))
         {
-            for (int i = 1; i <= getRetryNum(); i++)
+            for (int i = 1; i <= RetryNum; i++)
             {
-                content = getPage(request);
+                content = GetPage(request);
                 if (!content.Contains("HTTP request failed"))
                 {
                     break;
@@ -171,7 +171,7 @@ namespace WebMagicSharp.DownLoaders
             return output;
         }
 
-        protected String getPage(Request request)
+        protected String GetPage(Request request)
         {
             try
             {
@@ -186,15 +186,12 @@ namespace WebMagicSharp.DownLoaders
             return null;
         }
 
-    public int getRetryNum()
-    {
-        return retryNum;
-    }
+        public int RetryNum => retryNum;
 
-    public PhantomJSDownloader setRetryNum(int retryNum)
-    {
-        this.retryNum = retryNum;
-        return this;
+        public PhantomJSDownloader SetRetryNum(int retryNum)
+        {
+            this.retryNum = retryNum;
+            return this;
+        }
     }
-}
 }

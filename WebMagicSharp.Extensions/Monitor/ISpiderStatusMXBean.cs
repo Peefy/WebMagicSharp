@@ -6,29 +6,29 @@ namespace WebMagicSharp.Monitor
 {
     public interface ISpiderStatusMXBean
     {
-        string getName();
+        string GetName();
 
-        string getStatus();
+        string GetStatus();
 
-        int getThread();
+        int GetThread();
 
-        int getTotalPageCount();
+        int GetTotalPageCount();
 
-        int getLeftPageCount();
+        int GetLeftPageCount();
 
-        int getSuccessPageCount();
+        int GetSuccessPageCount();
 
-        int getErrorPageCount();
+        int GetErrorPageCount();
 
-        List<String> getErrorPages();
+        List<String> GetErrorPages();
 
-        void start();
+        void Start();
 
-        void stop();
+        void Stop();
 
-        DateTime getStartTime();
+        DateTime GetStartTime();
 
-        int getPagePerSecond();
+        int GetPagePerSecond();
     }
 
 }

@@ -9,12 +9,15 @@ namespace WebMagicSharp.Model.Formatter
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ObjectFormatterBuilder<T> where T : class, IObjectFormatter<T>
+    public class ObjectFormatterBuilder<T> where T : IObjectFormatter
     {
 
-        public static Type DefaultFormatterType => typeof(IObjectFormatter<object>);
+        public static Type DefaultFormatterType => typeof(IObjectFormatter);
 
         private FieldInfo field;
+
+        private PropertyInfo property;
+
         /// <summary>
         /// 
         /// </summary>
@@ -26,16 +29,22 @@ namespace WebMagicSharp.Model.Formatter
             return this;
         }
 
-        private IObjectFormatter<T> InitFormatterForType(Type fieldType, string[] param) 
+        public ObjectFormatterBuilder<T> SetProperty(PropertyInfo property)
+        {
+            this.property = property;
+            return this;
+        }
+
+        private IObjectFormatter InitFormatterForType(Type fieldType, string[] param) 
         {
             if (fieldType == typeof(string))
                 return null;
             var formatterClass = ObjectFormatters<T>.
                 Get(TypeUtil.DetectBasicType(fieldType));
-            return Activator.CreateInstance<T>();
+            return Activator.CreateInstance<IObjectFormatter>();
         }
 
-        private IObjectFormatter<T> InitFormatter(Type formatterType, string[] param)
+        private IObjectFormatter InitFormatter(Type formatterType, string[] param)
         {
             try
             {
@@ -49,7 +58,7 @@ namespace WebMagicSharp.Model.Formatter
             }
         }
 
-        public IObjectFormatter<T> Build()
+        public IObjectFormatter Build()
         {
             var formatter = AttributeUtil.GetAttribute<FormatterAttribute>(field);
             if (formatter?.Formatter.Equals(FormatterAttribute.DefaultFormatterType) == true)

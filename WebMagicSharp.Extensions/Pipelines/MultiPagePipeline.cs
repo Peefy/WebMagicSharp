@@ -23,11 +23,11 @@ namespace WebMagicSharp.Pipelines
             {
                 if(item.Value is IMultiPageModel multiPageModel)
                 {
-                    pageMap.put(multiPageModel.GetPageKey(),
+                    pageMap.Put(multiPageModel.GetPageKey(),
                                 multiPageModel.GetPage(), false);
                     lock (this)
                     {
-                        pageMap.put(multiPageModel.GetPageKey(),
+                        pageMap.Put(multiPageModel.GetPageKey(),
                                     multiPageModel.GetPage(), true);
                         var otherPages = multiPageModel.GetOtherPages();
                         if (otherPages?.Count > 0)
@@ -37,12 +37,12 @@ namespace WebMagicSharp.Pipelines
                                 if (pageMap.Get(multiPageModel.GetPageKey(),
                                                          otherPage) == false)
                                 {
-                                    pageMap.put(multiPageModel.GetPageKey(), otherPage, false);
+                                    pageMap.Put(multiPageModel.GetPageKey(), otherPage, false);
                                 }
                             }
                         }
                         var booleanMap = pageMap.Get(multiPageModel.GetPageKey());
-                        objectMap.put(multiPageModel.GetPageKey(),
+                        objectMap.Put(multiPageModel.GetPageKey(),
                                       multiPageModel.GetPage(), multiPageModel);
                         if (booleanMap == null)
                             return;

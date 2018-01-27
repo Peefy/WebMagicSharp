@@ -31,13 +31,13 @@ namespace WebMagicSharp.Handler
             }
         }
 
-        public CompositePipeline addSubPipeline(ISubPipeline subPipeline)
+        public CompositePipeline AddSubPipeline(ISubPipeline subPipeline)
         {
             this.subPipelines.Add(subPipeline);
             return this;
         }
 
-        public CompositePipeline setSubPipeline(ISubPipeline[] subPipelines)
+        public CompositePipeline SetSubPipeline(ISubPipeline[] subPipelines)
         {
             this.subPipelines = new List<ISubPipeline>();
             foreach(var subPipeline in subPipelines)

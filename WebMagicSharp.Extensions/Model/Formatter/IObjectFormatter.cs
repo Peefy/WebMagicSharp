@@ -10,9 +10,9 @@ namespace WebMagicSharp.Model.Formatter
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IObjectFormatter<T> 
+    public interface IObjectFormatter
     {
-        T Format(string raw);
+        string Format(string raw);
 
         Type Type { get; }
 

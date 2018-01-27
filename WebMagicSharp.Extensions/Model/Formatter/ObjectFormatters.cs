@@ -8,7 +8,7 @@ namespace WebMagicSharp.Model.Formatter
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [Serializable]
-    public class ObjectFormatters<T> where T : class, IObjectFormatter<T>
+    public class ObjectFormatters<T> where T : IObjectFormatter
     {
         private static Dictionary<Type, T> formatterMap
             = new Dictionary<Type, T>();

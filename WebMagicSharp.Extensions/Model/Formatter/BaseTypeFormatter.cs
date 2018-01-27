@@ -6,7 +6,7 @@ namespace WebMagicSharp.Model.Formatter
     /// abstarct base type formatter class 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class BaseTypeFormatter<T> : IObjectFormatter<T> 
+    public abstract class BaseTypeFormatter<T> : IObjectFormatter 
     {
         /// <summary>
         /// 
@@ -39,8 +39,11 @@ namespace WebMagicSharp.Model.Formatter
             
         }
 
-       
-
+        [Obsolete]
+        string IObjectFormatter.Format(string raw)
+        {
+            return null;
+        }
     }
 
 }
