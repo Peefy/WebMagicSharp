@@ -48,9 +48,19 @@ namespace WebMagicSharp.Model
             {
                 if(IsExtractLinks == true)
                 {
-                    ExtractLinks(page, pageModelExtractor);
+                    ExtractLinks(page, pageModelExtractor.HelpUrlRegionSelector,
+                        pageModelExtractor.HelpUrlRegexs);
+                    ExtractLinks(page, pageModelExtractor.TargetUrlRegionSelector,
+                        pageModelExtractor.TargetUrlRegexs);
                 }
+                var process = pageModelExtractor.Process(page);
+                if (process == null || process is IList && ((IList)process).Count == 0)
+                    continue;
+                PostProcessPageModel(pageModelExtractor.Type, process);
+                page.PutField(pageModelExtractor.Type.Name, process);
             }
+            if (page.GetResultItems()?.GetAll()?.Count == 0)
+                page.GetResultItems().SetSkip(true);
         }
 
         private void ExtractLinks(Page page, ISelector urlRegionSelector, List<Regex> urlRegexs)

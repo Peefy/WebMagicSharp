@@ -6,6 +6,6 @@ namespace WebMagicSharp.Pipelines
 {
     public interface ICollectorPipeline<T> : IPipeline
     {
-        List<T> GetCollected();
+        List<T> GetCollector();
     }
 }

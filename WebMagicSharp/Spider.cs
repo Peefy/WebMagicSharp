@@ -497,7 +497,7 @@ namespace WebMagicSharp
             Run();
             spawnUrl = true;
             destroyWhenExit = true;
-            return collectorPipeline.GetCollected();
+            return collectorPipeline.GetCollector();
         }
 
         protected virtual ICollectorPipeline<ResultItems> GetCollectorPipeline() => new ResultItemsCollectorPipeline();

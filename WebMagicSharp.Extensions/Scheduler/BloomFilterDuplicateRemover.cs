@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
+using WebMagicSharp.Processor;
+using WebMagicSharp.Selector;
 using WebMagicSharp.Scheduler;
 
 namespace WebMagicSharp.Scheduler

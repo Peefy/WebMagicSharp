@@ -18,7 +18,7 @@ namespace WebMagicSharp
 
         public T Get<T>(string key) where T : class
         {
-            if(_fields.TryGetValue(key,out object o) == true)
+            if(_fields.TryGetValue(key, out object o) == true)
             {
                 return o as T;
             }

@@ -9,7 +9,7 @@ namespace WebMagicSharp.Pipelines
 
         private List<ResultItems> _collector = new List<ResultItems>();
 
-        public List<ResultItems> GetCollected()
+        public List<ResultItems> GetCollector()
         {
             return _collector;
         }
