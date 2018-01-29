@@ -17,6 +17,17 @@ namespace WebMagicSharp.Scheduler
 
         private int counter;
 
+        public BloomFilterDuplicateRemover(int expectedInsertions)
+        {
+            this.expectedInsertions = expectedInsertions;
+            this.fpp = 0.01;
+        }
+        
+        public BloomFilterDuplicateRemover(int expectedInsertions, double fpp)
+        {
+
+        }
+
         public int GetTotalRequestsCount(ITask task)
         {
             throw new NotImplementedException();

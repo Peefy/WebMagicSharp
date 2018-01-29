@@ -24,6 +24,12 @@ namespace WebMagicSharp.Examples
         [ExtractBy("//div[@class='BlogStat']/regex('\\d+-\\d+-\\d+\\s+\\d+:\\d+')")]
         public DateTime DateTime { get; set; }
 
+        public static void Run()
+        {
+            OOSpider.Create(new JsonFilePageModelPipeline("/data/webmagic"))
+                .AddUrl("http://my.oschina.net/flashsword/blog").Run();
+        }
+
     }
 
 }
