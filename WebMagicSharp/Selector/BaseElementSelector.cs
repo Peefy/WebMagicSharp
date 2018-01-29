@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using HtmlAgilityPack;
+using DuGu.Standard.Html;
 
 using WebMagicSharp;
 
@@ -44,7 +44,7 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        public virtual HtmlAgilityPack.HtmlNode SelectElement(string text)
+        public virtual DuGu.Standard.Html.HtmlNode SelectElement(string text)
         {
             if (text != null)
             {
@@ -54,7 +54,7 @@ namespace WebMagicSharp.Selector
             return null;
         }
 
-        public virtual List<HtmlAgilityPack.HtmlNode> SelectElements(string text)
+        public virtual List<DuGu.Standard.Html.HtmlNode> SelectElements(string text)
         {
             if (text != null)
             {
@@ -63,7 +63,7 @@ namespace WebMagicSharp.Selector
             }
             else
             {
-                return new List<HtmlAgilityPack.HtmlNode>();
+                return new List<DuGu.Standard.Html.HtmlNode>();
             }
         }
 
@@ -72,9 +72,9 @@ namespace WebMagicSharp.Selector
         public abstract List<string> SelectList(HtmlDocument element);
 
 
-        public abstract HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element);
+        public abstract DuGu.Standard.Html.HtmlNode SelectElement(HtmlDocument element);
 
-        public abstract List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element);
+        public abstract List<DuGu.Standard.Html.HtmlNode> SelectElements(HtmlDocument element);
 
         public abstract bool HasAttribute();
 

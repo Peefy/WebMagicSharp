@@ -3,16 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>false</SignAssembly>
+    <Copyright>Peefy(DuGu)</Copyright>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
+    <PackageReleaseNotes>WebMagicSharp v0.0.1 preview.</PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/Peefy/WebMagicSharp</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Peefy/WebMagicSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Peefy/WebMagicSharp</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Description>This is a crawler framework in c# world.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.6.8" />
+    <PackageReference Include="DuGu.Standard.Html" Version="1.0.1" />
+    <PackageReference Include="DuGu.Standard.Http" Version="1.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DuGu.Standard.Html\DuGu.Standard.Html.csproj" />
-    <ProjectReference Include="..\DuGu.Standard.Http\DuGu.Standard.Http.csproj" />
   </ItemGroup>
 
 </Project>

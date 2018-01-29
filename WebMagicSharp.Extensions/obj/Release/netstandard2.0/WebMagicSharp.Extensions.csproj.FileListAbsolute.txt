@@ -2,3 +2,11 @@ D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\ne
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.csproj.CoreCompileInputs.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.AssemblyInfoInputs.cache
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\obj\Release\netstandard2.0\WebMagicSharp.Extensions.AssemblyInfo.cs
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\WebMagicSharp.Extensions.deps.json
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\WebMagicSharp.Extensions.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\DuGu.Standard.Html.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\DuGu.Standard.Http.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\WebMagicSharp.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\WebMagicSharp.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\DuGu.Standard.Html.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.Extensions\bin\Release\netstandard2.0\DuGu.Standard.Http.pdb

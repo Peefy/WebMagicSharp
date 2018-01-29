@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using HtmlAgilityPack;
+using DuGu.Standard.Html;
 using System.Text;
 
 namespace WebMagicSharp.Selector
@@ -27,7 +27,7 @@ namespace WebMagicSharp.Selector
             this._attrName = attrName;
         }
 
-        private string GetValue(HtmlAgilityPack.HtmlNode element)
+        private string GetValue(DuGu.Standard.Html.HtmlNode element)
         {
             if (_attrName == null)
             {
@@ -51,7 +51,7 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        protected string GetText(HtmlAgilityPack.HtmlNode element)
+        protected string GetText(DuGu.Standard.Html.HtmlNode element)
         {
             StringBuilder accum = new StringBuilder();
             foreach(var node in element.ChildNodes)
@@ -79,12 +79,12 @@ namespace WebMagicSharp.Selector
             return GetValue(elements[0]);
         }
 
-        public override HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element)
+        public override DuGu.Standard.Html.HtmlNode SelectElement(HtmlDocument element)
         {
             return element.DocumentNode.SelectNodes(_selectorText)?.FirstOrDefault();
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element)
+        public override List<DuGu.Standard.Html.HtmlNode> SelectElements(HtmlDocument element)
         {
             return element.DocumentNode.SelectNodes(_selectorText)?.ToList();
         }
@@ -107,12 +107,12 @@ namespace WebMagicSharp.Selector
             return strings;
         }
 
-        public override HtmlAgilityPack.HtmlNode SelectElement(string text)
+        public override DuGu.Standard.Html.HtmlNode SelectElement(string text)
         {
             return base.SelectElement(text);
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> SelectElements(string text)
+        public override List<DuGu.Standard.Html.HtmlNode> SelectElements(string text)
         {
             return base.SelectElements(text);
         }

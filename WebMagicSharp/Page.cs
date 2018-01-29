@@ -15,7 +15,7 @@ namespace WebMagicSharp
 
         private Request _request;
 
-        private T _resultItems = new T();
+        private ResultItems _resultItems = new ResultItems();
 
         private Html _html;
 

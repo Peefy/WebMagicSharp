@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>WebMagicSharp</RootNamespace>
+    <Description>This is a crawler framework in c# world.</Description>
+    <Copyright>Peefy(DuGu)</Copyright>
+    <PackageLicenseUrl>https://github.com/Peefy/WebMagicSharp</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Peefy/WebMagicSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Peefy/WebMagicSharp</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageReleaseNotes>WebMagicSharp v0.0.1 preview.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DuGu.Standard.Html" Version="1.0.1" />
+    <PackageReference Include="DuGu.Standard.Http" Version="1.0.3" />
     <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
   </ItemGroup>
 
