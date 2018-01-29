@@ -18,7 +18,7 @@ namespace WebMagicSharp.Model
 
         private Site site;
 
-        private bool IsExtractLinks { get; set; } = true;
+        public bool IsExtractLinks { get; set; } = true;
 
         public static ModelPageProcessor Create(Site site, Type[] types)
         {
