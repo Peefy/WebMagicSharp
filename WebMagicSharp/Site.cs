@@ -33,7 +33,7 @@ namespace WebMagicSharp
 
         private int _timeOut = 5000;
 
-        public static List<int> DefaultStatusCodeSet = new List<int>()
+        private static List<int> DefaultStatusCodeSet = new List<int>()
         {
             Utils.HttpConstant.StatusCode.Code200
         };
@@ -52,10 +52,7 @@ namespace WebMagicSharp
 
         }
 
-        public static Site Me()
-        {
-            return new Site();
-        }
+        public static Site Me => new Site();
 
         /**
          * Add a cookie with domain {@link #getDomain()}

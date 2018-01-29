@@ -2,7 +2,7 @@
 {
     public interface IHasKey
     {
-        string Key { get; set; }
+        string Key { get;}
     }
 
 }

@@ -25,6 +25,15 @@ namespace WebMagicSharp
             return null;
         }
 
+        public object Get(string key)
+        {
+            if (_fields.TryGetValue(key, out object o) == true)
+            {
+                return o;
+            }
+            return null;
+        }
+
         public Dictionary<string, object> GetAll()
         {
             return _fields;

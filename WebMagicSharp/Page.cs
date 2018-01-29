@@ -205,7 +205,7 @@ namespace WebMagicSharp
             this._resultItems.SetRequest(request);
         }
 
-        public T GetResultItems()
+        public ResultItems GetResultItems()
         {
             return _resultItems;
         }

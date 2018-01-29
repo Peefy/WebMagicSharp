@@ -7,6 +7,11 @@ namespace WebMagicSharp.Model.Attributes
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class ExtractByAttribute : Attribute
     {
+
+        public ExtractByAttribute(string value) => Value = value;
+
+        public ExtractByAttribute() { }
+
         public string Value { get; set; } = "";
 
         public ExtractType Type { get; set; } = ExtractType.XPath;

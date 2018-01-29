@@ -16,7 +16,7 @@ namespace WebMagicSharp.Pipelines
 
         public string Path { get; set; }
 
-        public void Process(T resultItems, ITask task)
+        public void Process(ResultItems resultItems, ITask task)
         {
             var seperator = FilePersistentBase.PathSeparator;
             var path = this.Path + seperator + 

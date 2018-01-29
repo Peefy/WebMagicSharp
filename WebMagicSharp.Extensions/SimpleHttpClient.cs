@@ -26,7 +26,7 @@ namespace WebMagicSharp
         /// </summary>
         public SimpleHttpClient()
         {
-            site = Site.Me();
+            site = Site.Me;
             this.httpClientDownloader = new HttpClientDownloader();
         }
 

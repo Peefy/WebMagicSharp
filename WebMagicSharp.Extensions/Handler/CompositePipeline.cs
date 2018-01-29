@@ -16,7 +16,7 @@ namespace WebMagicSharp.Handler
             
         }
 
-        public void Process(T resultItems, ITask task)
+        public void Process(ResultItems resultItems, ITask task)
         {
             foreach(var subPipeline in subPipelines)
             {
@@ -37,7 +37,7 @@ namespace WebMagicSharp.Handler
             return this;
         }
 
-        public CompositePipeline SetSubPipeline(ISubPipeline[] subPipelines)
+        public CompositePipeline SetSubPipeline(params ISubPipeline[] subPipelines)
         {
             this.subPipelines = new List<ISubPipeline>();
             foreach(var subPipeline in subPipelines)

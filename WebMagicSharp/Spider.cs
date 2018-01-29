@@ -476,6 +476,13 @@ namespace WebMagicSharp
             return this;
         }
 
+        public Spider AddUrl(string url)
+        {
+            AddRequest(new Request(url));
+            SignalNewUrl();
+            return this;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -674,6 +681,11 @@ namespace WebMagicSharp
         public Site GetSite()
         {
             return site;
+        }
+
+        ~Spider()
+        {
+            Dispose(false);
         }
 
         #region IDisposable Support

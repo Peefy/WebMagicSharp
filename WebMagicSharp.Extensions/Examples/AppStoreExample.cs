@@ -6,6 +6,7 @@ using WebMagicSharp;
 using WebMagicSharp.Utils;
 using WebMagicSharp.Model;
 using WebMagicSharp.Model.Attributes;
+using WebMagicSharp.Extensions;
 
 namespace WebMagicSharp.Examples
 {
@@ -26,10 +27,17 @@ namespace WebMagicSharp.Examples
         [ExtractBy(Type = ExtractType.JsonPath, Value = "$..supportedDevices")]
         public List<string> SupportedDevices { get; set; }
 
-        public AppStoreExample()
+        public static void Run()
         {
-            var appStore = OOSpider<AppStoreExample>.Create(Site.Me(), typeof(AppStoreExample)).
-                Get<AppStoreExample>("http://itunes.apple.com/lookup?id=653350791&country=cn&entity=software");
+            var appStore = OOSpider.Run<AppStoreExample>
+                ("http://itunes.apple.com/lookup?id=653350791&country=cn&entity=software");
+
+            Console.WriteLine($"{nameof(appStore.TrackName)}:{appStore.TrackName}");
+            Console.WriteLine($"{nameof(appStore.Decription)}:{appStore.Decription}");
+            Console.WriteLine($"{nameof(appStore.UserRatingCount)}:{appStore.UserRatingCount}");
+            Console.WriteLine($"{nameof(appStore.ScreenshotUrls)}:{appStore.ScreenshotUrls.ToListString()}");
+            Console.WriteLine($"{nameof(appStore.SupportedDevices)}:{appStore.SupportedDevices.ToListString()}");
+
         }
 
     }

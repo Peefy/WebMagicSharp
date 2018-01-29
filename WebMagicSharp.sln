@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMagicSharp", "WebMagicSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMagicSharp.Extensions", "WebMagicSharp.Extensions\WebMagicSharp.Extensions.csproj", "{39BFD624-DC74-4EAE-9005-F1E8C8661281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuGu.Standard.Http", "DuGu.Standard.Http\DuGu.Standard.Http.csproj", "{BCDA2831-58B4-4BF1-A9F3-DB5489E759D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuGu.Standard.Http", "DuGu.Standard.Http\DuGu.Standard.Http.csproj", "{BCDA2831-58B4-4BF1-A9F3-DB5489E759D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuGu.Standard.Html", "DuGu.Standard.Html\DuGu.Standard.Html.csproj", "{71D785C6-8010-4BF2-8052-64FF7463553C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DuGu.Standard.Html", "DuGu.Standard.Html\DuGu.Standard.Html.csproj", "{71D785C6-8010-4BF2-8052-64FF7463553C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagicSharp.Linq", "WebMagicSharp.Linq\WebMagicSharp.Linq.csproj", "{516A83A0-A501-4B8C-9C93-C490D63A648C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{71D785C6-8010-4BF2-8052-64FF7463553C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71D785C6-8010-4BF2-8052-64FF7463553C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71D785C6-8010-4BF2-8052-64FF7463553C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{516A83A0-A501-4B8C-9C93-C490D63A648C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{516A83A0-A501-4B8C-9C93-C490D63A648C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{516A83A0-A501-4B8C-9C93-C490D63A648C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{516A83A0-A501-4B8C-9C93-C490D63A648C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

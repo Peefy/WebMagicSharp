@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +7,7 @@ using WebMagicSharp.Selector;
 
 namespace WebMagicSharp.Utils
 {
+
     public static class ExtractorUtils
     {
         public static ISelector GetSelector(ExtractByAttribute extractBy)

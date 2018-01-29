@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebMagicSharp.Processor
+namespace WebMagicSharp
 {
-    public interface IPageProcessor : IDisposable
+    public interface IPageProcessor
     {
         void Process(Page page);
 

@@ -57,26 +57,6 @@ namespace WebMagicSharp.Model
             return new PageModelCollectorPipeline<T1>(pageModelTypes.FirstOrDefault());
         }
 
-        public static OOSpider<T> Create(Site site, Type[] pageModels)
-        {
-            return new OOSpider<T>(site, null, pageModels);
-        }
-
-        public static OOSpider<T> Create(Site site, IPageModelPipeline<T> pageModelPipeline, Type[] pageModels)
-        {
-            return new OOSpider<T>(site, pageModelPipeline, pageModels);
-        }
-
-        public static OOSpider<T> Create(Site site, Type pageModel)
-        {
-            return new OOSpider<T>(site, null, pageModel);
-        }
-
-        public static OOSpider<T> Create(Site site, IPageModelPipeline<T> pageModelPipeline, Type pageModel)
-        {
-            return new OOSpider<T>(site, pageModelPipeline, pageModel);
-        }
-
         public OOSpider<T> AddPageModel(IPageModelPipeline<T> pageModelPipeline, Type[] pageModels)
         {
             foreach(var pageModel in pageModels)
@@ -94,4 +74,54 @@ namespace WebMagicSharp.Model
         }
 
     }
+
+    public static class OOSpider
+    {
+        public static T Run<T>(string url) where T : class
+        {
+            return Create<T>(Site.Me, typeof(T)).Get<T>(url);
+        }
+
+        public static OOSpider<T> Create<T>(Site site, Type[] pageModels)
+        {
+            return new OOSpider<T>(site, null, pageModels);
+        }
+
+        public static OOSpider<T> Create<T>(Site site, IPageModelPipeline<T> pageModelPipeline)
+        {
+            return new OOSpider<T>(site, pageModelPipeline, typeof(T));
+        }
+
+        public static OOSpider<T> Create<T>(Site site, IPageModelPipeline<T> pageModelPipeline, Type[] pageModels)
+        {
+            return new OOSpider<T>(site, pageModelPipeline, pageModels);
+        }
+
+        public static OOSpider<T> Create<T>()
+        {
+            return new OOSpider<T>(Site.Me, null, typeof(T));
+        }
+
+        public static OOSpider<T> Create<T>(IPageModelPipeline<T> pageModelPipeline)
+        {
+            return new OOSpider<T>(Site.Me, pageModelPipeline, typeof(T));
+        }
+
+        public static OOSpider<T> Create<T>(Site site)
+        {
+            return new OOSpider<T>(site, null, typeof(T));
+        }
+
+        public static OOSpider<T> Create<T>(Site site, Type pageModel)
+        {
+            return new OOSpider<T>(site, null, pageModel);
+        }
+
+        public static OOSpider<T> Create<T>(Site site, IPageModelPipeline<T> pageModelPipeline, Type pageModel)
+        {
+            return new OOSpider<T>(site, pageModelPipeline, pageModel);
+        }
+
+    }
+
 }

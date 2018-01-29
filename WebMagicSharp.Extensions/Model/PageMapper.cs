@@ -13,6 +13,17 @@ namespace WebMagicSharp.Model
 
         private PageModelExtractor pageModelExtractor;
 
+        public PageMapper()
+        {
+            type = typeof(T);
+        }
+
+        public PageMapper(Type type)
+        {
+            this.type = type;
+            this.pageModelExtractor = PageModelExtractor.Create(type);
+        }
+
         public PageMapper(Type type, PageModelExtractor pageModelExtractor)
         {
             this.type = type;

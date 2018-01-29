@@ -12,10 +12,7 @@ namespace WebMagicSharp.Handler
 
         private List<ISubPageProcessor> subPageProcessors = new List<ISubPageProcessor>();
 
-        public void Dispose()
-        {
-            
-        }
+        public CompositePageProcessor(Site site) => this.site = site;
 
         public Site GetSite()
         {
@@ -49,10 +46,10 @@ namespace WebMagicSharp.Handler
             return this;
         }
 
-        public CompositePageProcessor SetSubPageProcessors(ISubPageProcessor[] subPageProcessors)
+        public CompositePageProcessor SetSubPageProcessors(params ISubPageProcessor[] subPageProcessors)
         {
             this.subPageProcessors = new List<ISubPageProcessor>();
-            foreach(var subPageProcessor in subPageProcessors)
+            foreach (var subPageProcessor in subPageProcessors)
             {
                 this.subPageProcessors.Add(subPageProcessor);
             }

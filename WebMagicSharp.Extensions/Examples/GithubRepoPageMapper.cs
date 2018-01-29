@@ -1,18 +1,43 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace WebMagicSharp.Pipelines
+using WebMagicSharp;
+using WebMagicSharp.Model;
+using WebMagicSharp.Processor;
+
+namespace WebMagicSharp.Examples
 {
-    public class ConsolePipeline : IPipeline, IDisposable
+    public class GithubRepoPageMapper : IPageProcessor
     {
-        public void Process(ResultItems resultItems, ITask task)
+        private Site site = Site.Me.SetRetryTimes(3).SetSleepTime(0);
+
+        private PageMapper<GithubRepoPageMapper> githubRepoPageMapper =
+            new PageMapper<GithubRepoPageMapper>();
+
+        public Site GetSite()
         {
-            Console.WriteLine("get page: " + resultItems.GetRequest().GetUrl());
-            foreach (var item in resultItems.GetAll())
+            return site;
+        }
+
+        public void Process(Page page)
+        {
+            page.AddTargetRequests(page.GetHtml().Links().Regex("(https://github\\.com/\\w+/\\w+)").All());
+            page.AddTargetRequests(page.GetHtml().Links().Regex("(https://github\\.com/\\w+)").All());
+            var githubRepo = githubRepoPageMapper.Get(page);
+            if (githubRepo == null)
             {
-                Console.WriteLine(item.Key + ":\t" + item.Value);
+                page.SetSkip(true);
             }
+            else
+            {
+                page.PutField("repo", githubRepo);
+            }
+        }
+
+        public static void Run()
+        {
+            Spider.Create(new GithubRepoPageMapper()).AddUrl("https://github.com/code4craft").Thread(5).Run();
         }
 
         #region IDisposable Support
@@ -35,7 +60,7 @@ namespace WebMagicSharp.Pipelines
         }
 
         // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
-        // ~ConsolePipeline() {
+        // ~GithubRepoPageMapper() {
         //   // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
         //   Dispose(false);
         // }
@@ -49,5 +74,7 @@ namespace WebMagicSharp.Pipelines
             // GC.SuppressFinalize(this);
         }
         #endregion
+
     }
+
 }

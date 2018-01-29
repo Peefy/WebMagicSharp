@@ -17,7 +17,7 @@ namespace WebMagicSharp.DownLoaders
 
         public Html Download(string url, string charset)
         {
-            Page page = Download(new Request(url), Site.Me().SetCharset(charset).ToTask());
+            Page page = Download(new Request(url), Site.Me.SetCharset(charset).ToTask());
             return (Html)page.GetHtml();
         }
 

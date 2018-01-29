@@ -12,4 +12,12 @@ namespace WebMagicSharp.Model
         }
     }
 
+    public class ConsolePageModelPipeline<T> : IPageModelPipeline<T>
+    {
+        public void Process(T t, ITask task)
+        {
+            Console.WriteLine(t);
+        }
+    }
+
 }
