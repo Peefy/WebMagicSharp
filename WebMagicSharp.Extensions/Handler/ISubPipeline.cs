@@ -6,6 +6,6 @@ namespace WebMagicSharp.Handler
 {
     public interface ISubPipeline : IRequestMatcher
     {
-        MatchOther ProcessResult(ResultItems resultItems, ITask task);
+        MatchOther ProcessResult(T resultItems, ITask task);
     }
 }

@@ -23,7 +23,7 @@ namespace WebMagicSharp.Pipelines
             this.path = path;
         }
 
-        public virtual void Process(ResultItems resultItems, ITask task)
+        public virtual void Process(T resultItems, ITask task)
         {
             var totalPath = this.path + PathSeparator + task.GetGuid() + PathSeparator;
             try

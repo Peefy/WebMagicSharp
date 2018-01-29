@@ -13,7 +13,7 @@ namespace WebMagicSharp.Pipelines
 {
     public class JsonFilePageModelPipeline : JsonFilePipeline, IPageModelPipeline<object>
     {
-        public override void Process(ResultItems resultItems, ITask task)
+        public override void Process(T resultItems, ITask task)
         {
             base.Process(resultItems, task);
         }

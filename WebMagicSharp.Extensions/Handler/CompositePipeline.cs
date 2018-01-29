@@ -16,7 +16,7 @@ namespace WebMagicSharp.Handler
             
         }
 
-        public void Process(ResultItems resultItems, ITask task)
+        public void Process(T resultItems, ITask task)
         {
             foreach(var subPipeline in subPipelines)
             {

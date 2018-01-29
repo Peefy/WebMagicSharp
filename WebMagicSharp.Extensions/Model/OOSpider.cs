@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -42,9 +43,18 @@ namespace WebMagicSharp.Model
             }
         }
 
-        protected override ICollectorPipeline<ResultItems> GetCollectorPipeline()
+        public OOSpider(Site site, IPageModelPipeline<T> pageModelPipeline, Type pageModel) : base(ModelPageProcessor.Create(site, pageModels))
         {
-            return new PageModelCollectorPipeline<ResultItems>(pageModelTypes[0]);
+            this.modelPipeline = new ModelPipeline<T>();
+            this.AddPipeline(modelPipeline);
+            if (pageModelPipeline != null)
+                    this.modelPipeline.Put(pageModel, pageModelPipeline);
+            pageModelTypes.Add(pageModel);
+        }
+
+        protected override ICollectorPipeline<T1> GetCollectorPipeline<T1>()
+        {
+            return new PageModelCollectorPipeline<T1>(pageModelTypes.FirstOrDefault());
         }
 
         public static OOSpider<T> Create(Site site, Type[] pageModels)
@@ -55,6 +65,16 @@ namespace WebMagicSharp.Model
         public static OOSpider<T> Create(Site site, IPageModelPipeline<T> pageModelPipeline, Type[] pageModels)
         {
             return new OOSpider<T>(site, pageModelPipeline, pageModels);
+        }
+
+        public static OOSpider<T> Create(Site site, Type pageModel)
+        {
+            return new OOSpider<T>(site, null, pageModel);
+        }
+
+        public static OOSpider<T> Create(Site site, IPageModelPipeline<T> pageModelPipeline, Type pageModel)
+        {
+            return new OOSpider<T>(site, pageModelPipeline, pageModel);
         }
 
         public OOSpider<T> AddPageModel(IPageModelPipeline<T> pageModelPipeline, Type[] pageModels)

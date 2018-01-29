@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -480,7 +481,7 @@ namespace WebMagicSharp
         /// </summary>
         /// <param name="urls"></param>
         /// <returns></returns>
-        public List<ResultItems> GetAll(IList<string> urls)
+        public List<T> GetAll<T>(IList<string> urls)
         {
             destroyWhenExit = false;
             spawnUrl = false;
@@ -492,7 +493,7 @@ namespace WebMagicSharp
             {
                 AddRequest(request);
             }
-            var collectorPipeline = GetCollectorPipeline();
+            var collectorPipeline = GetCollectorPipeline<T>();
             pipelines.Add(collectorPipeline);
             Run();
             spawnUrl = true;
@@ -500,23 +501,24 @@ namespace WebMagicSharp
             return collectorPipeline.GetCollector();
         }
 
-        protected virtual ICollectorPipeline<ResultItems> GetCollectorPipeline() => new ResultItemsCollectorPipeline();
+        protected virtual ICollectorPipeline<T> GetCollectorPipeline<T>() => (ICollectorPipeline<T>)
+            new ResultItemsCollectorPipeline();
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public ResultItems Get(string url) 
+        public T Get<T>(string url) where T : class
         {
             var urls = new List<string>
             {
                 url
             };
-            var resultItemses = GetAll(urls);
+            var resultItemses = GetAll<T>(urls);
             if (resultItemses != null && resultItemses.Count > 0)
             {
-                return resultItemses[0];
+                return resultItemses.FirstOrDefault();
             }
             else
             {

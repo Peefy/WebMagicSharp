@@ -6,7 +6,7 @@ namespace WebMagicSharp.Pipelines
 {
     public class ConsolePipeline : IPipeline, IDisposable
     {
-        public void Process(ResultItems resultItems, ITask task)
+        public void Process(T resultItems, ITask task)
         {
             Console.WriteLine("get page: " + resultItems.GetRequest().GetUrl());
             foreach (var item in resultItems.GetAll())

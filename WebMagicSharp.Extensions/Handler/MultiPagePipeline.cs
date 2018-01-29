@@ -14,7 +14,7 @@ namespace WebMagicSharp.Handler
         private DoubleKeyMap<String, String, IMultiPageModel> objectMap = 
             new DoubleKeyMap<String, String, IMultiPageModel>();
 
-        public void Process(ResultItems resultItems, ITask task)
+        public void Process(T resultItems, ITask task)
         {
             var resultItemsAll = resultItems.GetAll();
             foreach(var item in resultItemsAll)

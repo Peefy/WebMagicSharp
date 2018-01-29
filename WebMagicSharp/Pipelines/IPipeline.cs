@@ -6,6 +6,6 @@ namespace WebMagicSharp.Pipelines
 {
     public interface IPipeline : IDisposable
     {
-        void Process(ResultItems resultItems, ITask task);
+        void Process(T resultItems, ITask task);
     }
 }

@@ -25,7 +25,7 @@ namespace WebMagicSharp.Model
             return this;
         }
 
-        public void Process(ResultItems resultItems, ITask task)
+        public void Process(WebMagicSharp.T resultItems, ITask task)
         {
             foreach(var keyValuePair in pageModelPipelines)
             {

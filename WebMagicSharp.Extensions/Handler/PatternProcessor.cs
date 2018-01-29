@@ -13,6 +13,6 @@ namespace WebMagicSharp.Handler
 
         public abstract MatchOther ProcessPage(Page page);
 
-        public abstract MatchOther ProcessResult(ResultItems resultItems, ITask task);
+        public abstract MatchOther ProcessResult(T resultItems, ITask task);
     }
 }

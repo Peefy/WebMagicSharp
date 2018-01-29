@@ -15,7 +15,7 @@ namespace WebMagicSharp
 
         private Request _request;
 
-        private ResultItems _resultItems = new ResultItems();
+        private T _resultItems = new T();
 
         private Html _html;
 
@@ -205,7 +205,7 @@ namespace WebMagicSharp
             this._resultItems.SetRequest(request);
         }
 
-        public ResultItems GetResultItems()
+        public T GetResultItems()
         {
             return _resultItems;
         }
