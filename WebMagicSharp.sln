@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DuGu.NetFx2.Http", "DuGu.Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagicSharp.NetFx2", "WebMagicSharp.NetFx2\WebMagicSharp.NetFx2.csproj", "{208400C1-E2CE-44C0-B2A0-38DDD342FA97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagicSharp.Linq", "WebMagicSharp.Linq\WebMagicSharp.Linq.csproj", "{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{208400C1-E2CE-44C0-B2A0-38DDD342FA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{208400C1-E2CE-44C0-B2A0-38DDD342FA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{208400C1-E2CE-44C0-B2A0-38DDD342FA97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
