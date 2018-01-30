@@ -6,3 +6,4 @@ D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.AssemblyInfo.cs
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.dll
 D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp\obj\Release\netstandard2.0\WebMagicSharp.csprojResolveAssemblyReference.cache

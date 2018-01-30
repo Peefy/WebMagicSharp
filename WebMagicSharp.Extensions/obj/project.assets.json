@@ -674,7 +674,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "WebMagicSharp/1.0.0": {
+      "WebMagicSharp/0.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3128,7 +3128,7 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "WebMagicSharp/1.0.0": {
+    "WebMagicSharp/0.0.1": {
       "type": "project",
       "path": "../WebMagicSharp/WebMagicSharp.csproj",
       "msbuildProject": "../WebMagicSharp/WebMagicSharp.csproj"
@@ -3139,7 +3139,7 @@
       "DuGu.Standard.Html >= 1.0.1",
       "DuGu.Standard.Http >= 1.0.3",
       "NETStandard.Library >= 2.0.0",
-      "WebMagicSharp >= 1.0.0"
+      "WebMagicSharp >= 0.0.1"
     ]
   },
   "packageFolders": {
@@ -3147,7 +3147,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.0.1",
     "restoreSettings": {
       "hideWarningsAndErrors": true
     },

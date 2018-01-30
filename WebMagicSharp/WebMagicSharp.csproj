@@ -12,6 +12,9 @@
     <RepositoryUrl>https://github.com/Peefy/WebMagicSharp</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <Description>This is a crawler framework in c# world.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

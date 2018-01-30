@@ -7,12 +7,12 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "WebMagicSharp.Extensions/1.0.0": {
+      "WebMagicSharp.Extensions/0.0.1": {
         "dependencies": {
           "DuGu.Standard.Html": "1.0.1",
           "DuGu.Standard.Http": "1.0.3",
           "NETStandard.Library": "2.0.0",
-          "WebMagicSharp": "1.0.0"
+          "WebMagicSharp": "0.0.1"
         },
         "runtime": {
           "WebMagicSharp.Extensions.dll": {}
@@ -486,7 +486,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "WebMagicSharp/1.0.0": {
+      "WebMagicSharp/0.0.1": {
         "dependencies": {
           "DuGu.Standard.Html": "1.0.1",
           "DuGu.Standard.Http": "1.0.3",
@@ -499,7 +499,7 @@
     }
   },
   "libraries": {
-    "WebMagicSharp.Extensions/1.0.0": {
+    "WebMagicSharp.Extensions/0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -819,7 +819,7 @@
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
-    "WebMagicSharp/1.0.0": {
+    "WebMagicSharp/0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagicSharp.NetFx2", "Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagicSharp.Linq", "WebMagicSharp.Linq\WebMagicSharp.Linq.csproj", "{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagic.WindowsFormsNetFx2AppExample", "WebMagic.WindowsFormsNetFx2AppExample\WebMagic.WindowsFormsNetFx2AppExample.csproj", "{B1247B22-424B-4A2E-B817-117ACF859247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMagicSharp.WpfAppNetFx45Example", "WebMagicSharp.WpfAppNetFx45Example\WebMagicSharp.WpfAppNetFx45Example.csproj", "{188F2607-093D-49F7-A654-7F3B4941B0E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,12 +71,22 @@ Global
 		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF9ECA1-92E6-499A-AE47-A181732FA5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1247B22-424B-4A2E-B817-117ACF859247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1247B22-424B-4A2E-B817-117ACF859247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1247B22-424B-4A2E-B817-117ACF859247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1247B22-424B-4A2E-B817-117ACF859247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{188F2607-093D-49F7-A654-7F3B4941B0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188F2607-093D-49F7-A654-7F3B4941B0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188F2607-093D-49F7-A654-7F3B4941B0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188F2607-093D-49F7-A654-7F3B4941B0E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7FFF3F65-906B-4BCA-A0CD-CD8D669ACDD9} = {5F7C8CAC-DBCA-451D-80AF-39C76111F29E}
+		{B1247B22-424B-4A2E-B817-117ACF859247} = {5F7C8CAC-DBCA-451D-80AF-39C76111F29E}
+		{188F2607-093D-49F7-A654-7F3B4941B0E3} = {5F7C8CAC-DBCA-451D-80AF-39C76111F29E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {887152BF-E3A1-48D1-B373-C05AA2A7D9B8}

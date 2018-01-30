@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "WebMagicSharp/1.0.0": {
+      "WebMagicSharp/0.0.1": {
         "dependencies": {
           "DuGu.Standard.Html": "1.0.1",
           "DuGu.Standard.Http": "1.0.3",
@@ -489,7 +489,7 @@
     }
   },
   "libraries": {
-    "WebMagicSharp/1.0.0": {
+    "WebMagicSharp/0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
