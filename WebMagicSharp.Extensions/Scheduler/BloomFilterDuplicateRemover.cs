@@ -8,19 +8,15 @@ using WebMagicSharp.Scheduler;
 
 namespace WebMagicSharp.Scheduler
 {
+    [Obsolete("not finished")]
     public class BloomFilterDuplicateRemover : IDuplicateRemover
     {
 
         private int expectedInsertions;
 
-        private double fpp;
-
-        private int counter;
-
         public BloomFilterDuplicateRemover(int expectedInsertions)
         {
             this.expectedInsertions = expectedInsertions;
-            this.fpp = 0.01;
         }
         
         public BloomFilterDuplicateRemover(int expectedInsertions, double fpp)

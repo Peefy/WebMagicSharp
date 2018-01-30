@@ -17,7 +17,7 @@ namespace WebMagicSharp.Model
 
         private ModelPipeline<T> modelPipeline;
 
-        private IPageModelPipeline<T> pageModelPipeline;
+        //private IPageModelPipeline<T> pageModelPipeline;
 
         private List<Type> pageModelTypes = new List<Type>();
 
@@ -31,9 +31,11 @@ namespace WebMagicSharp.Model
             this.modelPipeline = new ModelPipeline<T>();
         }
 
-        public OOSpider(Site site, IPageModelPipeline<T> pageModelPipeline, Type[] pageModels) : base(ModelPageProcessor.Create(site, pageModels))
+        public OOSpider(Site site, IPageModelPipeline<T> pageModelPipeline, Type[] pageModels) 
+            : base(ModelPageProcessor.Create(site, pageModels))
         {
             this.modelPipeline = new ModelPipeline<T>();
+            //this.pageModelPipeline = pageModelPipeline;
             this.AddPipeline(modelPipeline);
             foreach (var pageModel in pageModels)
             {
@@ -43,7 +45,8 @@ namespace WebMagicSharp.Model
             }
         }
 
-        public OOSpider(Site site, IPageModelPipeline<T> pageModelPipeline, Type pageModel) : base(ModelPageProcessor.Create(site, pageModels))
+        public OOSpider(Site site, IPageModelPipeline<T> pageModelPipeline, Type pageModel) 
+            : base(ModelPageProcessor.Create(site, new Type[] { pageModel } ))
         {
             this.modelPipeline = new ModelPipeline<T>();
             this.AddPipeline(modelPipeline);

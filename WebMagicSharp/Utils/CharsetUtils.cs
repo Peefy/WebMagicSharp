@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 using System.Xml;
-using HtmlAgilityPack;
-using System.Linq;
+
+using DuGu.Standard.Html;
 
 namespace WebMagicSharp.Utils
 {

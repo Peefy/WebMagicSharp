@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebMagicSharp.Pipelines
 {
-    public interface ICollectorPipeline<T> : IPipeline<T>
+    public interface ICollectorPipeline<T> : IPipeline
     {
         List<T> GetCollector();
     }

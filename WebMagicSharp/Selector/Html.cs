@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-using HtmlAgilityPack;
+using DuGu.Standard.Html;
 
 namespace WebMagicSharp.Selector
 {

@@ -29,7 +29,7 @@ namespace WebMagicSharp.Model
             return typePipeline.GetCollector();
         }
 
-        public void Process(WebMagicSharp.T resultItems, ITask task)
+        public void Process(ResultItems resultItems, ITask task)
         {
             var obj = resultItems.Get<object>(type.Name);
             if(obj != null)

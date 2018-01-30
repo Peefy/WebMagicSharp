@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HtmlAgilityPack;
+using DuGu.Standard.Html;
 
 namespace WebMagicSharp.Selector
 {
@@ -20,12 +20,12 @@ namespace WebMagicSharp.Selector
             throw new NotImplementedException();
         }
 
-        public override HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element)
+        public override DuGu.Standard.Html.HtmlNode SelectElement(HtmlDocument element)
         {
             throw new NotImplementedException();
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element)
+        public override List<DuGu.Standard.Html.HtmlNode> SelectElements(HtmlDocument element)
         {
             throw new NotImplementedException();
         }

@@ -3,7 +3,8 @@ using System.Linq;
 using System.Xml.XPath;
 using System.Collections.Generic;
 using System.Text;
-using HtmlAgilityPack;
+
+using DuGu.Standard.Html;
 
 namespace WebMagicSharp.Selector
 {
@@ -39,13 +40,13 @@ namespace WebMagicSharp.Selector
             return list;
         }
 
-        public override HtmlAgilityPack.HtmlNode SelectElement(HtmlDocument element)
+        public override DuGu.Standard.Html.HtmlNode SelectElement(HtmlDocument element)
         {
             var elements = SelectElements(element);
             return elements.FirstOrDefault();
         }
 
-        public override List<HtmlAgilityPack.HtmlNode> SelectElements(HtmlDocument element)
+        public override List<DuGu.Standard.Html.HtmlNode> SelectElements(HtmlDocument element)
         {
             var list = element.DocumentNode.SelectNodes(XPathString.Expression).ToList();
             return list;

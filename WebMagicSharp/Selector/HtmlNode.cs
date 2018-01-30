@@ -10,9 +10,9 @@ namespace WebMagicSharp.Selector
     public class HtmlNode : AbstractSelectable
     {
 
-        List<HtmlAgilityPack.HtmlNode> _elements;
+        List<DuGu.Standard.Html.HtmlNode> _elements;
 
-        public HtmlNode(List<HtmlAgilityPack.HtmlNode> elements)
+        public HtmlNode(List<DuGu.Standard.Html.HtmlNode> elements)
         {
             _elements = elements;
         }
@@ -22,7 +22,7 @@ namespace WebMagicSharp.Selector
             _elements = null;
         }
 
-        public virtual List<HtmlAgilityPack.HtmlNode> GetElements()
+        public virtual List<DuGu.Standard.Html.HtmlNode> GetElements()
         {
             return _elements;
         }
@@ -42,7 +42,7 @@ namespace WebMagicSharp.Selector
             var selectables = new List<ISelectable>();
             foreach(var element in GetElements())
             {
-                var childElements = new List<HtmlAgilityPack.HtmlNode>(1)
+                var childElements = new List<DuGu.Standard.Html.HtmlNode>(1)
                 {
                     element
                 };
@@ -94,8 +94,8 @@ namespace WebMagicSharp.Selector
             var elementsTemp = GetElements();
             if (!elementSelector.HasAttribute())
             {
-                List<HtmlAgilityPack.HtmlNode> resultElements 
-                    = new List<HtmlAgilityPack.HtmlNode>();
+                List<DuGu.Standard.Html.HtmlNode> resultElements 
+                    = new List<DuGu.Standard.Html.HtmlNode>();
                 foreach(var element in elementsTemp)
                 {
                     //var nodes = checkElementAndConvert(element);
@@ -120,9 +120,9 @@ namespace WebMagicSharp.Selector
             }
         }
 
-        private HtmlAgilityPack.HtmlDocument CheckElementAndConvert(List<HtmlAgilityPack.HtmlNode> nodes)
+        private DuGu.Standard.Html.HtmlDocument CheckElementAndConvert(List<DuGu.Standard.Html.HtmlNode> nodes)
         {
-            HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
+            var document = new DuGu.Standard.Html.HtmlDocument();
             foreach(var node in nodes)
             {
                 document.DocumentNode.AppendChild(node);

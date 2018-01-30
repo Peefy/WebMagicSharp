@@ -4,20 +4,18 @@ using System.Text;
 
 namespace WebMagicSharp.Pipelines
 {
-    public class ResultItemsCollectorPipeline<T> : ICollectorPipeline<T>
+    public class ResultItemsCollectorPipeline<T> : ICollectorPipeline<ResultItems>
     {
+        private List<ResultItems> collector = new List<ResultItems>();
 
-        private List<T> _collector = new List<T>();
-
-        public List<T> GetCollector()
+        public List<ResultItems> GetCollector()
         {
-            return _collector;
+            return collector;
         }
 
-        public void Process(T resultItems, ITask task)
+        public void Process(ResultItems resultItems, ITask task)
         {
-            _collector.Add(resultItems);
+            collector.Add(resultItems);
         }
-
     }
 }

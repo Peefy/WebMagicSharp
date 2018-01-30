@@ -509,7 +509,7 @@ namespace WebMagicSharp
         }
 
         protected virtual ICollectorPipeline<T> GetCollectorPipeline<T>() => (ICollectorPipeline<T>)
-            new ResultItemsCollectorPipeline();
+            new ResultItemsCollectorPipeline<T>();
 
         /// <summary>
         /// 

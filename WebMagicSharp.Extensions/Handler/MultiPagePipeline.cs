@@ -14,15 +14,14 @@ namespace WebMagicSharp.Handler
         private DoubleKeyMap<String, String, IMultiPageModel> objectMap = 
             new DoubleKeyMap<String, String, IMultiPageModel>();
 
-        public void Process(T resultItems, ITask task)
+        public void Process(ResultItems resultItems, ITask task)
         {
             var resultItemsAll = resultItems.GetAll();
             foreach(var item in resultItemsAll)
             {
                 var o = item.Value;
-                if (o is IMultiPageModel)
+                if (o is IMultiPageModel multiPageModel)
                 {
-                    var multiPageModel = (IMultiPageModel)o;
                     pageMap.Put(multiPageModel.GetPageKey(), multiPageModel.GetPage(), false);
                     //每个key单独加锁
                     lock (pageMap.Get(multiPageModel.GetPageKey()))

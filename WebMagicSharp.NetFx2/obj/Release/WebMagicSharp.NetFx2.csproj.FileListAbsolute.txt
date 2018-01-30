@@ -1,0 +1,6 @@
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.NetFx2\bin\Release\WebMagicSharp.NetFx2.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.NetFx2\bin\Release\WebMagicSharp.NetFx2.pdb
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.NetFx2\obj\Release\WebMagicSharp.NetFx2.csprojResolveAssemblyReference.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.NetFx2\obj\Release\WebMagicSharp.NetFx2.csproj.CoreCompileInputs.cache
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.NetFx2\obj\Release\WebMagicSharp.NetFx2.dll
+D:\_VSPros\C#\.NET Stadard\WebMagicSharp\WebMagicSharp.NetFx2\obj\Release\WebMagicSharp.NetFx2.pdb

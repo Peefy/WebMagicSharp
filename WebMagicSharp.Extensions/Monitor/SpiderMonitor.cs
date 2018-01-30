@@ -16,8 +16,6 @@ namespace WebMagicSharp.Monitor
 
         public static SpiderMonitor Instance => _instance ?? (_instance = new SpiderMonitor());
 
-        private int started;
-
         public SpiderMonitor Register(Spider[] spiders)
         {
             lock(locked)

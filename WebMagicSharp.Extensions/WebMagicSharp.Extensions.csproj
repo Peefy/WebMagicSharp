@@ -26,7 +26,6 @@
   <ItemGroup>
     <PackageReference Include="DuGu.Standard.Html" Version="1.0.1" />
     <PackageReference Include="DuGu.Standard.Http" Version="1.0.3" />
-    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
   </ItemGroup>
 
   <ItemGroup>

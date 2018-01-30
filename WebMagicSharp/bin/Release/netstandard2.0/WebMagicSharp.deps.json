@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "30455570ad4ad0994778832526ff17c03b935e11"
+    "signature": "fff283228eaa0fb1c11338c8fd8c15c11c09b8ef"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,13 +9,23 @@
     ".NETStandard,Version=v2.0/": {
       "WebMagicSharp/1.0.0": {
         "dependencies": {
-          "DuGu.Standard.Html": "1.0.2",
+          "DuGu.Standard.Html": "1.0.1",
           "DuGu.Standard.Http": "1.0.3",
           "NETStandard.Library": "2.0.0",
           "Newtonsoft.Json": "10.0.3"
         },
         "runtime": {
           "WebMagicSharp.dll": {}
+        }
+      },
+      "DuGu.Standard.Html/1.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/DuGu.Standard.Html.dll": {}
+        }
+      },
+      "DuGu.Standard.Http/1.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/DuGu.Standard.Http.dll": {}
         }
       },
       "Microsoft.CSharp/4.3.0": {
@@ -475,16 +485,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
-      },
-      "DuGu.Standard.Html/1.0.2": {
-        "runtime": {
-          "DuGu.Standard.Html.dll": {}
-        }
-      },
-      "DuGu.Standard.Http/1.0.3": {
-        "runtime": {
-          "DuGu.Standard.Http.dll": {}
-        }
       }
     }
   },
@@ -493,6 +493,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DuGu.Standard.Html/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7yuIKX3WJ6iq9p093rrdWnOLIOrypxMFlc5dvoy/XbznDN6D5XLOB1cuVtfaFFlVgfaZtJe3FDS1XqoEYezTsA==",
+      "path": "dugu.standard.html/1.0.1",
+      "hashPath": "dugu.standard.html.1.0.1.nupkg.sha512"
+    },
+    "DuGu.Standard.Http/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N+7ebgLUODYo1Qzi0+McLRgT2VaJx4vKWNu9B9HmujYzJxVaQ5Bp3jhSlIFaiFG3sP2qgBCV64s8GIhfVHjsmg==",
+      "path": "dugu.standard.http/1.0.3",
+      "hashPath": "dugu.standard.http.1.0.3.nupkg.sha512"
     },
     "Microsoft.CSharp/4.3.0": {
       "type": "package",
@@ -794,16 +808,6 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
-    },
-    "DuGu.Standard.Html/1.0.2": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DuGu.Standard.Http/1.0.3": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

@@ -281,9 +281,9 @@ namespace WebMagicSharp.Model
                 targetUrlRegexs.Add(new Regex(".*"));
             else
             {
-                var value = (targeturlAttr as TargetUrlAttribute).Value;
-                targetUrlRegexs.Add(new Regex(value.Replace(".", "\\.").
-                    Replace("*", "[^\"'#]*")));
+                var values = (targeturlAttr as TargetUrlAttribute).Value;
+                foreach(var value in values)
+                    targetUrlRegexs.Add(new Regex(value.Replace(".", "\\.").Replace("*", "[^\"'#]*")));
                 if(!(targeturlAttr as TargetUrlAttribute).SourceRegion.Equals(""))
                 {
                     targetUrlRegionSelector = new XPathSelector((targeturlAttr as TargetUrlAttribute).SourceRegion);
@@ -292,9 +292,9 @@ namespace WebMagicSharp.Model
             var helpUrlAttr = AttributeUtil.GetAttribute<HelpUrlAttribute>(type);
             if(helpUrlAttr != null)
             {
-                var value = helpUrlAttr.Value;
-                helpUrlRegexs.Add(new Regex(value.Replace(".", "\\.")
-                    .Replace("*", "[^\"'#]*")));
+                var values = helpUrlAttr.Value;
+                foreach(var value in values)
+                    helpUrlRegexs.Add(new Regex(value.Replace(".", "\\.").Replace("*", "[^\"'#]*")));
                 if (!helpUrlAttr.SourceRegion.Equals(""))
                     helpUrlRegionSelector = new XPathSelector(helpUrlAttr.SourceRegion);
             }
