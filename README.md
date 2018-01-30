@@ -3,6 +3,14 @@
 >A scalable crawler framework. It covers the whole lifecycle of crawler: downloading, url management, content extraction and persistent. It can simplify the development of a  specific crawler.And This is a good c# crawler framework easy to use.Surely support .Net Framework2.0-.Net Framework4.7 ; .Net Standard2.0; .NetCore2.0; Xamarin.Forms ; Xamarin.Android; Xamarin.iOS; Xamarin.Mac; Xamarin.Gtk ; WPF; SliverLight; WindowsForm;
 >Thank you to use.
 
+# DotnetSpider
+
+>This project is no longer maintained.Please go to see:
+
+[https://github.com/dotnetcore/DotnetSpider](https://github.com/dotnetcore/DotnetSpider)
+
+>So
+
 ## Features:
 
 * Simple core with high flexibility.
@@ -39,6 +47,7 @@ To write webmagic, I refered to the projects below :
 * **WebMagic**
 
     Main Reference to write WebMagicSharp.
+    
     [https://github.com/code4craft/webmagic](https://github.com/code4craft/webmagic)
 
 * **Scrapy**
